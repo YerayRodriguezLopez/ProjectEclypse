@@ -323,10 +323,6 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    // -------------------------------------------------------------------------
-    // REGION: Checkpoints
-    // -------------------------------------------------------------------------
-
     #region Checkpoints
 
     /// <summary>
