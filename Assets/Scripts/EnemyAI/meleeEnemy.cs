@@ -240,18 +240,19 @@ public class meleeEnemy : SimpleEnemy
                 ChooseState(); // atacar
                 yield break;
             }
-
-            if (distance > VisionDistance)
+            else if (distance > VisionDistance)
             {
                 agent.isStopped = true;
-                this.Target = null; // limpia el campo de clase
+                this.Target = null;
                 chaseCoroutine = null;
                 yield break;
             }
+            else
+            {
+                agent.SetDestination(target.transform.position);
 
-            agent.SetDestination(target.transform.position);
-            
-            yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.2f);
+            }
         }
 
         // target destruido
