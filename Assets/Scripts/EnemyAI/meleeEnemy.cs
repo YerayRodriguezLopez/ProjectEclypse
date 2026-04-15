@@ -25,6 +25,7 @@ public class meleeEnemy : SimpleEnemy
     private NavMeshAgent agent;
     //private Transform TargetPosition;
     private Coroutine chaseCoroutine;
+    private Coroutine attackCoroutine;
 
     private void Start()
     {
@@ -48,23 +49,22 @@ public class meleeEnemy : SimpleEnemy
             //Debug.Log(VisionDistance);
             if (distance <= AttackRange)
             {
-                Attack(Target);
+                Attack();
             }
             else if (distance <= VisionDistance)
             {
-                Debug.Log("START CHASE");
-                Chase(Target);
+                //Debug.Log("START CHASE");
+                Chase();
             }
             else
             {
-                //Target = null;
+                Target = null;
                 //idle?
             }
             
         }
-        //idle?
 
-        
+        //idle?
     }
 
     private void OnTriggerStay(Collider other)
@@ -73,50 +73,44 @@ public class meleeEnemy : SimpleEnemy
         //Debug.Log(" layer " + playerLayer.value);
         if((other.transform.gameObject.layer == 3|| other.transform.gameObject.layer == 6))
         {
-            Debug.Log("agafo target");
-            if(Target == null)
+            
+            if (Target == null)
             {
-
-                Target = other.transform.gameObject;
+                Target = other.gameObject;
+                ChooseState();
             }
-
-
-            ChooseState();
         }        
     }
 
 
-    public override void Attack(GameObject Target)
+    private bool canAttack = true;
+
+    public override void Attack()
     {
-        StartCoroutine(AttackRoutine(Target));
-    }
+        if (!canAttack) return;
 
-    private IEnumerator AttackRoutine(GameObject target)
-    {
-        Debug.Log("Entro attack corutine");
-        if (target.TryGetComponent<IHurtable>(out IHurtable hurtableTarget))
-        //if(target is IHurtable hurtableTarget)
-        //var hurtableTarget = target as IHurtable    
-        {
-            Debug.Log("encuentro hurtable");
-
-            if (hurtableTarget != null)
-            {
-                
-
-                //attack anim
-                Debug.Log("te pego");
-
-                hurtableTarget.TakeDamage(this.Damage);
-                
-            }
-        }
-        yield return new WaitForSeconds(AttackCooldown);
-
+        canAttack = false;
+        attackCoroutine = StartCoroutine(AttackRoutine());
         ChooseState();
     }
 
-    
+    private IEnumerator AttackRoutine()
+    {
+        Debug.Log("AttackRoutine");
+
+        if (Target.TryGetComponent<IHurtable>(out IHurtable hurtableTarget))
+        {
+            Debug.Log("te pego");
+            hurtableTarget.TakeDamage(this.Damage);
+        }
+
+        yield return new WaitForSeconds(AttackCooldown);
+
+        canAttack = true;
+        ChooseState();
+    }
+
+
 
     public override void CloseParryWindow()
     {
@@ -165,81 +159,21 @@ public class meleeEnemy : SimpleEnemy
         this.Health -= damage;
         ChooseState();
     }
-    //public override void Chase(GameObject Target)
-    //{
-
-    //    float distance = Vector3.Distance(Target.transform.position, this.transform.position);
-    //    if (distance > AttackRange)
-    //    {
-    //        // AND line of sight?
-    //        agent.SetDestination(Target.transform.position);
-    //    }
-    //    else
-    //    {
-    //        ChooseState();
-    //    }
-    //}
-    //public override void Chase(GameObject Target)
-    //{
-    //    if (chaseCoroutine == null)
-    //    {
-    //        Debug.Log("ENTER CORUTINE");
-
-    //        chaseCoroutine = StartCoroutine(ChaseRoutine(Target));
-    //    }
-    //}
-    //private IEnumerator ChaseRoutine(GameObject target)
-    //{
-    //    while (target != null)
-    //    {
-
-    //        Debug.Log("chasing");
-    //        float distance = Vector3.Distance(target.transform.position, transform.position);
-    //        Debug.Log(distance + "----------------->"+ (distance <= AttackRange || distance > VisionDistance));
-    //        if (distance <= AttackRange || distance > VisionDistance)
-    //        {
-    //            Debug.Log("stop chase"); 
-    //            chaseCoroutine = null;
-    //            Target = null;
-    //            agent.isStopped = true;
-    //            ChooseState();
-    //            yield break;
-    //        }
-    //        else
-    //        {
-    //            if (target != null)
-    //                agent.SetDestination(target.transform.position);
-    //            else
-    //                agent.isStopped = true;
-
-    //            chaseCoroutine = null;
-    //            Target = null;
-    //            ChooseState();
-    //            StopCoroutine(chaseCoroutine);
-    //            yield return new WaitForSeconds(0.2f);
-
-    //        }
-
-
-    //    }
-
-
-    //}
-    public override void Chase(GameObject Target)
+    
+    public override void Chase()
     {
-        if (chaseCoroutine != null)
-            StopCoroutine(chaseCoroutine);
+        if (chaseCoroutine != null) return; 
 
-        chaseCoroutine = StartCoroutine(ChaseRoutine(Target));
+        chaseCoroutine = StartCoroutine(ChaseRoutine());
     }
 
-    private IEnumerator ChaseRoutine(GameObject target)
+    private IEnumerator ChaseRoutine()
     {
         agent.isStopped = false;
 
-        while (target != null)
+        while (Target != null)
         {
-            float distance = Vector3.Distance(target.transform.position, transform.position);
+            float distance = Vector3.Distance(Target.transform.position, transform.position);
 
             if (distance <= AttackRange)
             {
@@ -259,7 +193,7 @@ public class meleeEnemy : SimpleEnemy
             }
             else
             {
-                agent.SetDestination(target.transform.position);
+                agent.SetDestination(Target.transform.position);
 
                 yield return new WaitForSeconds(0.2f);
             }

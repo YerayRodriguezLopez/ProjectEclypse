@@ -20,5 +20,5 @@ public abstract class NPC : MonoBehaviour, IHurtable
     //[SerializeField] private float _attackRange = 2;
     public abstract void Die();
     public abstract void TakeDamage(float damage);
-    public abstract void Attack(GameObject Target);
+    public abstract void Attack();
 }
