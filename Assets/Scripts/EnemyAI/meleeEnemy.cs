@@ -32,6 +32,11 @@ public class meleeEnemy : SimpleEnemy
         ChooseState();
     }
 
+    private void Update()
+    {
+        Debug.Log(Target);
+    }
+    
     public void ChooseState()
     {
         if (Health <= 0) Die();
@@ -66,15 +71,18 @@ public class meleeEnemy : SimpleEnemy
     {
         //Debug.Log(other.transform.gameObject.layer);
         //Debug.Log(" layer " + playerLayer.value);
-        if((other.transform.gameObject.layer == 3|| other.transform.gameObject.layer == 6) && Target == null)
+        if((other.transform.gameObject.layer == 3|| other.transform.gameObject.layer == 6))
         {
             Debug.Log("agafo target");
-            
-            Target = other.transform.gameObject;
+            if(Target == null)
+            {
+
+                Target = other.transform.gameObject;
+            }
+
+
             ChooseState();
-        }
-      
-        
+        }        
     }
 
 
@@ -237,14 +245,16 @@ public class meleeEnemy : SimpleEnemy
             {
                 agent.isStopped = true;
                 chaseCoroutine = null;
-                ChooseState(); // atacar
+                ChooseState(); 
                 yield break;
             }
             else if (distance > VisionDistance)
             {
                 agent.isStopped = true;
-                this.Target = null;
+                Target = null;
                 chaseCoroutine = null;
+                ChooseState();
+
                 yield break;
             }
             else
@@ -255,7 +265,7 @@ public class meleeEnemy : SimpleEnemy
             }
         }
 
-        // target destruido
+       
         agent.isStopped = true;
         this.Target = null;
         chaseCoroutine = null;
