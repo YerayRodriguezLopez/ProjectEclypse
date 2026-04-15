@@ -9,28 +9,20 @@ public class HealCrystal : Crystal
     [SerializeField]
     private float MaxHeal;
 
-    private void CreateHealArea()
+    protected override void Hit(Collision collision)
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, HealRadius);
-        foreach (var hitCollider in hitColliders)
+        Collider[] colliders = Physics.OverlapSphere(transform.position, HealRadius);
+        foreach (Collider collider in colliders)
         {
-            if (hitCollider.gameObject.TryGetComponent(out IHurtable healable))
+            if (collider.gameObject.CompareTag("Player") || collider.gameObject.CompareTag("Companion"))
             {
-                float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
-                float healAmount = Mathf.Lerp(MaxHeal, MinHeal, distance / HealRadius);
-                healable.Heal(healAmount);
+                if (collider.gameObject.TryGetComponent<IHurtable>(out var hurtable))
+                {
+                    float healAmount = Random.Range(MinHeal, MaxHeal);
+                    hurtable.Heal(healAmount);
+                }
             }
         }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (ToBeThrown)
-        {
-            if (collision.gameObject.TryGetComponent(out IHurtable healable))
-            {
-                CreateHealArea();
-                Destroy(gameObject);
-            }
-        }
+        Destroy(gameObject);
     }
 }

@@ -9,29 +9,21 @@ public class ExplosiveCrystal : Crystal
     [SerializeField]
     private float ExplosionRadius;
     //Use spherecast to detect all objects in the explosion radius and apply damage based on distance from explosion center
-    private void CreateExplosionArea()
+    override protected void Hit(Collision collision)
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, ExplosionRadius);
-        foreach (var hitCollider in hitColliders)
+        Collider[] colliders = Physics.OverlapSphere(transform.position, ExplosionRadius);
+        foreach (Collider collider in colliders)
         {
-            if (hitCollider.gameObject.TryGetComponent(out IHurtable damageable))
+            if (collider.gameObject.CompareTag("Player") || collider.gameObject.CompareTag("Companion") || collider.gameObject.CompareTag("Enemy"))
             {
-                float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
-                float damage = Mathf.Lerp(MaxExplosionDamage, MinExplosionDamage, distance / ExplosionRadius);
-                damageable.TakeDamage(damage);
+                if (collider.gameObject.TryGetComponent<IHurtable>(out var hurtable))
+                {
+                    float distance = Vector3.Distance(transform.position, collider.transform.position);
+                    float damageAmount = Mathf.Lerp(MaxExplosionDamage, MinExplosionDamage, distance / ExplosionRadius);
+                    hurtable.Hurt(damageAmount);
+                }
             }
         }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (ToBeThrown)
-        {
-            if (collision.gameObject.TryGetComponent(out IHurtable damageable))
-            {
-                damageable.TakeDamage(Damage);
-            }
-            CreateExplosionArea();
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }
