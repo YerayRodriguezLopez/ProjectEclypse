@@ -20,7 +20,7 @@ public class ExplosiveCrystal : Crystal
                 {
                     float distance = Vector3.Distance(transform.position, collider.transform.position);
                     float damageAmount = Mathf.Lerp(MaxExplosionDamage, MinExplosionDamage, distance / ExplosionRadius);
-                    hurtable.Hurt(damageAmount);
+                    hurtable.TakeDamage(damageAmount);
                 }
             }
         }

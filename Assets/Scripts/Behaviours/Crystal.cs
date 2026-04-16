@@ -26,7 +26,7 @@ public class Crystal : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<IHurtable>(out var hurtable))
         {
-            hurtable.Hurt(damage);
+            hurtable.TakeDamage(damage);
         }
         Destroy(gameObject);
     }
