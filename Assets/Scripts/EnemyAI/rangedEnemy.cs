@@ -1,22 +1,21 @@
-using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class meleeEnemy : SimpleEnemy
+public class rangedEnemy : SimpleEnemy
 {
-    public override Vector3 AttackLocalDirection {  get; set; }
+    public override Vector3 AttackLocalDirection { get; set; }
     public override float StunDuration { get; set; } = 0.5f;
     public override bool IsStunned { get; set; } = false;
-    public override float VisionDistance { get; set; } = 15;
+    public override float VisionDistance { get; set; } = 17;
     public override float Health { get; set; } = 100;
     public override float Damage { get; set; } = 15;
     public override float AttackCooldown { get; set; } = 1.5f;
     public override float AttackSpeed { get; set; } = 1;
-    public override float AttackRange { get; set; } = 5f;
+    public override float AttackRange { get; set; } = 10f;
     public override float Speed { get; set; } = 5f;
 
-    
+
 
     [SerializeField] private GameObject Target;
 
@@ -35,7 +34,7 @@ public class meleeEnemy : SimpleEnemy
     {
         Debug.Log(Target);
     }
-    
+
     public void ChooseState()
     {
         if (Health <= 0) Die();
@@ -59,7 +58,7 @@ public class meleeEnemy : SimpleEnemy
                 Target = null;
                 //idle?
             }
-            
+
         }
 
         //idle?
@@ -69,15 +68,15 @@ public class meleeEnemy : SimpleEnemy
     {
         //Debug.Log(other.transform.gameObject.layer);
         //Debug.Log(" layer " + playerLayer.value);
-        if((other.transform.gameObject.layer == 3|| other.transform.gameObject.layer == 6))
+        if ((other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6))
         {
-            
+
             if (Target == null)
             {
                 Target = other.gameObject;
                 ChooseState();
             }
-        }        
+        }
     }
 
 
@@ -129,7 +128,7 @@ public class meleeEnemy : SimpleEnemy
 
     public override void Pull()
     {
-     
+
     }
 
     public override void Stun()
@@ -140,8 +139,8 @@ public class meleeEnemy : SimpleEnemy
         ClearStun();
 
     }
-    
-    
+
+
     public override void ClearStun()
     {
         StartCoroutine(ClearStunRutine());
@@ -158,10 +157,10 @@ public class meleeEnemy : SimpleEnemy
         this.Health -= damage;
         ChooseState();
     }
-    
+
     public override void Chase()
     {
-        if (chaseCoroutine != null) return; 
+        if (chaseCoroutine != null) return;
 
         chaseCoroutine = StartCoroutine(ChaseRoutine());
     }
@@ -178,7 +177,7 @@ public class meleeEnemy : SimpleEnemy
             {
                 agent.isStopped = true;
                 chaseCoroutine = null;
-                ChooseState(); 
+                ChooseState();
                 yield break;
             }
             else if (distance > VisionDistance)
@@ -198,7 +197,7 @@ public class meleeEnemy : SimpleEnemy
             }
         }
 
-       
+
         agent.isStopped = true;
         this.Target = null;
         chaseCoroutine = null;
