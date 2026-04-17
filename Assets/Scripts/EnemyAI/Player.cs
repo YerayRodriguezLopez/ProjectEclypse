@@ -12,8 +12,11 @@ public class Player : MonoBehaviour, IHurtable
      
     }
     
-
     public void Die()
+    {
+
+    }
+    public void TakeDamage(float damage)
     {
         if (CanBeHurt)
         {
