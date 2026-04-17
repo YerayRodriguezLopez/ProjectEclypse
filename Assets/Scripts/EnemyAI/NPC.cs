@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class NPC : MonoBehaviour, IHurtable
@@ -17,8 +18,32 @@ public abstract class NPC : MonoBehaviour, IHurtable
     //[SerializeField] private float _attackSpeed = 1;
     public abstract float AttackRange{ get; set; }
 
+    public  float ITime { get; set; } = 0.5f;
+
+    public bool CanBeHurt { get; set; } = true;
+
     //[SerializeField] private float _attackRange = 2;
     public abstract void Die();
-    public abstract void TakeDamage(float damage);
+    public virtual void TakeDamage(float damage)
+    {
+        if (CanBeHurt)
+        {
+            Health -= damage;
+            if (Health <= 0) Die();
+            else StartCoroutine(InvulnerabilityCD());
+        }
+    }
     public abstract void Attack();
+
+    public virtual void Heal(float heal)
+    {
+        Health += heal;
+    }
+
+    public virtual IEnumerator InvulnerabilityCD()
+    {
+        CanBeHurt = false;
+        yield return new WaitForSeconds(ITime);
+        CanBeHurt = true;
+    }
 }

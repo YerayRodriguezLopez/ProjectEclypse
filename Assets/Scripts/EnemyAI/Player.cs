@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IHurtable
 {
-    public float Health { get; private set; }
-
+    public float Health { get; private set; } = 100;
+    public bool CanBeHurt { get; private set; } = true;
+    public float ITime { get; private set; } = 0.5f;
 
     public void Die()
     {
@@ -11,18 +13,23 @@ public class Player : MonoBehaviour, IHurtable
 
     public void TakeDamage(float damage)
     {
-        
+        if (CanBeHurt)
+        {
+            Health -= damage;
+            if (Health <= 0) Die();
+            else StartCoroutine(InvulnerabilityCD());
+        }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Heal(float heal)
     {
-        
+        Health += heal;
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator InvulnerabilityCD()
     {
-        
+        CanBeHurt = false;
+        yield return new WaitForSeconds(ITime);
+        CanBeHurt = true;
     }
 }
