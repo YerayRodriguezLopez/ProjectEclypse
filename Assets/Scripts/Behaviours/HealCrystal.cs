@@ -19,7 +19,7 @@ public class HealCrystal : Crystal
                 if (collider.gameObject.TryGetComponent<IHurtable>(out var hurtable))
                 {
                     float healAmount = Random.Range(MinHeal, MaxHeal);
-                    hurtable.TakeDamage(-healAmount);
+                    hurtable.Heal(healAmount);
                 }
             }
         }
