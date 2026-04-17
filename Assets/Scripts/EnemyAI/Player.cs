@@ -7,11 +7,13 @@ public class Player : MonoBehaviour, IHurtable
     public bool CanBeHurt { get; private set; } = true;
     public float ITime { get; private set; } = 0.5f;
 
-    public void Die()
+    void Start()
     {
+     
     }
+    
 
-    public void TakeDamage(float damage)
+    public void Die()
     {
         if (CanBeHurt)
         {
