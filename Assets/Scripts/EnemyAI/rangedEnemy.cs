@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class rangedEnemy : SimpleEnemy
 {
-    public override Vector3 AttackLocalDirection { get; set; }
+
     public override float StunDuration { get; set; } = 0.5f;
     public override bool IsStunned { get; set; } = false;
     public override float VisionDistance { get; set; } = 17;
@@ -13,15 +13,16 @@ public class rangedEnemy : SimpleEnemy
     public override float AttackCooldown { get; set; } = 1.5f;
     public override float AttackSpeed { get; set; } = 1;
     public override float AttackRange { get; set; } = 10f;
-    public override float Speed { get; set; } = 5f;
+    public override float Speed { get; set; } = 3f;
+    public GameObject tt;
 
 
 
-    [SerializeField] private GameObject Target;
+    //[SerializeField] private GameObject Target;
 
-    private NavMeshAgent agent;
+    //public  NavMeshAgent agent;
     //private Transform TargetPosition;
-    private Coroutine chaseCoroutine;
+    //public  Coroutine chaseCoroutine;
     private Coroutine attackCoroutine;
 
     private void Start()
@@ -32,10 +33,10 @@ public class rangedEnemy : SimpleEnemy
 
     private void Update()
     {
-        Debug.Log(Target);
+        //Debug.Log(Target);
     }
 
-    public void ChooseState()
+    public override void ChooseState()
     {
         if (Health <= 0) Die();
         else if (IsStunned) return;
@@ -64,17 +65,52 @@ public class rangedEnemy : SimpleEnemy
         //idle?
     }
 
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    //Debug.Log(other.transform.gameObject.layer);
+    //    //Debug.Log(" layer " + playerLayer.value);
+    //    if ((other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6))
+    //    {
+    //        //if (Target != null)
+    //        //{
+    //        //    tt = Target;
+    //        //}
+    //        if (Target == null)
+    //        {
+    //            Target = other.gameObject;
+    //            ChooseState();
+    //        }
+    //        //else if (tt.GetComponent<IHurtable>().Health < Target.GetComponent<IHurtable>().Health)
+    //        //{
+    //        //    Target = tt;
+    //        //}
+    //    }
+    //}
     private void OnTriggerStay(Collider other)
     {
-        //Debug.Log(other.transform.gameObject.layer);
-        //Debug.Log(" layer " + playerLayer.value);
-        if ((other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6))
+        if (other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6)
         {
-
-            if (Target == null)
+            // Intentamos obtener IHurtable del objeto detectado
+            if (other.TryGetComponent<IHurtable>(out IHurtable newHurtable))
             {
-                Target = other.gameObject;
-                ChooseState();
+                if (Target == null)
+                {
+                    // No había target, asignamos directamente
+                    Target = other.gameObject;
+                    ChooseState();
+                }
+                else
+                {
+                    // Comparamos vida con el target actual
+                    if (Target.TryGetComponent<IHurtable>(out IHurtable currentHurtable))
+                    {
+                        if (newHurtable.Health < currentHurtable.Health)
+                        {
+                            Target = other.gameObject;
+                            ChooseState();
+                        }
+                    }
+                }
             }
         }
     }
@@ -109,22 +145,14 @@ public class rangedEnemy : SimpleEnemy
 
 
 
-    public override void CloseParryWindow()
-    {
-    }
-
+  
     public override void Die()
     {
-
+        Debug.Log("muero");
+        return;
     }
 
-    public override void OpenParryWindo()
-    {
-    }
-
-    public override void Parry()
-    {
-    }
+  
 
     public override void Pull()
     {
@@ -133,23 +161,19 @@ public class rangedEnemy : SimpleEnemy
 
     public override void Stun()
     {
-        //stun anim
-        IsStunned = true;
-        ChooseState();
-        ClearStun();
+       base.Stun();
 
     }
 
 
     public override void ClearStun()
     {
-        StartCoroutine(ClearStunRutine());
+       base.ClearStun();
     }
 
-    private IEnumerator ClearStunRutine()
+    public override IEnumerator ClearStunRutine()
     {
-        yield return new WaitForSeconds(StunDuration);
-        IsStunned = false;
+        yield return base.ClearStunRutine();
     }
 
     public override void TakeDamage(float damage)
@@ -165,41 +189,43 @@ public class rangedEnemy : SimpleEnemy
         chaseCoroutine = StartCoroutine(ChaseRoutine());
     }
 
-    private IEnumerator ChaseRoutine()
+    public override IEnumerator ChaseRoutine()
     {
-        agent.isStopped = false;
+        //    agent.isStopped = false;
 
-        while (Target != null)
-        {
-            float distance = Vector3.Distance(Target.transform.position, transform.position);
+        //    while (Target != null)
+        //    {
+        //        float distance = Vector3.Distance(Target.transform.position, transform.position);
 
-            if (distance <= AttackRange)
-            {
-                agent.isStopped = true;
-                chaseCoroutine = null;
-                ChooseState();
-                yield break;
-            }
-            else if (distance > VisionDistance)
-            {
-                agent.isStopped = true;
-                Target = null;
-                chaseCoroutine = null;
-                ChooseState();
+        //        if (distance <= AttackRange)
+        //        {
+        //            agent.isStopped = true;
+        //            chaseCoroutine = null;
+        //            ChooseState();
+        //            yield break;
+        //        }
+        //        else if (distance > VisionDistance)
+        //        {
+        //            agent.isStopped = true;
+        //            Target = null;
+        //            chaseCoroutine = null;
+        //            ChooseState();
 
-                yield break;
-            }
-            else
-            {
-                agent.SetDestination(Target.transform.position);
+        //            yield break;
+        //        }
+        //        else
+        //        {
+        //            agent.SetDestination(Target.transform.position);
 
-                yield return new WaitForSeconds(0.2f);
-            }
-        }
+        //            yield return new WaitForSeconds(0.2f);
+        //        }
+        //    }
 
 
-        agent.isStopped = true;
-        this.Target = null;
-        chaseCoroutine = null;
+        //    agent.isStopped = true;
+        //    this.Target = null;
+        //    chaseCoroutine = null;
+        yield return base.ChaseRoutine();
+
     }
 }

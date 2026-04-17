@@ -2,8 +2,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IHurtable
 {
-    public float Health { get; private set; }
 
+   
+    public float Health { get; set; }
+
+    void Start()
+    {
+     
+    }
+    
 
     public void Die()
     {
@@ -14,15 +21,6 @@ public class Player : MonoBehaviour, IHurtable
         
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+  
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

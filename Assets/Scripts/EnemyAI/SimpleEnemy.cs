@@ -1,11 +1,12 @@
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class SimpleEnemy : NPC, IParryable, IPullable, IStunnable
+public abstract class SimpleEnemy : NPC, IPullable, IStunnable
 {
 
-    public abstract Vector3 AttackLocalDirection { get; set; }
+   
 
     //[SerializeField] private Vector3 _attackLocalDirection;
 
@@ -27,22 +28,83 @@ public abstract class SimpleEnemy : NPC, IParryable, IPullable, IStunnable
     //public abstract Transform target { get; set; }
 
     public abstract float VisionDistance { get; set; }
+    public Coroutine chaseCoroutine;
+    public GameObject Target = null;
 
-    //[SerializeField] private float _visionDistance;
+    public NavMeshAgent agent;
 
 
+    //ChooseState sera igual para melee y ranged
+    public abstract void ChooseState();
 
-
-    public abstract void Parry();
-
-    public abstract void OpenParryWindo();
-
-    public abstract void CloseParryWindow();
-
+    //pull sera igual para melee y ranged
     public abstract void Pull();
 
-    public abstract void Stun();
+    //deberia ser igual para todos
+    public virtual void Stun()
+    {
+        //stun anim
+        IsStunned = true;
+        ChooseState();
+        ClearStun();
 
-    public abstract void ClearStun();
-    public abstract void Chase();
+    }
+
+
+    public virtual void ClearStun()
+    {
+        StartCoroutine(ClearStunRutine());
+    }
+
+    public virtual IEnumerator ClearStunRutine()
+    {
+        yield return new WaitForSeconds(StunDuration);
+        IsStunned = false;
+    }
+    public virtual void Chase()
+    {
+        if (chaseCoroutine != null) return;
+
+        chaseCoroutine = StartCoroutine(ChaseRoutine());
+    }
+
+    public virtual IEnumerator ChaseRoutine()
+    {
+        agent.isStopped = false;
+
+        while (Target != null)
+        {
+            float distance = Vector3.Distance(Target.transform.position, transform.position);
+
+            if (distance <= AttackRange)
+            {
+                agent.isStopped = true;
+                chaseCoroutine = null;
+                ChooseState();
+                yield break;
+            }
+            else if (distance > VisionDistance)
+            {
+                agent.isStopped = true;
+                Target = null;
+                chaseCoroutine = null;
+                ChooseState();
+
+                yield break;
+            }
+            else
+            {
+                agent.speed = Speed;
+                agent.SetDestination(Target.transform.position);
+                
+
+                yield return new WaitForSeconds(0.2f);
+            }
+        }
+
+
+        agent.isStopped = true;
+        this.Target = null;
+        chaseCoroutine = null;
+    }
 }
