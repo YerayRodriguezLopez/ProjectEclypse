@@ -58,8 +58,57 @@ public class GameManager : MonoBehaviour
 
     #region Events
 
-    /// <summary>Fired on every state change. Passes (previousState, newState).</summary>
+    // --- State ---
+
+    /// <summary>
+    /// Fired on every state change.
+    /// Passes (previousState, newState).
+    /// Subscribe to drive UI panels, music layers, enemy AI, etc.
+    /// </summary>
     public event Action<GameState, GameState> OnGameStateChanged;
+
+    /// <summary>
+    /// Fired when pause state changes.
+    /// Passes true when pausing, false when resuming.
+    /// Subscribe to show/hide the pause menu.
+    /// </summary>
+    public event Action<bool> OnPauseChanged;
+
+    // --- Input ---
+
+    /// <summary>
+    /// Fired whenever XR input is enabled or disabled.
+    /// Passes true when input is enabled, false when disabled.
+    /// Subscribe to update any input-dependent UI indicators.
+    /// </summary>
+    public event Action<bool> OnInputChanged;
+
+    // --- Player ---
+
+    /// <summary>
+    /// Fired the moment the player dies, before the respawn delay begins.
+    /// Subscribe to trigger death animations, ragdoll, death-screen fade-in, etc.
+    /// </summary>
+    public event Action OnPlayerDied;
+
+    /// <summary>
+    /// Fired during the respawn sequence, after the delay but before input is
+    /// re-enabled. Passes the world-space position the player should teleport to.
+    /// Subscribe in PlayerController to handle the actual teleport — the
+    /// GameManager re-enables input only after this event returns.
+    /// </summary>
+    public event Action<Vector3> OnPlayerRespawned;
+
+    // --- Checkpoints ---
+
+    /// <summary>
+    /// Fired when a new checkpoint is registered.
+    /// Passes (checkpointId, respawnPosition).
+    /// Subscribe to show checkpoint UI feedback (popup, icon, etc.).
+    /// </summary>
+    public event Action<int, Vector3> OnCheckpointReached;
+
+    // --- Timer ---
 
     /// <summary>
     /// Fired when the timer is stopped and reset.
@@ -100,9 +149,9 @@ public class GameManager : MonoBehaviour
     public Vector3 LastCheckpointPosition { get; private set; }
 
     #endregion
-    
+
     #region PrivateFields
-    
+
     private bool _isTimerRunning;
     private bool _isInputEnabled;
 
@@ -124,6 +173,7 @@ public class GameManager : MonoBehaviour
         ResetTimer();
         SetState(GameState.MainMenu);
     }
+
     #endregion
 
     #region StateMachine
@@ -209,10 +259,12 @@ public class GameManager : MonoBehaviour
         if (CurrentState == GameState.Pause)
         {
             SetState(GameState.Playing);
+            OnPauseChanged?.Invoke(false);
         }
         else
         {
             SetState(GameState.Pause);
+            OnPauseChanged?.Invoke(true);
         }
     }
 
@@ -253,6 +305,8 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("[GameManager] No InputActionAsset assigned. " +
                              "Assign the XRI Default Input Actions asset in the Inspector.");
         }
+
+        OnInputChanged?.Invoke(enabled);
     }
 
     #endregion
@@ -327,6 +381,7 @@ public class GameManager : MonoBehaviour
 
     /// <summary>
     /// Records the last reached checkpoint. Called by CheckpointTriggerBehaviour.
+    /// Fires OnCheckpointReached so UI can display feedback.
     /// </summary>
     /// <param name="checkpointId">Manually assigned checkpoint ID.</param>
     /// <param name="respawnPosition">World-space position the player respawns at.</param>
@@ -334,6 +389,8 @@ public class GameManager : MonoBehaviour
     {
         LastCheckpointId       = checkpointId;
         LastCheckpointPosition = respawnPosition;
+
+        OnCheckpointReached?.Invoke(checkpointId, respawnPosition);
 
         Debug.Log($"[GameManager] Checkpoint set — ID: {checkpointId}, Position: {respawnPosition}");
     }
@@ -343,14 +400,21 @@ public class GameManager : MonoBehaviour
     #region PlayerFlow
 
     /// <summary>
-    /// Initiates the death and respawn sequence.
-    /// Has no effect if the player is already dying or respawning.
-    /// Flow: PlayerDeath → (delay) → Respawning → Playing
+    /// Called by the player when it dies.
+    /// Fires OnPlayerDied, then manages the full death → respawn → playing sequence:
+    ///   1. Transitions to PlayerDeath (disables input, pauses timer)
+    ///   2. Waits for respawn delay
+    ///   3. Transitions to Respawning
+    ///   4. Fires OnPlayerRespawned — subscriber teleports the player
+    ///   5. Transitions to Playing (re-enables input, resumes timer)
+    ///
+    /// Has no effect if the player is already in the death sequence.
     /// </summary>
     public void PlayerDied()
     {
         if (CurrentState != GameState.PlayerDeath)
         {
+            OnPlayerDied?.Invoke();
             SetState(GameState.PlayerDeath);
             StartCoroutine(RespawnRoutine());
         }
@@ -362,8 +426,9 @@ public class GameManager : MonoBehaviour
 
         SetState(GameState.Respawning);
 
-        // TODO: Teleport the player to the last checkpoint position here.
-        // Example: PlayerController.Instance.TeleportTo(LastCheckpointPosition);
+        // Fire before re-enabling input so the subscriber (PlayerController)
+        // completes the teleport while the player is still locked out of controls.
+        OnPlayerRespawned?.Invoke(LastCheckpointPosition);
 
         SetState(GameState.Playing);
     }
