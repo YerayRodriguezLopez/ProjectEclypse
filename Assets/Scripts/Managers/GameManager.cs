@@ -58,9 +58,8 @@ public class GameManager : MonoBehaviour
 
     #region Events
 
-    // --- State ---
-
     /// <summary>
+    /// --- State ---
     /// Fired on every state change.
     /// Passes (previousState, newState).
     /// Subscribe to drive UI panels, music layers, enemy AI, etc.
@@ -68,30 +67,30 @@ public class GameManager : MonoBehaviour
     public event Action<GameState, GameState> OnGameStateChanged;
 
     /// <summary>
+    /// --- State ---
     /// Fired when pause state changes.
     /// Passes true when pausing, false when resuming.
     /// Subscribe to show/hide the pause menu.
     /// </summary>
     public event Action<bool> OnPauseChanged;
 
-    // --- Input ---
-
     /// <summary>
+    /// --- Input ---
     /// Fired whenever XR input is enabled or disabled.
     /// Passes true when input is enabled, false when disabled.
     /// Subscribe to update any input-dependent UI indicators.
     /// </summary>
     public event Action<bool> OnInputChanged;
 
-    // --- Player ---
-
     /// <summary>
+    /// --- Player ---
     /// Fired the moment the player dies, before the respawn delay begins.
     /// Subscribe to trigger death animations, ragdoll, death-screen fade-in, etc.
     /// </summary>
     public event Action OnPlayerDied;
 
     /// <summary>
+    /// --- Player ---
     /// Fired during the respawn sequence, after the delay but before input is
     /// re-enabled. Passes the world-space position the player should teleport to.
     /// Subscribe in PlayerController to handle the actual teleport — the
@@ -99,18 +98,16 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public event Action<Vector3> OnPlayerRespawned;
 
-    // --- Checkpoints ---
-
     /// <summary>
+    /// --- Checkpoints ---
     /// Fired when a new checkpoint is registered.
     /// Passes (checkpointId, respawnPosition).
     /// Subscribe to show checkpoint UI feedback (popup, icon, etc.).
     /// </summary>
     public event Action<int, Vector3> OnCheckpointReached;
 
-    // --- Timer ---
-
     /// <summary>
+    /// --- Timer ---
     /// Fired when the timer is stopped and reset.
     /// Carries the FinalRunTime snapshot so UI screens can display the
     /// completed run time even after RunTime has been cleared.
