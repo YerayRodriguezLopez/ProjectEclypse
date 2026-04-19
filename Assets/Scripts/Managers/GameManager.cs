@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -10,12 +11,13 @@ using UnityEngine.SceneManagement;
 /// timer) automatically whenever state changes.
 ///
 /// Responsibilities (by region):
-///   • Lifecycle   – singleton setup, initialization
-///   • State       – GameState enum + transition logic
-///   • Timer       – runtime elapsed-time tracking + final time snapshot for UI
-///   • Checkpoints – respawn data persistence
-///   • Cinematics  – triggering sequences by ID (provisional)
-///   • Scene       – scene loading
+///   • Lifecycle    – singleton setup, initialization
+///   • State        – GameState enum + transition logic
+///   • Timer        – runtime elapsed-time tracking + final time snapshot for UI
+///   • Checkpoints  – respawn data persistence
+///   • Companions   – player anchor registration + companion registry
+///   • Cinematics   – triggering sequences by ID (provisional)
+///   • Scene        – scene loading
 /// </summary>
 public class GameManager : MonoBehaviour
 {
@@ -29,12 +31,18 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded_Companions;
             InitializeGame();
         }
         else if (Instance != this)
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded_Companions;
     }
 
     #endregion
@@ -168,7 +176,13 @@ public class GameManager : MonoBehaviour
         _isInputEnabled        = false;
 
         ResetTimer();
-        SetState(GameState.MainMenu);
+        // disabled for debug
+        //SetState(GameState.MainMenu);
+    }
+
+    public void Start()
+    {
+        SetState(GameState.Playing);
     }
 
     #endregion
@@ -453,6 +467,121 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    #region Companions
+
+    // ── Player ───────────────────────────────────────────────────────────────
+
+    /// <summary>
+    /// The current player GameObject. Set by <see cref="PlayerRegistrar"/> on Awake
+    /// in every scene that contains a player.
+    /// </summary>
+    public GameObject Player { get; private set; }
+
+    // ── Per-slot follow anchors ───────────────────────────────────────────────
+
+    /// <summary>
+    /// Ordered list of follow-anchor Transforms on the player — one per companion.
+    /// Companion registration order determines which anchor each one receives:
+    ///   first registered → index 0, second → index 1, third → index 2.
+    /// Populated by <see cref="PlayerRegistrar"/> on each scene load.
+    /// </summary>
+    public IReadOnlyList<Transform> FollowAnchors => _followAnchors;
+    private readonly List<Transform> _followAnchors = new();
+
+    /// <summary>
+    /// Returns the follow anchor at the given index, or null if out of range.
+    /// Index corresponds to companion registration order.
+    /// </summary>
+    public Transform GetFollowAnchor(int slotIndex)
+    {
+        if (slotIndex < 0 || slotIndex >= _followAnchors.Count)
+        {
+            Debug.LogWarning($"[GameManager] GetFollowAnchor: slot {slotIndex} out of range " +
+                             $"(registered anchors: {_followAnchors.Count}).");
+            return null;
+        }
+        return _followAnchors[slotIndex];
+    }
+
+    /// <summary>
+    /// Called by <see cref="PlayerRegistrar"/> on Awake.
+    /// Replaces the anchor list and pushes each companion its own slot anchor.
+    /// </summary>
+    /// <param name="player">The player GameObject in the just-loaded scene.</param>
+    /// <param name="followAnchors">
+    /// Ordered anchor Transforms — index must match each companion's SlotIndex.
+    /// Falls back to a single-element list containing the player's own Transform if empty.
+    /// </param>
+    public void RegisterPlayer(GameObject player, List<Transform> followAnchors = null)
+    {
+        Player = player;
+
+        _followAnchors.Clear();
+
+        if (followAnchors != null && followAnchors.Count > 0)
+            _followAnchors.AddRange(followAnchors);
+        else
+            _followAnchors.Add(player.transform);
+
+        Debug.Log($"[GameManager] Player registered: {player.name}. " +
+                  $"Follow anchors: {_followAnchors.Count}.");
+
+        PushAnchorsToCompanions();
+    }
+
+    // ── Companion registry ────────────────────────────────────────────────────
+
+    private readonly List<CompanionAI> _companions = new();
+
+    /// <summary>Read-only view of all currently active companions.</summary>
+    public IReadOnlyList<CompanionAI> Companions => _companions;
+
+    /// <summary>
+    /// Called by <see cref="CompanionAI"/> in its own Awake.
+    /// Idempotent — safe to call multiple times for the same companion.
+    /// Registration order determines anchor assignment: first companion registered
+    /// gets anchor 0, second gets anchor 1, etc.
+    /// </summary>
+    public void RegisterCompanion(CompanionAI companion)
+    {
+        if (_companions.Contains(companion)) return;
+
+        int index = _companions.Count; // capture before Add
+        _companions.Add(companion);
+        Debug.Log($"[GameManager] Companion registered: {companion.name} " +
+                  $"→ anchor {index} (total: {_companions.Count})");
+
+        Transform anchor = GetFollowAnchor(index);
+        if (anchor != null)
+            companion.SetFollowTarget(anchor);
+    }
+
+    /// <summary>
+    /// Called by <see cref="CompanionAI"/> in OnDestroy.
+    /// </summary>
+    public void UnregisterCompanion(CompanionAI companion)
+    {
+        if (!_companions.Remove(companion)) return;
+        Debug.Log($"[GameManager] Companion unregistered: {companion.name} " +
+                  $"(total: {_companions.Count})");
+    }
+
+    /// <summary>
+    /// Pushes each companion its own anchor based on its SlotIndex.
+    /// Called after anchors are refreshed on scene load.
+    /// </summary>
+    private void PushAnchorsToCompanions()
+    {
+        for (int i = 0; i < _companions.Count; i++)
+        {
+            Transform anchor = GetFollowAnchor(i);
+            if (anchor != null)
+                _companions[i].SetFollowTarget(anchor);
+        }
+    }
+
+    #endregion
+
     #region SceneLoader
 
     /// <summary>
@@ -464,6 +593,17 @@ public class GameManager : MonoBehaviour
     {
         StopAllCoroutines();
         SceneManager.LoadSceneAsync(sceneId);
+    }
+
+    /// <summary>
+    /// Logs each scene load and confirms the active companion count.
+    /// The actual follow-target re-hook happens in RegisterPlayer(), called by
+    /// the player prefab's PlayerRegistrar on Awake in the new scene.
+    /// </summary>
+    private void OnSceneLoaded_Companions(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log($"[GameManager] Scene loaded: '{scene.name}'. " +
+                  $"Active companions: {_companions.Count}.");
     }
 
     #endregion
