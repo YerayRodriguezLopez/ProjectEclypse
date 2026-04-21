@@ -135,7 +135,7 @@ public class CompanionAI : NPC
         _agent = GetComponent<NavMeshAgent>();
         _agent.stoppingDistance = _followStopDistance;
 
-        if (GameManager.Instance != null)
+        if (GameManager.Instance)
         {
             GameManager.Instance.RegisterCompanion(this);
             GameManager.Instance.OnGameStateChanged += OnGameStateChanged;
@@ -151,7 +151,7 @@ public class CompanionAI : NPC
 
     private void OnDestroy()
     {
-        if (GameManager.Instance != null)
+        if (GameManager.Instance)
         {
             GameManager.Instance.UnregisterCompanion(this);
             GameManager.Instance.OnGameStateChanged -= OnGameStateChanged;
@@ -160,7 +160,7 @@ public class CompanionAI : NPC
 
     private void Update()
     {
-        if (!_aiEnabled || _followTarget == null) return;
+        if (!_aiEnabled || !_followTarget) return;
 
         EnforceMaxRange();
 
@@ -271,7 +271,7 @@ public class CompanionAI : NPC
     /// </summary>
     private void HandleCombatMovement()
     {
-        if (_currentTarget == null)
+        if (!_currentTarget)
         {
             LoseFocus();
             return;
@@ -327,7 +327,7 @@ public class CompanionAI : NPC
     /// </summary>
     private bool SkillShouldFire()
     {
-        if (_skill == null) return false;
+        if (!_skill) return false;
 
         if (_skill is HealSkill)
             return Health / MaxHealth <= _healTriggerThreshold;
@@ -343,12 +343,12 @@ public class CompanionAI : NPC
     /// </summary>
     private bool UltimateShouldFire()
     {
-        if (_ultimate == null) return false;
+        if (!_ultimate) return false;
 
         if (_ultimate is UltimateHealSkill)
         {
             // Check every companion and the player for low HP.
-            if (GameManager.Instance == null) return false;
+            if (!GameManager.Instance) return false;
 
             foreach (CompanionAI companion in GameManager.Instance.Companions)
             {
@@ -357,7 +357,7 @@ public class CompanionAI : NPC
             }
 
             // Also check player if it implements IHurtable.
-            if (GameManager.Instance.Player != null &&
+            if (GameManager.Instance.Player &&
                 GameManager.Instance.Player.TryGetComponent(out IHurtable playerHurtable) &&
                 playerHurtable.Health <= _ultimateHealThreshold)
                 return true;
@@ -366,7 +366,7 @@ public class CompanionAI : NPC
         }
 
         // Offensive ultimate — check current target HP.
-        if (_currentTarget != null &&
+        if (_currentTarget &&
             _currentTarget.TryGetComponent(out IHurtable targetHurtable))
             return targetHurtable.Health <= _ultimateHealThreshold;
 
@@ -390,7 +390,7 @@ public class CompanionAI : NPC
 
     private void ScanForEnemies()
     {
-        if (_hasTarget || _followTarget == null) return;
+        if (_hasTarget || !_followTarget) return;
 
         Collider[] hits = Physics.OverlapSphere(transform.position,
                                                 _detectionRange, _enemyLayer);
@@ -425,17 +425,17 @@ public class CompanionAI : NPC
 
     public override void Attack()
     {
-        string t = _currentTarget != null ? _currentTarget.name : "nothing";
+        string t = _currentTarget ? _currentTarget.name : "nothing";
         Debug.Log($"[CompanionAI] {name}: basic attack → {t} for {Damage}.");
 
-        if (_currentTarget != null &&
+        if (_currentTarget &&
             _currentTarget.TryGetComponent(out IHurtable hurtable))
             hurtable.TakeDamage(Damage);
     }
 
     public void UseSkill()
     {
-        if (_skill == null)
+        if (!_skill)
         {
             Debug.LogWarning($"[CompanionAI] {name}: no NormalSkill assigned.");
             return;
@@ -446,7 +446,7 @@ public class CompanionAI : NPC
 
     public void UseUltimate()
     {
-        if (_ultimate == null)
+        if (!_ultimate)
         {
             Debug.LogWarning($"[CompanionAI] {name}: no UltimateSkill assigned.");
             return;
@@ -496,7 +496,7 @@ public class CompanionAI : NPC
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _attackRange);
 
-        if (_followTarget != null)
+        if (_followTarget)
         {
             // Max follow range — green (on the anchor)
             Gizmos.color = Color.green;
@@ -508,7 +508,7 @@ public class CompanionAI : NPC
         }
 
         // Line to current target — magenta
-        if (_currentTarget != null)
+        if (_currentTarget)
         {
             Gizmos.color = Color.magenta;
             Gizmos.DrawLine(transform.position, _currentTarget.transform.position);

@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        if (!Instance)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -494,6 +494,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public Transform GetFollowAnchor(int slotIndex)
     {
+        
         if (slotIndex < 0 || slotIndex >= _followAnchors.Count)
         {
             Debug.LogWarning($"[GameManager] GetFollowAnchor: slot {slotIndex} out of range " +
@@ -518,7 +519,7 @@ public class GameManager : MonoBehaviour
 
         _followAnchors.Clear();
 
-        if (followAnchors != null && followAnchors.Count > 0)
+        if (followAnchors is { Count: > 0 })
             _followAnchors.AddRange(followAnchors);
         else
             _followAnchors.Add(player.transform);
@@ -552,7 +553,7 @@ public class GameManager : MonoBehaviour
                   $"→ anchor {index} (total: {_companions.Count})");
 
         Transform anchor = GetFollowAnchor(index);
-        if (anchor != null)
+        if (anchor)
             companion.SetFollowTarget(anchor);
     }
 
@@ -572,10 +573,12 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void PushAnchorsToCompanions()
     {
+        Debug.Log("Companion count: " + _companions.Count);
         for (int i = 0; i < _companions.Count; i++)
         {
             Transform anchor = GetFollowAnchor(i);
-            if (anchor != null)
+            if (anchor)
+                Debug.Log("Applying anchor: " + anchor.name + " to companion: " + _companions[i].name);
                 _companions[i].SetFollowTarget(anchor);
         }
     }
