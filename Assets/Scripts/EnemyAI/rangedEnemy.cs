@@ -95,7 +95,7 @@ public class rangedEnemy : SimpleEnemy
     {
         Debug.Log("AttackRoutine");
 
-        if (Target.TryGetComponent<IHurtable>(out IHurtable hurtableTarget))
+        if (Target.TryGetComponent<IHealthable>(out IHealthable hurtableTarget))
         {
             Debug.Log("te pego");
             hurtableTarget.TakeDamage(this.Damage);

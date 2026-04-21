@@ -16,7 +16,7 @@ public class ExplosiveCrystal : Crystal
         {
             if (collider.gameObject.CompareTag("Player") || collider.gameObject.CompareTag("Companion") || collider.gameObject.CompareTag("Enemy"))
             {
-                if (collider.gameObject.TryGetComponent<IHurtable>(out var hurtable))
+                if (collider.gameObject.TryGetComponent<IHealthable>(out var hurtable))
                 {
                     float distance = Vector3.Distance(transform.position, collider.transform.position);
                     float damageAmount = Mathf.Lerp(MaxExplosionDamage, MinExplosionDamage, distance / ExplosionRadius);

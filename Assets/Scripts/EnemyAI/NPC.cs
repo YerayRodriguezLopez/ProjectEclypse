@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class NPC : MonoBehaviour, IHurtable
+public abstract class NPC : MonoBehaviour, IHealthable
 {
     public abstract float Health { get; set; }
+    public abstract float MaxHealth { get; set; }
 
     //[SerializeField] private float _health;
 
