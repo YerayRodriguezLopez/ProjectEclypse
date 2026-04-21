@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class StunCrystal : Crystal
 {
+    [SerializeField] private float Damage;
     protected override void Hit(Collision collision)
     {
         if (collision.gameObject.TryGetComponent<IStunnable>(out var stunnable))
         {
             stunnable.Stun();
+        }
+        if (collision.gameObject.TryGetComponent<IHealthable>(out var damageable))
+        {
+            damageable.TakeDamage(Damage);
         }
         Destroy(gameObject);
     }
