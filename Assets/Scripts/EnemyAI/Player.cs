@@ -9,20 +9,21 @@ public class Player : MonoBehaviour, IHurtable
 
     void Start()
     {
-     
+        
     }
     
     public void Die()
     {
 
     }
+
     public void TakeDamage(float damage)
     {
         if (CanBeHurt)
         {
-            Health -= damage;
-            if (Health <= 0) Die();
-            else StartCoroutine(InvulnerabilityCD());
+            Health -= damage;   
+            if (Health <= 0) Die(); 
+            else StartCoroutine(InvulnerabilityCD());   
         }
     }
 
