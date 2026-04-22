@@ -15,10 +15,11 @@ public class Boss : NPC
     public Transform PlayerPosition;
 
     public GameObject FistPreview;
+    private readonly Collider[] _colliders = new Collider[5];
+    [SerializeField] private LayerMask _interactableMask;
 
     private void Start()
     {
-
         StartCoroutine(WaitForNextAttack());
     }
 
@@ -36,7 +37,7 @@ public class Boss : NPC
     public IEnumerator WaitForNextAttack()
     {
         
-        FistPreview.SetActive(false);
+        
         //if (Health <= 0)
         //{
         //    Die();
@@ -44,8 +45,9 @@ public class Boss : NPC
         //}
         
         float coolDown = Random.Range(5, 7);
-        Debug.Log(coolDown);
+        //Debug.Log(coolDown);
         yield return new WaitForSeconds(coolDown);
+        FistPreview.SetActive(false);
         Attack();
 
     }
@@ -56,15 +58,35 @@ public class Boss : NPC
         float cy = this.transform.position.z;
         float vx = PlayerPosition.position.x - cx;
         float vy = PlayerPosition.position.z - cy;
-        Vector3 dir = new Vector3(vx, 0,vy);
+        Vector3 dir = new Vector3(vx, 0 ,vy);
         dir.Normalize();
         dir = dir * AttackRadius;
 
         FistPreview.SetActive(true);
-        FistPreview.transform.position = dir;   
-        StartCoroutine(WaitForNextAttack());
+        FistPreview.transform.position = new Vector3(this.transform.position.x, 0, this.transform.position.z);
+        
+        FistPreview.transform.position += dir;
+        StartCoroutine(FistDownAttackDamage(dir));
 
-       
+    }
+    public IEnumerator FistDownAttackDamage(Vector3 position)
+    {
+        yield return new WaitForSeconds(2.5f);
+        Physics.OverlapSphereNonAlloc(position, 8, _colliders);
+        int hits = Physics.OverlapSphereNonAlloc(position, 8, _colliders);
+
+        if (hits > 0)
+        {
+            for (int i = 0; i < hits; i++)
+            {
+                var collider = _colliders[i];
+                if (collider != null && collider.gameObject.layer == 6)
+                {
+                    Debug.Log("te pego");
+                }
+            }
+        }
+        StartCoroutine(WaitForNextAttack());
     }
 
    
