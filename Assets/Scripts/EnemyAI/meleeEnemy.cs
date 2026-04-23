@@ -96,7 +96,7 @@ public class meleeEnemy : SimpleEnemy
     {
         Debug.Log("AttackRoutine");
 
-        if (Target.TryGetComponent<IHurtable>(out IHurtable hurtableTarget))
+        if (Target.TryGetComponent<IHealthable>(out IHealthable hurtableTarget))
         {
             //metodo propio de ataque de cada enemigo
             Debug.Log("te pego");

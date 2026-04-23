@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IHurtable
+public class Player : MonoBehaviour, IHealthable
 {
     public float Health { get; private set; } = 100;
+    public float MaxHealth { get; private set; } = 100;
     public bool CanBeHurt { get; private set; } = true;
     public float ITime { get; private set; } = 0.5f;
 

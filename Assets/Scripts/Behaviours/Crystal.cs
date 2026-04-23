@@ -24,7 +24,7 @@ public class Crystal : MonoBehaviour
 
     virtual protected void Hit(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent<IHurtable>(out var hurtable))
+        if (collision.gameObject.TryGetComponent<IHealthable>(out var hurtable))
         {
             hurtable.TakeDamage(damage);
         }

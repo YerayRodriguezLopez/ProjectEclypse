@@ -16,7 +16,7 @@ public class HealCrystal : Crystal
         {
             if (collider.gameObject.CompareTag("Player") || collider.gameObject.CompareTag("Companion"))
             {
-                if (collider.gameObject.TryGetComponent<IHurtable>(out var hurtable))
+                if (collider.gameObject.TryGetComponent<IHealthable>(out var hurtable))
                 {
                     float healAmount = Random.Range(MinHeal, MaxHeal);
                     hurtable.Heal(healAmount);
