@@ -130,11 +130,9 @@ public class rangedEnemy : SimpleEnemy
 
     private IEnumerator AttackRoutine()
     {
-        Debug.Log("AttackRoutine");
 
         if (Target.TryGetComponent<IHealthable>(out IHealthable hurtableTarget))
         {
-            Debug.Log("te pego");
             hurtableTarget.TakeDamage(this.Damage);
         }
 
@@ -179,8 +177,9 @@ public class rangedEnemy : SimpleEnemy
 
     public override void TakeDamage(float damage)
     {
-        this.Health -= damage;
-        ChooseState();
+        //this.Health -= damage;
+        //ChooseState();
+        base.TakeDamage(damage);
     }
 
     public override void Chase()

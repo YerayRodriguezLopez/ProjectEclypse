@@ -13,7 +13,7 @@ public class Boss : NPC
     public override float AttackRange { get; set; } = 5f;
     private float AttackRadius = 30f;
     public Transform PlayerPosition;
-
+    public override float MaxHealth { get; set; } = 100;
     public GameObject FistPreview;
     private readonly Collider[] _colliders = new Collider[5];
     [SerializeField] private LayerMask _interactableMask;
