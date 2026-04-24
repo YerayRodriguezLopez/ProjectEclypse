@@ -15,6 +15,7 @@ public class MediumEnemy : SimpleEnemy
     public override float AttackSpeed { get; set; } = 1;
     public override float AttackRange { get; set; } = 5f;
     public override float Speed { get; set; } = 2f;
+    public override float MaxHealth { get; set; } = 100;
 
 
     [SerializeField] private List<AnimationClip> Attacks;
@@ -92,7 +93,7 @@ public class MediumEnemy : SimpleEnemy
     {
         Debug.Log("AttackRoutine");
 
-        if (Target.TryGetComponent<IHurtable>(out IHurtable hurtableTarget))
+        if (Target.TryGetComponent<IHealthable>(out IHealthable hurtableTarget))
         {
             //metodo propio de ataque de cada enemigo
 

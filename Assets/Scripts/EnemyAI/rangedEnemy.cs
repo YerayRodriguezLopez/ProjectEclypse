@@ -14,6 +14,7 @@ public class rangedEnemy : SimpleEnemy
     public override float AttackSpeed { get; set; } = 1;
     public override float AttackRange { get; set; } = 10f;
     public override float Speed { get; set; } = 3f;
+    public override float MaxHealth { get; set; } = 100;
     public GameObject tt;
 
 
@@ -91,7 +92,7 @@ public class rangedEnemy : SimpleEnemy
         if (other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6)
         {
             // Intentamos obtener IHurtable del objeto detectado
-            if (other.TryGetComponent<IHurtable>(out IHurtable newHurtable))
+            if (other.TryGetComponent<IHealthable>(out IHealthable newHurtable))
             {
                 if (Target == null)
                 {
@@ -102,7 +103,7 @@ public class rangedEnemy : SimpleEnemy
                 else
                 {
                     // Comparamos vida con el target actual
-                    if (Target.TryGetComponent<IHurtable>(out IHurtable currentHurtable))
+                    if (Target.TryGetComponent<IHealthable>(out IHealthable currentHurtable))
                     {
                         if (newHurtable.Health < currentHurtable.Health)
                         {

@@ -15,7 +15,7 @@ public class meleeEnemy : SimpleEnemy
     public override float AttackSpeed { get; set; } = 1;
     public override float AttackRange { get; set; } = 5f;
     public override float Speed { get; set; } = 3.5f;
-
+    public override float MaxHealth { get; set; } = 100;
 
 
     //[SerializeField] private GameObject Target;
