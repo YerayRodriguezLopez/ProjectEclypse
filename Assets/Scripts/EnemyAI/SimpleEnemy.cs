@@ -60,7 +60,6 @@ public abstract class SimpleEnemy : NPC, IPullable, IStunnable
     {
         yield return new WaitForSeconds(StunDuration);
         IsStunned = false;
-        ChooseState();
     }
     public virtual void Chase()
     {
