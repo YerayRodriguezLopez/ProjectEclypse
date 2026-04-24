@@ -12,7 +12,7 @@ public class HeavyAttackSkill : NormalSkill
 
     public override void Execute(NPC caster, GameObject target = null)
     {
-        if (!target || !target.TryGetComponent(out IHurtable hurtable)) return;
+        if (!target || !target.TryGetComponent(out IHealthable hurtable)) return;
 
         float hit = caster.Damage * damageMultiplier;
         Debug.Log($"[HeavyAttackSkill] {caster.name}: heavy hit → {target.name} for {hit}.");

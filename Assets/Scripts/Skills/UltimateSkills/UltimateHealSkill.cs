@@ -23,9 +23,9 @@ public class UltimateHealSkill : UltimateSkill
                       $"HP: {companion.Health}");
         }
 
-        // Heal the player if it implements IHurtable.
+        // Heal the player if it implements IHealthable.
         if (GameManager.Instance.Player != null &&
-            GameManager.Instance.Player.TryGetComponent(out IHurtable playerHurtable))
+            GameManager.Instance.Player.TryGetComponent(out IHealthable playerHurtable))
         {
             playerHurtable.Heal(_healAmount);
             Debug.Log($"[UltimateHealSkill] Healed player for {_healAmount}.");

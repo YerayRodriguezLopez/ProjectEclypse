@@ -81,7 +81,7 @@ public class rangedEnemy : SimpleEnemy
     //            Target = other.gameObject;
     //            ChooseState();
     //        }
-    //        //else if (tt.GetComponent<IHurtable>().Health < Target.GetComponent<IHurtable>().Health)
+    //        //else if (tt.GetComponent<IHealthable>().Health < Target.GetComponent<IHealthable>().Health)
     //        //{
     //        //    Target = tt;
     //        //}
@@ -91,12 +91,12 @@ public class rangedEnemy : SimpleEnemy
     {
         if (other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6)
         {
-            // Intentamos obtener IHurtable del objeto detectado
+            // Intentamos obtener IHealthable del objeto detectado
             if (other.TryGetComponent<IHealthable>(out IHealthable newHurtable))
             {
                 if (Target == null)
                 {
-                    // No había target, asignamos directamente
+                    // No habï¿½a target, asignamos directamente
                     Target = other.gameObject;
                     ChooseState();
                 }

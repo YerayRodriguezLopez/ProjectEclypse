@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IHealthable
+public class Player : MonoBehaviour, IHealthable, ISaveable
 {
     public float Health { get; private set; } = 100;
     public float MaxHealth { get; private set; } = 100;
@@ -37,5 +37,17 @@ public class Player : MonoBehaviour, IHealthable
         CanBeHurt = false;
         yield return new WaitForSeconds(ITime);
         CanBeHurt = true;
+    }
+    
+    /// <inheritdoc/>
+    public void OnSave(SaveData data)
+    {
+        data.PlayerHealth = Health;
+    }
+
+    /// <inheritdoc/>
+    public void OnLoad(SaveData data)
+    {
+        Health = data.PlayerHealth;
     }
 }
