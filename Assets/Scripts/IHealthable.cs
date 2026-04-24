@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public interface IHurtable
+public interface IHealthable
 {
     float ITime { get; }
     bool CanBeHurt { get; }
