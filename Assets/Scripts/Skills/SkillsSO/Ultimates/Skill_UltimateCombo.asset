@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 694a09fc496b45b38aab922982962274, type: 3}
+  m_Name: Skill_UltimateCombo
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateComboSkill
+  _skillName: Ultimate flurry
+  _description: "A lightning-fast combo of 5 consecutive attacks. \nBlink and you
+    may not see it. \nCan't be used continously."
+  _cooldown: 30
+  _hitCount: 5
+  _damageMultiplier: 0.8

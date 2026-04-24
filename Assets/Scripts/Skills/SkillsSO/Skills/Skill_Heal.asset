@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1382a80c9ff4ff3b2b927d8dc0dc83a, type: 3}
+  m_Name: Skill_Heal
+  m_EditorClassIdentifier: Assembly-CSharp::HealSkill
+  _skillName: First aid
+  _description: Heals a small fixed amount of HP (20).
+  _cooldown: 3
+  _healAmount: 20
