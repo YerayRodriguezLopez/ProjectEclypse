@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -19,7 +20,7 @@ using UnityEngine.SceneManagement;
 ///   • Cinematics   – triggering sequences by ID (provisional)
 ///   • Scene        – scene loading
 /// </summary>
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, ISaveable
 {
     #region Singleton
 
@@ -632,6 +633,170 @@ public class GameManager : MonoBehaviour
         //       ScriptableObject list, then play via Unity Timeline / Cinemachine.
 
         Debug.Log($"[GameManager] TriggerCinematic — ID: {cinematicId}. Wire up Timeline here.");
+    }
+
+    #endregion
+    
+      #region SaveLoad
+
+    // ── Constants ─────────────────────────────────────────────────────────────
+
+    private const string SaveFileName = "savegame.json";
+
+    /// <summary>
+    /// Full path to the save file.
+    /// <see cref="Application.persistentDataPath"/> resolves to the correct
+    /// location on Meta Quest 3 (Android internal storage).
+    /// </summary>
+    private static string SaveFilePath =>
+        Path.Combine(Application.persistentDataPath, SaveFileName);
+
+    // ── Public API ────────────────────────────────────────────────────────────
+
+    /// <summary>
+    /// Collects state from the Player and all registered Companions, then
+    /// writes the result as a JSON file to persistent storage.
+    ///
+    /// Call this from a checkpoint trigger, pause menu, or any game event
+    /// that should commit progress to disk.
+    /// </summary>
+    public void SaveGame()
+    {
+        SaveData data = new();
+
+        // Let the GameManager record checkpoint data first (implements ISaveable
+        // itself so the pattern stays uniform).
+        OnSave(data);
+
+        // Player.
+        if (Player && Player.TryGetComponent(out ISaveable playerSaveable))
+            playerSaveable.OnSave(data);
+        else
+            Debug.LogWarning("[GameManager] SaveGame — Player not found or does not implement ISaveable.");
+
+        // Companions — each writes to its own index inside CompanionHealths.
+        foreach (CompanionAI companion in _companions)
+            companion.OnSave(data);
+
+        // Serialize and write.
+        string json = JsonUtility.ToJson(data, prettyPrint: true);
+
+        try
+        {
+            File.WriteAllText(SaveFilePath, json);
+            Debug.Log($"[GameManager] Game saved → {SaveFilePath}");
+        }
+        catch (IOException ex)
+        {
+            Debug.LogError($"[GameManager] SaveGame failed to write file: {ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// Reads the save file from persistent storage, deserializes it, and
+    /// distributes the loaded state back to the Player and all Companions.
+    ///
+    /// Returns true if a save file was found and loaded successfully,
+    /// false otherwise (e.g. fresh install, file missing or corrupt).
+    /// </summary>
+    public bool LoadGame()
+    {
+        if (!File.Exists(SaveFilePath))
+        {
+            Debug.Log("[GameManager] LoadGame — no save file found.");
+            return false;
+        }
+
+        string json;
+        try
+        {
+            json = File.ReadAllText(SaveFilePath);
+        }
+        catch (IOException ex)
+        {
+            Debug.LogError($"[GameManager] LoadGame failed to read file: {ex.Message}");
+            return false;
+        }
+
+        SaveData data = JsonUtility.FromJson<SaveData>(json);
+        if (data == null)
+        {
+            Debug.LogError("[GameManager] LoadGame — failed to deserialize save data.");
+            return false;
+        }
+
+        // Resolve which scene this save belongs to before applying state.
+        data.ResolveScene();
+
+        // Restore checkpoint data to GameManager.
+        OnLoad(data);
+
+        // Restore player health.
+        if (Player && Player.TryGetComponent(out ISaveable playerSaveable))
+            playerSaveable.OnLoad(data);
+        else
+            Debug.LogWarning("[GameManager] LoadGame — Player not found or does not implement ISaveable.");
+
+        // Restore companion health.
+        foreach (CompanionAI companion in _companions)
+            companion.OnLoad(data);
+
+        Debug.Log($"[GameManager] Game loaded from {SaveFilePath}. " +
+                  $"Checkpoint {data.CheckpointId}, Scene index: {data.TargetSceneIndex}");
+        return true;
+    }
+
+    /// <summary>
+    /// Deletes the save file and wipes all runtime game state back to defaults.
+    /// Intended for playtesting — lets testers start completely fresh without
+    /// needing to uninstall the build or manually clear storage.
+    /// Does NOT load any scene; the caller decides where to go next.
+    /// </summary>
+    public void ResetSave()
+    {
+        DeleteSave();
+        InitializeGame();
+        Debug.Log("[GameManager] Save reset — file deleted and runtime state cleared.");
+    }
+
+    /// <summary>Deletes the save file from persistent storage, if it exists.</summary>
+    public void DeleteSave()
+    {
+        if (!File.Exists(SaveFilePath)) return;
+
+        try
+        {
+            File.Delete(SaveFilePath);
+            Debug.Log("[GameManager] Save file deleted.");
+        }
+        catch (IOException ex)
+        {
+            Debug.LogError($"[GameManager] DeleteSave failed: {ex.Message}");
+        }
+    }
+
+    // ── ISaveable — GameManager records its own portion of SaveData ───────────
+
+    /// <summary>
+    /// Returns the registration index of <paramref name="companion"/> in the
+    /// internal companions list, or -1 if not found.
+    /// Used by <see cref="CompanionAI"/> during save/load to resolve its own slot
+    /// without exposing the private list directly.
+    /// </summary>
+    public int GetCompanionIndex(CompanionAI companion) => _companions.IndexOf(companion);
+
+    /// <inheritdoc/>
+    public void OnSave(SaveData data)
+    {
+        data.CheckpointId       = LastCheckpointId;
+        data.CheckpointPosition = LastCheckpointPosition; // implicit cast via operator
+    }
+
+    /// <inheritdoc/>
+    public void OnLoad(SaveData data)
+    {
+        LastCheckpointId       = data.CheckpointId;
+        LastCheckpointPosition = data.CheckpointPosition; // implicit cast via operator
     }
 
     #endregion

@@ -25,7 +25,7 @@ using UnityEngine.AI;
 /// AI loop activates on Combat / BossCombat / Playing; pauses otherwise.
 /// </summary>
 [RequireComponent(typeof(NavMeshAgent))]
-public class CompanionAI : NPC
+public class CompanionAI : NPC, ISaveable
 {
     // ─────────────────────────────────────────────────────────────────────────
     // NPC abstract property implementations
@@ -514,4 +514,84 @@ public class CompanionAI : NPC
             Gizmos.DrawLine(transform.position, _currentTarget.transform.position);
         }
     }
+    
+        #region ISaveable
+
+    /// <summary>
+    /// Writes this companion's health into the correct index of
+    /// <see cref="SaveData.CompanionHealths"/>.
+    ///
+    /// Index is resolved from the companion's position in
+    /// <see cref="GameManager.Companions"/> — the same index that determines
+    /// which follow anchor it receives, so ordering is always consistent.
+    ///
+    /// If the list is shorter than the companion's index, it is padded with
+    /// -1 (sentinel for "slot was empty at save time") so deserialization
+    /// can detect gaps safely.
+    /// </summary>
+    public void OnSave(SaveData data)
+    {
+        if (!GameManager.Instance)
+        {
+            Debug.LogWarning($"[CompanionAI] {name}: OnSave — GameManager not found.");
+            return;
+        }
+
+        int index = GameManager.Instance.GetCompanionIndex(this);
+        if (index < 0)
+        {
+            Debug.LogWarning($"[CompanionAI] {name}: OnSave — companion not registered in GameManager.");
+            return;
+        }
+
+        // Pad any gaps with -1 so the list index always matches the slot index.
+        while (data.CompanionHealths.Count <= index)
+            data.CompanionHealths.Add(-1f);
+
+        data.CompanionHealths[index] = Health;
+    }
+
+    /// <summary>
+    /// Restores this companion's health from its own index in
+    /// <see cref="SaveData.CompanionHealths"/>.
+    ///
+    /// A stored value of -1 means this slot was empty when the game was saved
+    /// (e.g. the companion had already died); in that case no restoration is
+    /// applied and the companion keeps its default health.
+    /// </summary>
+    public void OnLoad(SaveData data)
+    {
+        if (!GameManager.Instance)
+        {
+            Debug.LogWarning($"[CompanionAI] {name}: OnLoad — GameManager not found.");
+            return;
+        }
+
+        int index = GameManager.Instance.GetCompanionIndex(this);
+        if (index < 0)
+        {
+            Debug.LogWarning($"[CompanionAI] {name}: OnLoad — companion not registered in GameManager.");
+            return;
+        }
+
+        if (index >= data.CompanionHealths.Count)
+        {
+            Debug.LogWarning($"[CompanionAI] {name}: OnLoad — no saved health for slot {index}. " +
+                             "Keeping default health.");
+            return;
+        }
+
+        float saved = data.CompanionHealths[index];
+        if (saved < 0f)
+        {
+            Debug.Log($"[CompanionAI] {name}: OnLoad — slot {index} was empty at save time. " +
+                      "Keeping default health.");
+            return;
+        }
+
+        Health = saved;
+        Debug.Log($"[CompanionAI] {name}: OnLoad — health restored to {Health} (slot {index}).");
+    }
+
+    #endregion
 }
