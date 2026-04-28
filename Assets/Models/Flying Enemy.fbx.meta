@@ -208,8 +208,8 @@ ModelImporter:
       name: FlyingEnemyIdle
       takeName: Armature|ArmatureAction
       internalID: 1568538688366966894
-      firstFrame: 50
-      lastFrame: 76
+      firstFrame: 71
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -50,23 +50,25 @@ public class rangedEnemy : SimpleEnemy
             //Debug.Log(VisionDistance);
             if (distance <= AttackRange)
             {
-                animator.Play(AttackName);
+                //animator.Play(AttackName);
+                animator.SetTrigger("Attack");
                 Attack();
+
             }
             else if (distance <= VisionDistance)
             {
                 //chase
-                animator.Play(MoveForwardName);
+                //animator.Play(MoveForwardName);
                 Chase();
             }
             else
             {
                 Target = null;
-                animator.Play(idleName);
+                //animator.Play(idleName);
             }
 
         }
-        animator.Play(idleName);
+        //animator.Play(idleName);
     }
 
 
