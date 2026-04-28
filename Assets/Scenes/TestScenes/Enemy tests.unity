@@ -310,6 +310,33 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 883c4a3035c9b8f41b837d9423ff1710, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1 &1208731379 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7036213049465896255, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
+  m_PrefabInstance: {fileID: 1503976460}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1208731381
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208731379}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
+  m_Controller: {fileID: 9100000, guid: 86c845342170920408d55463defb3505, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 1
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1350440305
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,6 +962,70 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   sword: {fileID: 0}
+--- !u!1001 &1503976460
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.832066
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.57
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.003176
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
+      propertyPath: m_Name
+      value: Flying Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 86c845342170920408d55463defb3505, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7036213049465896255, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1208731381}
+  m_SourcePrefab: {fileID: 100100000, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
 --- !u!1 &1504385182
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,7 +1048,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1504385183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1491,3 +1582,4 @@ SceneRoots:
   - {fileID: 1436132316}
   - {fileID: 1378390767}
   - {fileID: 1713648530}
+  - {fileID: 1503976460}
