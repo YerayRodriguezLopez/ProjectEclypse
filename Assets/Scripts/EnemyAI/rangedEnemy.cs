@@ -4,7 +4,10 @@ using UnityEngine.AI;
 
 public class rangedEnemy : SimpleEnemy
 {
-
+    private string idleName = "FlyingEnemyIdle";
+    private string MoveForwardName = "FlyingEnemyMoveForward";
+    //private string attackChargeName = "";
+    private string AttackName = "FlyingEnemyAttack";
     public override float StunDuration { get; set; } = 0.5f;
     public override bool IsStunned { get; set; } = false;
     public override float VisionDistance { get; set; } = 17;
@@ -16,22 +19,20 @@ public class rangedEnemy : SimpleEnemy
     public override float Speed { get; set; } = 3f;
     public override float MaxHealth { get; set; } = 100;
     public GameObject tt;
+    public Animator animator;
 
-
-
-    //[SerializeField] private GameObject Target;
-
-    //public  NavMeshAgent agent;
-    //private Transform TargetPosition;
-    //public  Coroutine chaseCoroutine;
     private Coroutine attackCoroutine;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
         ChooseState();
     }
-
+    public void Awake()
+    {
+        //animator.Play
+    }
     private void Update()
     {
         //Debug.Log(Target);
@@ -39,6 +40,7 @@ public class rangedEnemy : SimpleEnemy
 
     public override void ChooseState()
     {
+        
         if (Health <= 0) Die();
         else if (IsStunned) return;
         else if (Target != null && !IsStunned)
@@ -48,45 +50,26 @@ public class rangedEnemy : SimpleEnemy
             //Debug.Log(VisionDistance);
             if (distance <= AttackRange)
             {
+                animator.Play(AttackName);
                 Attack();
             }
             else if (distance <= VisionDistance)
             {
-                //Debug.Log("START CHASE");
+                //chase
+                animator.Play(MoveForwardName);
                 Chase();
             }
             else
             {
                 Target = null;
-                //idle?
+                animator.Play(idleName);
             }
 
         }
-
-        //idle?
+        animator.Play(idleName);
     }
 
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    //Debug.Log(other.transform.gameObject.layer);
-    //    //Debug.Log(" layer " + playerLayer.value);
-    //    if ((other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6))
-    //    {
-    //        //if (Target != null)
-    //        //{
-    //        //    tt = Target;
-    //        //}
-    //        if (Target == null)
-    //        {
-    //            Target = other.gameObject;
-    //            ChooseState();
-    //        }
-    //        //else if (tt.GetComponent<IHurtable>().Health < Target.GetComponent<IHurtable>().Health)
-    //        //{
-    //        //    Target = tt;
-    //        //}
-    //    }
-    //}
+
     private void OnTriggerStay(Collider other)
     {
         if (other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6)
@@ -131,10 +114,10 @@ public class rangedEnemy : SimpleEnemy
     private IEnumerator AttackRoutine()
     {
 
-        if (Target.TryGetComponent<IHealthable>(out IHealthable hurtableTarget))
-        {
-            hurtableTarget.TakeDamage(this.Damage);
-        }
+        //if (Target.TryGetComponent<IHealthable>(out IHealthable hurtableTarget))
+        //{
+        //    hurtableTarget.TakeDamage(this.Damage);
+        //}
 
         yield return new WaitForSeconds(AttackCooldown);
 
@@ -179,6 +162,7 @@ public class rangedEnemy : SimpleEnemy
     {
         //this.Health -= damage;
         //ChooseState();
+
         base.TakeDamage(damage);
     }
 
