@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,7 +15,7 @@ public class rangedEnemy : SimpleEnemy
     public override float Damage { get; set; } = 15;
     public override float AttackCooldown { get; set; } = 1.5f;
     public override float AttackSpeed { get; set; } = 1;
-    public override float AttackRange { get; set; } = 10f;
+    public override float AttackRange { get; set; } = 8f;
     public override float Speed { get; set; } = 3f;
     public override float MaxHealth { get; set; } = 100;
     public GameObject tt;
@@ -31,16 +31,14 @@ public class rangedEnemy : SimpleEnemy
     }
     public void Awake()
     {
-        //animator.Play
     }
     private void Update()
     {
-        //Debug.Log(Target);
     }
 
     public override void ChooseState()
     {
-        
+
         if (Health <= 0) Die();
         else if (IsStunned) return;
         else if (Target != null && !IsStunned)
@@ -50,25 +48,36 @@ public class rangedEnemy : SimpleEnemy
             //Debug.Log(VisionDistance);
             if (distance <= AttackRange)
             {
-                //animator.Play(AttackName);
-                animator.SetTrigger("Attack");
+
+                animator.SetBool("isAttacking", true);
+                animator.SetBool("IsMoving", false);
+
                 Attack();
 
             }
             else if (distance <= VisionDistance)
             {
                 //chase
-                //animator.Play(MoveForwardName);
+              
+                animator.SetBool("isAttacking", false);
+                animator.SetBool("IsMoving", true);
                 Chase();
             }
             else
             {
+                animator.SetBool("isAttacking", false);
+                animator.SetBool("IsMoving", false);
+
+
                 Target = null;
-                //animator.Play(idleName);
+               //idle
             }
 
+            //idle
         }
-        //animator.Play(idleName);
+
+
+
     }
 
 
@@ -81,17 +90,18 @@ public class rangedEnemy : SimpleEnemy
             {
                 if (Target == null)
                 {
-                    // No había target, asignamos directamente
+
                     Target = other.gameObject;
                     ChooseState();
                 }
                 else
                 {
-                    // Comparamos vida con el target actual
+                    
                     if (Target.TryGetComponent<IHealthable>(out IHealthable currentHurtable))
                     {
                         if (newHurtable.Health < currentHurtable.Health)
                         {
+
                             Target = other.gameObject;
                             ChooseState();
                         }
@@ -109,6 +119,7 @@ public class rangedEnemy : SimpleEnemy
         if (!canAttack) return;
 
         canAttack = false;
+       
         attackCoroutine = StartCoroutine(AttackRoutine());
         ChooseState();
     }
@@ -123,20 +134,23 @@ public class rangedEnemy : SimpleEnemy
 
         yield return new WaitForSeconds(AttackCooldown);
 
+        
+        
         canAttack = true;
         ChooseState();
     }
 
 
 
-  
+
     public override void Die()
     {
+
         Debug.Log("muero");
         return;
     }
 
-  
+
 
     public override void Pull()
     {
@@ -145,14 +159,14 @@ public class rangedEnemy : SimpleEnemy
 
     public override void Stun()
     {
-       base.Stun();
+        base.Stun();
 
     }
 
 
     public override void ClearStun()
     {
-       base.ClearStun();
+        base.ClearStun();
     }
 
     public override IEnumerator ClearStunRutine()
@@ -162,10 +176,12 @@ public class rangedEnemy : SimpleEnemy
 
     public override void TakeDamage(float damage)
     {
-        //this.Health -= damage;
-        //ChooseState();
 
         base.TakeDamage(damage);
+        animator.SetBool("isAttacking", false);
+        animator.SetBool("IsMoving", false);
+        animator.SetTrigger("Hit");
+        
     }
 
     public override void Chase()
@@ -177,41 +193,47 @@ public class rangedEnemy : SimpleEnemy
 
     public override IEnumerator ChaseRoutine()
     {
-        //    agent.isStopped = false;
 
-        //    while (Target != null)
-        //    {
-        //        float distance = Vector3.Distance(Target.transform.position, transform.position);
+        agent.isStopped = false;
 
-        //        if (distance <= AttackRange)
-        //        {
-        //            agent.isStopped = true;
-        //            chaseCoroutine = null;
-        //            ChooseState();
-        //            yield break;
-        //        }
-        //        else if (distance > VisionDistance)
-        //        {
-        //            agent.isStopped = true;
-        //            Target = null;
-        //            chaseCoroutine = null;
-        //            ChooseState();
+        while (Target != null)
+        {
+            float distance = Vector3.Distance(Target.transform.position, transform.position);
 
-        //            yield break;
-        //        }
-        //        else
-        //        {
-        //            agent.SetDestination(Target.transform.position);
+            if (distance <= AttackRange)
+            {
+                agent.isStopped = true;
+                chaseCoroutine = null;
+                animator.SetBool("IsMoving", false);
+                ChooseState();
+                yield break;
+            }
+            else if (distance > VisionDistance)
+            {
+                animator.SetBool("IsMoving", false);
 
-        //            yield return new WaitForSeconds(0.2f);
-        //        }
-        //    }
+                agent.isStopped = true;
+                Target = null;
+                chaseCoroutine = null;
+                ChooseState();
+
+                yield break;
+            }
+            else
+            {
+                animator.SetBool("IsMoving", true);
+
+                agent.speed = Speed;
+                agent.SetDestination(Target.transform.position);
 
 
-        //    agent.isStopped = true;
-        //    this.Target = null;
-        //    chaseCoroutine = null;
-        yield return base.ChaseRoutine();
+                yield return new WaitForSeconds(0.2f);
+            }
+        }
+        //animator.SetBool("isAttacking", false);
+        //animator.Play(idleName);
+        //animator.SetBool("isMoving", true);
+        //yield return base.ChaseRoutine();
 
     }
 }
