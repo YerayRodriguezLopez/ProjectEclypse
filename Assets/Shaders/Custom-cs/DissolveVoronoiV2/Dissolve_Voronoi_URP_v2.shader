@@ -1,4 +1,4 @@
-Shader "Custom/Dissolve_Voronoi_URP"
+Shader "Custom/Dissolve_Voronoi_URPV2"
 {
     Properties
     {
