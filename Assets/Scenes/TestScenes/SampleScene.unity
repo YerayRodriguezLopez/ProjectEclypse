@@ -12838,7 +12838,7 @@ GameObject:
   - component: {fileID: 1751050525}
   - component: {fileID: 1751050524}
   - component: {fileID: 1751050523}
-  - component: {fileID: 1751050522}
+  - component: {fileID: 1751050529}
   m_Layer: 0
   m_Name: CubeV2
   m_TagString: Untagged
@@ -12846,21 +12846,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1751050522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1751050521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3851f7ae464f8a458c7a02014f15d2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DissolveVoronoiControllerVTwo
-  dissolveSpeed: 0.15
-  dissolveAmount: 0
-  playOnStart: 1
 --- !u!114 &1751050523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13063,7 +13048,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f1f88407f2ffe7a49bc7833c521b1733, type: 2}
+  - {fileID: 2100000, guid: 6a0ecba2a95e90b4b81fbfbe42011230, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13094,7 +13079,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751050521}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 1865056248366311061, guid: f077c919501a44778a0c2edb6eb1a54a, type: 3}
 --- !u!4 &1751050528
 Transform:
   m_ObjectHideFlags: 0
@@ -13110,6 +13095,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 15, z: 0}
+--- !u!114 &1751050529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751050521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3851f7ae464f8a458c7a02014f15d2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DissolveVoronoiControllerVTwo
+  dissolveSpeed: 0.15
+  dissolveAmount: 0
+  playOnStart: 1
 --- !u!1 &1754699343
 GameObject:
   m_ObjectHideFlags: 0

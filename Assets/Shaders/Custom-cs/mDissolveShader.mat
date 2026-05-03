@@ -111,12 +111,12 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DissolveAmount: 0
-    - _DissolveSpeed: 1
+    - _DissolveAmount: 0.776
+    - _DissolveSpeed: 0.15
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EdgeIntensity: 3
-    - _EdgeWidth: 0.05
+    - _EdgeWidth: 0.048
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
