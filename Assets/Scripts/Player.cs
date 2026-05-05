@@ -58,4 +58,16 @@ public class Player : NPC
     {
         
     }
+    
+    /// <inheritdoc/>
+    public void OnSave(SaveData data)
+    {
+        data.PlayerHealth = Health;
+    }
+
+    /// <inheritdoc/>
+    public void OnLoad(SaveData data)
+    {
+        Health = data.PlayerHealth;
+    }
 }

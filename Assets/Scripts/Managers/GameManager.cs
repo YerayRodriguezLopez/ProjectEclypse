@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -10,14 +12,15 @@ using UnityEngine.SceneManagement;
 /// timer) automatically whenever state changes.
 ///
 /// Responsibilities (by region):
-///   • Lifecycle   – singleton setup, initialization
-///   • State       – GameState enum + transition logic
-///   • Timer       – runtime elapsed-time tracking + final time snapshot for UI
-///   • Checkpoints – respawn data persistence
-///   • Cinematics  – triggering sequences by ID (provisional)
-///   • Scene       – scene loading
+///   • Lifecycle    – singleton setup, initialization
+///   • State        – GameState enum + transition logic
+///   • Timer        – runtime elapsed-time tracking + final time snapshot for UI
+///   • Checkpoints  – respawn data persistence
+///   • Companions   – player anchor registration + companion registry
+///   • Cinematics   – triggering sequences by ID (provisional)
+///   • Scene        – scene loading
 /// </summary>
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, ISaveable
 {
     #region Singleton
 
@@ -25,16 +28,22 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        if (!Instance)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded_Companions;
             InitializeGame();
         }
         else if (Instance != this)
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded_Companions;
     }
 
     #endregion
@@ -168,7 +177,13 @@ public class GameManager : MonoBehaviour
         _isInputEnabled        = false;
 
         ResetTimer();
-        SetState(GameState.MainMenu);
+        // disabled for debug
+        //SetState(GameState.MainMenu);
+    }
+
+    public void Start()
+    {
+        SetState(GameState.Playing);
     }
 
     #endregion
@@ -453,6 +468,124 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    #region Companions
+
+    // ── Player ───────────────────────────────────────────────────────────────
+
+    /// <summary>
+    /// The current player GameObject. Set by <see cref="PlayerRegistrar"/> on Awake
+    /// in every scene that contains a player.
+    /// </summary>
+    public GameObject Player { get; private set; }
+
+    // ── Per-slot follow anchors ───────────────────────────────────────────────
+
+    /// <summary>
+    /// Ordered list of follow-anchor Transforms on the player — one per companion.
+    /// Companion registration order determines which anchor each one receives:
+    ///   first registered → index 0, second → index 1, third → index 2.
+    /// Populated by <see cref="PlayerRegistrar"/> on each scene load.
+    /// </summary>
+    public IReadOnlyList<Transform> FollowAnchors => _followAnchors;
+    private readonly List<Transform> _followAnchors = new();
+
+    /// <summary>
+    /// Returns the follow anchor at the given index, or null if out of range.
+    /// Index corresponds to companion registration order.
+    /// </summary>
+    public Transform GetFollowAnchor(int slotIndex)
+    {
+        
+        if (slotIndex < 0 || slotIndex >= _followAnchors.Count)
+        {
+            Debug.LogWarning($"[GameManager] GetFollowAnchor: slot {slotIndex} out of range " +
+                             $"(registered anchors: {_followAnchors.Count}).");
+            return null;
+        }
+        return _followAnchors[slotIndex];
+    }
+
+    /// <summary>
+    /// Called by <see cref="PlayerRegistrar"/> on Awake.
+    /// Replaces the anchor list and pushes each companion its own slot anchor.
+    /// </summary>
+    /// <param name="player">The player GameObject in the just-loaded scene.</param>
+    /// <param name="followAnchors">
+    /// Ordered anchor Transforms — index must match each companion's SlotIndex.
+    /// Falls back to a single-element list containing the player's own Transform if empty.
+    /// </param>
+    public void RegisterPlayer(GameObject player, List<Transform> followAnchors = null)
+    {
+        Player = player;
+
+        _followAnchors.Clear();
+
+        if (followAnchors is { Count: > 0 })
+            _followAnchors.AddRange(followAnchors);
+        else
+            _followAnchors.Add(player.transform);
+
+        Debug.Log($"[GameManager] Player registered: {player.name}. " +
+                  $"Follow anchors: {_followAnchors.Count}.");
+
+        PushAnchorsToCompanions();
+    }
+
+    // ── Companion registry ────────────────────────────────────────────────────
+
+    private readonly List<CompanionAI> _companions = new();
+
+    /// <summary>Read-only view of all currently active companions.</summary>
+    public IReadOnlyList<CompanionAI> Companions => _companions;
+
+    /// <summary>
+    /// Called by <see cref="CompanionAI"/> in its own Awake.
+    /// Idempotent — safe to call multiple times for the same companion.
+    /// Registration order determines anchor assignment: first companion registered
+    /// gets anchor 0, second gets anchor 1, etc.
+    /// </summary>
+    public void RegisterCompanion(CompanionAI companion)
+    {
+        if (_companions.Contains(companion)) return;
+
+        int index = _companions.Count; // capture before Add
+        _companions.Add(companion);
+        Debug.Log($"[GameManager] Companion registered: {companion.name} " +
+                  $"→ anchor {index} (total: {_companions.Count})");
+
+        Transform anchor = GetFollowAnchor(index);
+        if (anchor)
+            companion.SetFollowTarget(anchor);
+    }
+
+    /// <summary>
+    /// Called by <see cref="CompanionAI"/> in OnDestroy.
+    /// </summary>
+    public void UnregisterCompanion(CompanionAI companion)
+    {
+        if (!_companions.Remove(companion)) return;
+        Debug.Log($"[GameManager] Companion unregistered: {companion.name} " +
+                  $"(total: {_companions.Count})");
+    }
+
+    /// <summary>
+    /// Pushes each companion its own anchor based on its SlotIndex.
+    /// Called after anchors are refreshed on scene load.
+    /// </summary>
+    private void PushAnchorsToCompanions()
+    {
+        Debug.Log("Companion count: " + _companions.Count);
+        for (int i = 0; i < _companions.Count; i++)
+        {
+            Transform anchor = GetFollowAnchor(i);
+            if (anchor)
+                Debug.Log("Applying anchor: " + anchor.name + " to companion: " + _companions[i].name);
+                _companions[i].SetFollowTarget(anchor);
+        }
+    }
+
+    #endregion
+
     #region SceneLoader
 
     /// <summary>
@@ -464,6 +597,17 @@ public class GameManager : MonoBehaviour
     {
         StopAllCoroutines();
         SceneManager.LoadSceneAsync(sceneId);
+    }
+
+    /// <summary>
+    /// Logs each scene load and confirms the active companion count.
+    /// The actual follow-target re-hook happens in RegisterPlayer(), called by
+    /// the player prefab's PlayerRegistrar on Awake in the new scene.
+    /// </summary>
+    private void OnSceneLoaded_Companions(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log($"[GameManager] Scene loaded: '{scene.name}'. " +
+                  $"Active companions: {_companions.Count}.");
     }
 
     #endregion
@@ -489,6 +633,170 @@ public class GameManager : MonoBehaviour
         //       ScriptableObject list, then play via Unity Timeline / Cinemachine.
 
         Debug.Log($"[GameManager] TriggerCinematic — ID: {cinematicId}. Wire up Timeline here.");
+    }
+
+    #endregion
+    
+      #region SaveLoad
+
+    // ── Constants ─────────────────────────────────────────────────────────────
+
+    private const string SaveFileName = "savegame.json";
+
+    /// <summary>
+    /// Full path to the save file.
+    /// <see cref="Application.persistentDataPath"/> resolves to the correct
+    /// location on Meta Quest 3 (Android internal storage).
+    /// </summary>
+    private static string SaveFilePath =>
+        Path.Combine(Application.persistentDataPath, SaveFileName);
+
+    // ── Public API ────────────────────────────────────────────────────────────
+
+    /// <summary>
+    /// Collects state from the Player and all registered Companions, then
+    /// writes the result as a JSON file to persistent storage.
+    ///
+    /// Call this from a checkpoint trigger, pause menu, or any game event
+    /// that should commit progress to disk.
+    /// </summary>
+    public void SaveGame()
+    {
+        SaveData data = new();
+
+        // Let the GameManager record checkpoint data first (implements ISaveable
+        // itself so the pattern stays uniform).
+        OnSave(data);
+
+        // Player.
+        if (Player && Player.TryGetComponent(out ISaveable playerSaveable))
+            playerSaveable.OnSave(data);
+        else
+            Debug.LogWarning("[GameManager] SaveGame — Player not found or does not implement ISaveable.");
+
+        // Companions — each writes to its own index inside CompanionHealths.
+        foreach (CompanionAI companion in _companions)
+            companion.OnSave(data);
+
+        // Serialize and write.
+        string json = JsonUtility.ToJson(data, prettyPrint: true);
+
+        try
+        {
+            File.WriteAllText(SaveFilePath, json);
+            Debug.Log($"[GameManager] Game saved → {SaveFilePath}");
+        }
+        catch (IOException ex)
+        {
+            Debug.LogError($"[GameManager] SaveGame failed to write file: {ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// Reads the save file from persistent storage, deserializes it, and
+    /// distributes the loaded state back to the Player and all Companions.
+    ///
+    /// Returns true if a save file was found and loaded successfully,
+    /// false otherwise (e.g. fresh install, file missing or corrupt).
+    /// </summary>
+    public bool LoadGame()
+    {
+        if (!File.Exists(SaveFilePath))
+        {
+            Debug.Log("[GameManager] LoadGame — no save file found.");
+            return false;
+        }
+
+        string json;
+        try
+        {
+            json = File.ReadAllText(SaveFilePath);
+        }
+        catch (IOException ex)
+        {
+            Debug.LogError($"[GameManager] LoadGame failed to read file: {ex.Message}");
+            return false;
+        }
+
+        SaveData data = JsonUtility.FromJson<SaveData>(json);
+        if (data == null)
+        {
+            Debug.LogError("[GameManager] LoadGame — failed to deserialize save data.");
+            return false;
+        }
+
+        // Resolve which scene this save belongs to before applying state.
+        data.ResolveScene();
+
+        // Restore checkpoint data to GameManager.
+        OnLoad(data);
+
+        // Restore player health.
+        if (Player && Player.TryGetComponent(out ISaveable playerSaveable))
+            playerSaveable.OnLoad(data);
+        else
+            Debug.LogWarning("[GameManager] LoadGame — Player not found or does not implement ISaveable.");
+
+        // Restore companion health.
+        foreach (CompanionAI companion in _companions)
+            companion.OnLoad(data);
+
+        Debug.Log($"[GameManager] Game loaded from {SaveFilePath}. " +
+                  $"Checkpoint {data.CheckpointId}, Scene index: {data.TargetSceneIndex}");
+        return true;
+    }
+
+    /// <summary>
+    /// Deletes the save file and wipes all runtime game state back to defaults.
+    /// Intended for playtesting — lets testers start completely fresh without
+    /// needing to uninstall the build or manually clear storage.
+    /// Does NOT load any scene; the caller decides where to go next.
+    /// </summary>
+    public void ResetSave()
+    {
+        DeleteSave();
+        InitializeGame();
+        Debug.Log("[GameManager] Save reset — file deleted and runtime state cleared.");
+    }
+
+    /// <summary>Deletes the save file from persistent storage, if it exists.</summary>
+    public void DeleteSave()
+    {
+        if (!File.Exists(SaveFilePath)) return;
+
+        try
+        {
+            File.Delete(SaveFilePath);
+            Debug.Log("[GameManager] Save file deleted.");
+        }
+        catch (IOException ex)
+        {
+            Debug.LogError($"[GameManager] DeleteSave failed: {ex.Message}");
+        }
+    }
+
+    // ── ISaveable — GameManager records its own portion of SaveData ───────────
+
+    /// <summary>
+    /// Returns the registration index of <paramref name="companion"/> in the
+    /// internal companions list, or -1 if not found.
+    /// Used by <see cref="CompanionAI"/> during save/load to resolve its own slot
+    /// without exposing the private list directly.
+    /// </summary>
+    public int GetCompanionIndex(CompanionAI companion) => _companions.IndexOf(companion);
+
+    /// <inheritdoc/>
+    public void OnSave(SaveData data)
+    {
+        data.CheckpointId       = LastCheckpointId;
+        data.CheckpointPosition = LastCheckpointPosition; // implicit cast via operator
+    }
+
+    /// <inheritdoc/>
+    public void OnLoad(SaveData data)
+    {
+        LastCheckpointId       = data.CheckpointId;
+        LastCheckpointPosition = data.CheckpointPosition; // implicit cast via operator
     }
 
     #endregion

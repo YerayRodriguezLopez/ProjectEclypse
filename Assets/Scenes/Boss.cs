@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class Boss : NPC
 {
     public override float Health { get; set; } = 100;
+    public override float MaxHealth { get; set; }
     public override float Damage { get; set; } = 15;
     public override float AttackCooldown { get; set; } = 1.5f;
     public override float AttackSpeed { get; set; } = 1;

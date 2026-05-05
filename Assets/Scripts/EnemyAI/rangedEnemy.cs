@@ -85,7 +85,7 @@ public class rangedEnemy : SimpleEnemy
     {
         if (other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6)
         {
-            // Intentamos obtener IHurtable del objeto detectado
+            // Intentamos obtener IHealthable del objeto detectado
             if (other.TryGetComponent<IHealthable>(out IHealthable newHurtable))
             {
                 if (Target == null)
