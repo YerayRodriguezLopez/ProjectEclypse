@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerSword : MonoBehaviour
 {
@@ -10,17 +11,19 @@ public class PlayerSword : MonoBehaviour
     private void Start()
     {
         player = transform.parent.GetComponent<Player>();
-        //Debug.Log(player.Damage);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if ((layer.value & (1 << other.gameObject.layer)) != 0)
         {
-            if (other.TryGetComponent<IHealthable>(out IHealthable hurtableTarget))
+            if (other.transform.parent.TryGetComponent<IHealthable>(out IHealthable hurtableTarget))
             {
-               if(hurtableTarget.CanBeHurt)
+                if (hurtableTarget.CanBeHurt)
+                {
+                    Debug.Log("espada pega");
                     hurtableTarget.TakeDamage(player.Damage);
+                }
             }
         }
     }

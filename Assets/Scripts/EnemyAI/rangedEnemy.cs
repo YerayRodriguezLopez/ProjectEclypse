@@ -146,7 +146,8 @@ public class rangedEnemy : SimpleEnemy
     public override void Die()
     {
 
-        Debug.Log("muero");
+        //Debug.Log("muero");
+        animator.SetTrigger("Dead");
         return;
     }
 
@@ -176,11 +177,15 @@ public class rangedEnemy : SimpleEnemy
 
     public override void TakeDamage(float damage)
     {
-
+        if(damage >= this.Health)
+        {
+            animator.SetTrigger("Dead");
+        }
         base.TakeDamage(damage);
         animator.SetBool("isAttacking", false);
         animator.SetBool("IsMoving", false);
         animator.SetTrigger("Hit");
+        Debug.Log("ouch");
         
     }
 
