@@ -9,7 +9,7 @@ public class ExplosiveCrystal : Crystal
     [SerializeField]
     private float ExplosionRadius;
     //Use spherecast to detect all objects in the explosion radius and apply damage based on distance from explosion center
-    override protected void Hit(Collision collision)
+    override protected void Hit(Collider collision)
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, ExplosionRadius);
         foreach (Collider collider in colliders)

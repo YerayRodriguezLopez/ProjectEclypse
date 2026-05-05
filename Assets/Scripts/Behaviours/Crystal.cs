@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Crystal : MonoBehaviour
 {
@@ -6,27 +7,33 @@ public class Crystal : MonoBehaviour
     protected float damage;
     protected bool thrown = false;
     protected bool onGround = true;
+    //protected bool thrown = true;
+    //protected bool onGround = false;
+    [SerializeField] private LayerMask layer;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (onGround)
+        if ((layer.value & (1 << other.gameObject.layer)) != 0)
         {
-            if(collision.gameObject.CompareTag("CompanionAttack") || collision.gameObject.CompareTag("EnemyAttack"))
+            if (other.transform.parent.TryGetComponent<IHealthable>(out IHealthable hurtableTarget))
             {
-                Hit(collision);
+                if (hurtableTarget.CanBeHurt)
+                {
+                    //Debug.Log("espada pega");
+                    //hurtableTarget.TakeDamage(damage);
+                    Hit(other);
+                    
+
+                }
             }
-        }
-        if (thrown)
-        {
-            Hit(collision);
         }
     }
 
-    virtual protected void Hit(Collision collision)
+    virtual protected void Hit(Collider other)
     {
-        if (collision.gameObject.TryGetComponent<IHealthable>(out var hurtable))
+        if (other.transform.parent.TryGetComponent<IHealthable>(out IHealthable hurtableTarget))
         {
-            hurtable.TakeDamage(damage);
+            hurtableTarget.TakeDamage(damage);
         }
         Destroy(gameObject);
     }

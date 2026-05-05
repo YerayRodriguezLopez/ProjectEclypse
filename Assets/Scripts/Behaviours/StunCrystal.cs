@@ -3,13 +3,13 @@ using UnityEngine;
 public class StunCrystal : Crystal
 {
     [SerializeField] private float Damage;
-    protected override void Hit(Collision collision)
+    protected override void Hit(Collider other)
     {
-        if (collision.gameObject.TryGetComponent<IStunnable>(out var stunnable))
+        if (other.transform.parent.TryGetComponent<IStunnable>(out var stunnable))
         {
             stunnable.Stun();
         }
-        if (collision.gameObject.TryGetComponent<IHealthable>(out var damageable))
+        if (other.transform.parent.TryGetComponent<IHealthable>(out var damageable))
         {
             damageable.TakeDamage(Damage);
         }

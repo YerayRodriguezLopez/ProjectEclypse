@@ -9,7 +9,7 @@ public class HealCrystal : Crystal
     [SerializeField]
     private float MaxHeal;
 
-    protected override void Hit(Collision collision)
+    protected override void Hit(Collider collision)
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, HealRadius);
         foreach (Collider collider in colliders)
