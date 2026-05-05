@@ -52,7 +52,7 @@ public class ExplosiveCrystal : Crystal
         Collider[] colliders = Physics.OverlapSphere(transform.position, ExplosionRadius, layer);
         foreach (Collider collider in colliders)
         {
-            if (collision.transform.parent.TryGetComponent<IHealthable>(out var hurtableTargetParent) && thrown)
+            if (collider.transform.parent.TryGetComponent<IHealthable>(out var hurtableTargetParent) && thrown)
             {
                 Debug.Log("daño explosion");
                 float distance = Vector3.Distance(transform.position, collider.transform.position);
