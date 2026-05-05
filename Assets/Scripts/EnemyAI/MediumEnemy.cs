@@ -65,14 +65,29 @@ public class MediumEnemy : SimpleEnemy
 
     private void OnTriggerStay(Collider other)
     {
-       
-        if ((other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6))
+        if (other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6)
         {
-
-            if (Target == null)
+            // Intentamos obtener IHurtable del objeto detectado
+            if (other.TryGetComponent<IHealthable>(out IHealthable newHurtable))
             {
-                Target = other.gameObject;
-                ChooseState();
+                if (Target == null)
+                {
+                    // No había target, asignamos directamente
+                    Target = other.gameObject;
+                    ChooseState();
+                }
+                else
+                {
+                    // Comparamos vida con el target actual
+                    if (Target.TryGetComponent<IHealthable>(out IHealthable currentHurtable))
+                    {
+                        if (newHurtable.Health > currentHurtable.Health)
+                        {
+                            Target = other.gameObject;
+                            ChooseState();
+                        }
+                    }
+                }
             }
         }
     }
@@ -141,8 +156,9 @@ public class MediumEnemy : SimpleEnemy
 
     public override void TakeDamage(float damage)
     {
-        this.Health -= damage;
-        ChooseState();
+        //this.Health -= damage;
+        //ChooseState();
+        base.TakeDamage(damage);
     }
 
     public override void Chase()

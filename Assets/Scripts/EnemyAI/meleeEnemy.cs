@@ -115,7 +115,7 @@ public class meleeEnemy : SimpleEnemy
 
     public override void Die()
     {
-
+        Debug.Log("muero");
     }
 
     public override void Pull()
@@ -142,8 +142,9 @@ public class meleeEnemy : SimpleEnemy
 
     public override void TakeDamage(float damage)
     {
-        this.Health -= damage;
-        ChooseState();
+        //this.Health -= damage;
+        //ChooseState();
+        base.TakeDamage(damage);
     }
     
     public override void Chase()
