@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class HealCrystal : Crystal
 {
+    public override float damage { get; set; } = 10;
     [SerializeField]
     private float HealRadius;
     [SerializeField]
