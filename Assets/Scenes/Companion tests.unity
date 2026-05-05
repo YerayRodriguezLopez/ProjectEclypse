@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ecadbfffa5b2d43b36e367f4f5613e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CompanionAI
+  _maxHealth: 100
   _health: 100
   _damage: 10
   _attackCooldown: 1
@@ -891,6 +892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ecadbfffa5b2d43b36e367f4f5613e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CompanionAI
+  _maxHealth: 100
   _health: 100
   _damage: 10
   _attackCooldown: 1
@@ -1395,6 +1397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ecadbfffa5b2d43b36e367f4f5613e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CompanionAI
+  _maxHealth: 100
   _health: 100
   _damage: 10
   _attackCooldown: 1
