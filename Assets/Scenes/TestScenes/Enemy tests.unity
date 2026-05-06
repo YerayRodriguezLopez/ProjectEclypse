@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 75034595}
   - component: {fileID: 75034594}
   - component: {fileID: 75034599}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: stun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ Transform:
   m_GameObject: {fileID: 75034593}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.2, y: 30.69, z: 9.9}
+  m_LocalPosition: {x: 17.04, y: 30.69, z: 7.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -507,7 +507,7 @@ GameObject:
   - component: {fileID: 712544333}
   - component: {fileID: 712544332}
   - component: {fileID: 712544331}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,7 +643,7 @@ Transform:
   m_GameObject: {fileID: 712544330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.87, y: 30.69, z: 10.02}
+  m_LocalPosition: {x: 7.77, y: 30.69, z: -13.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -659,7 +659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 800515637}
   - component: {fileID: 800515638}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: NavMesh Surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -774,7 +774,7 @@ GameObject:
   - component: {fileID: 1350440309}
   - component: {fileID: 1350440308}
   - component: {fileID: 1350440307}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1103,7 +1103,7 @@ GameObject:
   - component: {fileID: 1406078185}
   - component: {fileID: 1406078184}
   - component: {fileID: 1406078183}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

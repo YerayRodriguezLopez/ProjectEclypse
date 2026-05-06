@@ -30,7 +30,7 @@ public abstract class NPC : MonoBehaviour, IHealthable
     {
         if (this.CanBeHurt)
         {
-            //Debug.Log("ouch " + damage);
+            Debug.Log("ouch " + damage);
 
             Health -= damage;
             if (Health <= 0) Die();

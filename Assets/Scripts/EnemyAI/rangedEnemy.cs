@@ -185,7 +185,7 @@ public class rangedEnemy : SimpleEnemy
         animator.SetBool("isAttacking", false);
         animator.SetBool("IsMoving", false);
         animator.SetTrigger("Hit");
-        Debug.Log("ouch" +  damage);
+        //Debug.Log("ouch" +  damage);
         
     }
 
