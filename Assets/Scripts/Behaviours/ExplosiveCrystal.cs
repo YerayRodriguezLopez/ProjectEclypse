@@ -54,28 +54,7 @@ public class ExplosiveCrystal : Crystal
 
             }
 
-            /*
-            if (collider.transform.parent.TryGetComponent<IHealthable>(out var hurtableTargetParent) && thrown)
-            {
-                Debug.Log("daño explosion");
-                float distance = Vector3.Distance(transform.position, collider.transform.position);
-                float damageAmount = Mathf.Lerp(MaxExplosionDamage, MinExplosionDamage, distance / ExplosionRadius);
-                Debug.Log(distance);
-                //float damageAmount = (ExplosionRadius/distance) * 100;
-                Debug.Log(damageAmount);
-                hurtableTargetParent.TakeDamage(damageAmount);
-               
-            }
-            */
-            //else if (collision.TryGetComponent<IHealthable>(out IHealthable hurtableTarget) && thrown)
-            //{
-            //    Debug.Log("daño explosion otro");
-            //    //float distance = Vector3.Distance(transform.position, collider.transform.position);
-            //    ////float damageAmount = Mathf.Lerp(MaxExplosionDamage, MinExplosionDamage, distance / ExplosionRadius);
-            //    //float damageAmount = (distance / ExplosionRadius) * 100;
-            //    //Debug.Log(damageAmount);
-            //    //hurtableTarget.TakeDamage(damageAmount);
-            //}
+           
 
         }
         Destroy(gameObject);
