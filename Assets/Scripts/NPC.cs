@@ -19,7 +19,7 @@ public abstract class NPC : MonoBehaviour, IHealthable
     //[SerializeField] private float _attackSpeed = 1;
     public abstract float AttackRange{ get; set; }
 
-    public virtual float ITime { get; set; } = 0.5f;
+    public virtual float ITime { get; set; } = 1f;
 
     public virtual bool CanBeHurt { get; set; } = true;
 
@@ -28,7 +28,7 @@ public abstract class NPC : MonoBehaviour, IHealthable
     public abstract void Die();
     private void Update()
     {
-        Debug.Log("can be hurt: " + this.CanBeHurt);
+        //Debug.Log("can be hurt: " + this.CanBeHurt);
     }
     public virtual void TakeDamage(float damage)
     {
@@ -37,6 +37,7 @@ public abstract class NPC : MonoBehaviour, IHealthable
             Debug.Log("ouch " + damage);
 
             Health -= damage;
+            this.CanBeHurt = false;
             if (Health <= 0)
             {
                 Die();
@@ -59,9 +60,9 @@ public abstract class NPC : MonoBehaviour, IHealthable
     public virtual IEnumerator InvulnerabilityCD()
     {
         Debug.Log("Empiezo");
-        CanBeHurt = false;
+        
         yield return new WaitForSeconds(ITime);
-        CanBeHurt = true;
+        this.CanBeHurt = true;
         Debug.Log("acabo");
         InvulnerableCorutine = null;
     }
