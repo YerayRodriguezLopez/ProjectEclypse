@@ -47,6 +47,7 @@ public class meleeEnemy : SimpleEnemy
             //Debug.Log(VisionDistance);
             if (distance <= AttackRange)
             {
+                //animator.SetBool("IsMoving", false);
                 Attack();
             }
             else if (distance <= VisionDistance)
@@ -99,11 +100,28 @@ public class meleeEnemy : SimpleEnemy
         if (Target.TryGetComponent<IHealthable>(out IHealthable hurtableTarget))
         {
             //metodo propio de ataque de cada enemigo
-            Debug.Log("te pego");
-            hurtableTarget.TakeDamage(this.Damage);
+            //Debug.Log("te pego");
+            //hurtableTarget.TakeDamage(this.Damage);
         }
 
         yield return new WaitForSeconds(AttackCooldown);
+
+        int rand = Random.Range(1, 100);
+        switch (rand)
+        {
+            case int when rand > 0 && rand < 60:
+                //attack 1
+                break;
+            case int when rand >= 60 && rand < 90:
+                //attack 2
+                break;
+            case int when rand >= 90:
+                //attack charged
+                break;
+            default:
+                //attack1
+                break;
+        }
 
         canAttack = true;
         ChooseState();

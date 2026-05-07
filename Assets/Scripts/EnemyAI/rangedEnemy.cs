@@ -134,7 +134,7 @@ public class rangedEnemy : SimpleEnemy
 
         yield return new WaitForSeconds(AttackCooldown);
 
-        
+        //shoot crystal
         
         canAttack = true;
         ChooseState();
