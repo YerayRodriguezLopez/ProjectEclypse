@@ -26,6 +26,10 @@ public abstract class NPC : MonoBehaviour, IHealthable
     public  Coroutine InvulnerableCorutine = null;
     //[SerializeField] private float _attackRange = 2;
     public abstract void Die();
+    private void Update()
+    {
+        Debug.Log("can be hurt: " + this.CanBeHurt);
+    }
     public virtual void TakeDamage(float damage)
     {
         if (this.CanBeHurt)
@@ -33,11 +37,14 @@ public abstract class NPC : MonoBehaviour, IHealthable
             Debug.Log("ouch " + damage);
 
             Health -= damage;
-            if (Health <= 0) Die();
+            if (Health <= 0)
+            {
+                Die();
+            }
             else
             {
-                if(InvulnerableCorutine == null)
-                InvulnerableCorutine = StartCoroutine(InvulnerabilityCD());
+                if (InvulnerableCorutine == null)
+                    InvulnerableCorutine = StartCoroutine(InvulnerabilityCD());
             }
 
         }
