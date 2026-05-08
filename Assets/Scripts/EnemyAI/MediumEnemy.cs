@@ -162,7 +162,7 @@ public class MediumEnemy : SimpleEnemy
 
         canAttack = true;
         attackCoroutine = null;
-        ChooseState();
+        StartCoroutine(waitToChooseState(1));
     }
 
     public void DealDamageBasic()
