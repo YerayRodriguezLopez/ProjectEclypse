@@ -103,7 +103,6 @@
   <Project Path="Unity.XR.Hands.Analytics.Hooks.Editor.csproj" />
   <Project Path="Unity.XR.OpenXR.Features.MockRuntime.csproj" />
   <Project Path="UnityEditor.SpatialTracking.csproj" />
-  <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="Unity.Rendering.LightTransport.Editor.csproj" />
   <Project Path="Unity.Collections.Editor.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.Config.Runtime.csproj" />
