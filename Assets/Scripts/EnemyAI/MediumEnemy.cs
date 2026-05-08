@@ -51,6 +51,7 @@ public class MediumEnemy : SimpleEnemy
                 animator.SetBool("IsAt1", false);
                 animator.SetBool("IsAtCh", false);
                 animator.SetBool("IsMoving", false);
+                agent.isStopped = true;
                 Attack();
             }
             else if (distance <= VisionDistance)
@@ -73,6 +74,13 @@ public class MediumEnemy : SimpleEnemy
             }
 
         }
+        if(Target == null)
+        {
+            animator.SetBool("IsMoving", false);
+            animator.SetBool("IsAt2", false);
+            animator.SetBool("IsAt1", false);
+            animator.SetBool("IsAtCh", false);
+        }
 
     }
 
@@ -84,6 +92,10 @@ public class MediumEnemy : SimpleEnemy
             {
                 if (Target == null)
                 {
+                    animator.SetBool("IsMoving", false);
+                    animator.SetBool("IsAt2", false);
+                    animator.SetBool("IsAt1", false);
+                    animator.SetBool("IsAtCh", false);
                     Target = other.gameObject;
                     ChooseState();
                 }
@@ -268,10 +280,16 @@ public class MediumEnemy : SimpleEnemy
 
     public override void TakeDamage(float damage)
     {
-        if (damage >= this.Health)
+        if (attackCoroutine != null)
         {
-            animator.SetTrigger("Dead");
+            StopCoroutine(attackCoroutine);
+            attackCoroutine = null;
+            canAttack = true; 
         }
+
+        if (damage >= this.Health)
+            animator.SetTrigger("Dead");
+
         base.TakeDamage(damage);
         animator.SetBool("IsAt2", false);
         animator.SetBool("IsAt1", false);
