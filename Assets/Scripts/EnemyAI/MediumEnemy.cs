@@ -138,14 +138,27 @@ public class MediumEnemy : SimpleEnemy
         animator.SetBool("IsAtCh", false);
 
         if (rand < 60)
+        {
             animator.SetBool("IsAt1", true);
+            AttackCooldown = 1.5f;
+        }
         else if (rand < 90)
+        {
             animator.SetBool("IsAt2", true);
+            AttackCooldown = 1.5f;
+        }
         else
+        {
             animator.SetBool("IsAtCh", true);
+            AttackCooldown = 3f;
+        }
+
 
 
         yield return new WaitForSeconds(AttackCooldown);
+        animator.SetBool("IsAt2", false);
+        animator.SetBool("IsAt1", false);
+        animator.SetBool("IsAtCh", false);
 
         canAttack = true;
         attackCoroutine = null;
