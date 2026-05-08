@@ -11,7 +11,7 @@ public class MediumEnemy : SimpleEnemy
     public override float VisionDistance { get; set; } = 15;
     public override float Health { get; set; } = 100;
     public override float Damage { get; set; } = 15;
-    public override float AttackCooldown { get; set; } = 1.5f;
+    public override float AttackCooldown { get; set; } = 3f;
     public override float AttackSpeed { get; set; } = 1;
     public override float AttackRange { get; set; } = 5f;
     public override float Speed { get; set; } = 2f;
@@ -42,10 +42,14 @@ public class MediumEnemy : SimpleEnemy
         else if (IsStunned) return;
         else if (Target != null && !IsStunned)
         {
+           
             float distance = Vector3.Distance(Target.transform.position, this.transform.position);
         
             if (distance <= AttackRange)
             {
+                animator.SetBool("IsAt2", false);
+                animator.SetBool("IsAt1", false);
+                animator.SetBool("IsAtCh", false);
                 animator.SetBool("IsMoving", false);
                 Attack();
             }
@@ -65,30 +69,26 @@ public class MediumEnemy : SimpleEnemy
                 animator.SetBool("IsAt1", false);
                 animator.SetBool("IsAtCh", false);
                 Target = null;
-                //idle?
+                
             }
 
         }
 
-        //idle?
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6)
         {
-            // Intentamos obtener IHurtable del objeto detectado
             if (other.TryGetComponent<IHealthable>(out IHealthable newHurtable))
             {
                 if (Target == null)
                 {
-                    // No había target, asignamos directamente
                     Target = other.gameObject;
                     ChooseState();
                 }
                 else
                 {
-                    // Comparamos vida con el target actual
                     if (Target.TryGetComponent<IHealthable>(out IHealthable currentHurtable))
                     {
                         if (newHurtable.Health > currentHurtable.Health)
@@ -102,66 +102,138 @@ public class MediumEnemy : SimpleEnemy
         }
     }
 
-
     private bool canAttack = true;
+    //private bool isDealingDamage = false; 
 
     public override void Attack()
     {
         if (!canAttack) return;
 
         canAttack = false;
-        attackCoroutine = StartCoroutine(AttackRoutine());
-        ChooseState();
+        if (attackCoroutine == null)
+        {
+            attackCoroutine = StartCoroutine(AttackRoutine());
+        }
+       
     }
 
     private IEnumerator AttackRoutine()
     {
-        Debug.Log("AttackRoutine");
+        int rand = Random.Range(1, 100);
 
-        //if (Target.TryGetComponent<IHealthable>(out IHealthable hurtableTarget))
-        //{
-        //    //metodo propio de ataque de cada enemigo
+        animator.SetBool("IsAt2", false);
+        animator.SetBool("IsAt1", false);
+        animator.SetBool("IsAtCh", false);
 
-        //    int attackIndex = Random.Range(0, Attacks.Count);
-        //    //AttackAnimation(attackIndex)
-        //    Debug.Log("te pego");
-        //    hurtableTarget.TakeDamage(this.Damage);
-        //}
+        if (rand < 60)
+            animator.SetBool("IsAt1", true);
+        else if (rand < 90)
+            animator.SetBool("IsAt2", true);
+        else
+            animator.SetBool("IsAtCh", true);
+
 
         yield return new WaitForSeconds(AttackCooldown);
 
-        int rand = Random.Range(1, 100);
-        switch (rand)
-        {
-            case int when rand > 0 && rand < 60:
-                //attack 1
-                animator.SetBool("IsAt2", false);
-                animator.SetBool("IsAtCh", false);
-                animator.SetBool("IsAt1", true);
-                break;
-            case int when rand >= 60 && rand < 90:
-                //attack 2
-                animator.SetBool("IsAtCh", false);
-                animator.SetBool("IsAt1", false);
-                animator.SetBool("IsAt2", true);
-
-                break;
-            case int when rand >= 90:
-                //attack charged
-                animator.SetBool("IsAt2", false);
-                animator.SetBool("IsAt1", false);
-                animator.SetBool("IsAtCh", true);
-                break;
-            default:
-                //attack1
-                animator.SetBool("IsAt2", false);
-                animator.SetBool("IsAtCh", false);
-                animator.SetBool("IsAt1", true);
-                break;
-        }
         canAttack = true;
+        attackCoroutine = null;
         ChooseState();
     }
+
+    public void DealDamageBasic()
+    {
+        if (Target == null) return; 
+        Debug.Log("atac basic");
+        if (Target.TryGetComponent<IHealthable>(out IHealthable hurtable))
+        {
+            Debug.Log("pego 1,2");
+
+            hurtable.TakeDamage(Damage);
+        }
+    }
+
+    public void DealDamageCharged()
+    {
+        if (Target == null) return; 
+        Debug.Log("atac charged");
+        if (Target.TryGetComponent<IHealthable>(out IHealthable hurtable))
+        {
+            Debug.Log("pego cargado");
+
+            hurtable.TakeDamage(Damage * 1.5f);
+        }
+    }
+    //private bool canAttack = true;
+
+    //public override void Attack()
+    //{
+    //    if (!canAttack) return;
+
+    //    canAttack = false;
+    //    if (attackCoroutine == null)
+    //    {
+    //        attackCoroutine = StartCoroutine(AttackRoutine());
+    //    }
+    //    ChooseState();
+    //}
+    //public void DealDamageBasic()
+    //{
+    //    Debug.Log("atac basic");
+    //    if (Target.TryGetComponent<IHealthable>(out IHealthable hurtable))
+    //    {
+    //        hurtable.TakeDamage(Damage);     
+    //    }
+    //}
+    //public void DealDamageCharged()
+    //{
+    //    Debug.Log("atac charged");
+
+    //    if (Target.TryGetComponent<IHealthable>(out IHealthable hurtable))
+    //    {
+    //        hurtable.TakeDamage(Damage*1.5f);
+    //    }
+    //}
+    //private IEnumerator AttackRoutine()
+    //{
+    //    Debug.Log("AttackRoutine");
+
+
+
+    //    yield return new WaitForSeconds(AttackCooldown);
+
+    //    int rand = Random.Range(1, 100);
+    //    switch (rand)
+    //    {
+    //        case int when rand > 0 && rand < 60:
+    //            //attack 1
+    //            animator.SetBool("IsAt2", false);
+    //            animator.SetBool("IsAtCh", false);
+    //            animator.SetBool("IsAt1", true);
+    //            break;
+    //        case int when rand >= 60 && rand < 90:
+    //            //attack 2
+    //            animator.SetBool("IsAtCh", false);
+    //            animator.SetBool("IsAt1", false);
+    //            animator.SetBool("IsAt2", true);
+
+    //            break;
+    //        case int when rand >= 90:
+    //            //attack charged
+    //            animator.SetBool("IsAt2", false);
+    //            animator.SetBool("IsAt1", false);
+    //            animator.SetBool("IsAtCh", true);
+    //            break;
+    //        default:
+    //            //attack1
+    //            animator.SetBool("IsAt2", false);
+    //            animator.SetBool("IsAtCh", false);
+    //            animator.SetBool("IsAt1", true);
+    //            break;
+    //    }
+    //    canAttack = true;
+    //    attackCoroutine = null;
+    //    ChooseState();
+    //}
 
 
 
@@ -206,7 +278,6 @@ public class MediumEnemy : SimpleEnemy
         animator.SetBool("IsAtCh", false);
         animator.SetBool("IsMoving", false);
         animator.SetTrigger("Hit");
-        //Debug.Log("ouch" +  damage);
     }
 
     public override void Chase()
@@ -255,10 +326,7 @@ public class MediumEnemy : SimpleEnemy
                 yield return new WaitForSeconds(0.2f);
             }
         }
-        //animator.SetBool("isAttacking", false);
-        //animator.Play(idleName);
-        //animator.SetBool("isMoving", true);
-        //yield return base.ChaseRoutine();
+      
 
     }
 }

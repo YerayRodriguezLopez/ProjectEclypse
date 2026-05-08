@@ -63,7 +63,7 @@ public abstract class NPC : MonoBehaviour, IHealthable
         
         yield return new WaitForSeconds(ITime);
         this.CanBeHurt = true;
-        Debug.Log("acabo");
-        InvulnerableCorutine = null;
+        Debug.Log("hit me baby one more time");
+        this.InvulnerableCorutine = null;
     }
 }
