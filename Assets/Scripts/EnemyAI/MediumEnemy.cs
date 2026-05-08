@@ -309,8 +309,14 @@ public class MediumEnemy : SimpleEnemy
         animator.SetBool("IsAtCh", false);
         animator.SetBool("IsMoving", false);
         animator.SetTrigger("Hit");
-    }
 
+        StartCoroutine(waitToChooseState(1));
+    }
+    public IEnumerator waitToChooseState(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        ChooseState();
+    }
     public override void Chase()
     {
         if (chaseCoroutine != null) return;
