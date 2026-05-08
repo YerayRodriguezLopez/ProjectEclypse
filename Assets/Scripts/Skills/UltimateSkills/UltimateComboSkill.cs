@@ -16,7 +16,7 @@ public class UltimateComboSkill : UltimateSkill
     /// </summary>
     public override IEnumerator ExecuteCoroutine(NPC caster, GameObject target = null)
     {
-        if (target == null || !target.TryGetComponent(out IHurtable hurtable))
+        if (target == null || !target.TryGetComponent(out IHealthable hurtable))
         {
             Debug.Log($"[UltimateComboSkill] {caster.name}: no valid target.");
             yield break;

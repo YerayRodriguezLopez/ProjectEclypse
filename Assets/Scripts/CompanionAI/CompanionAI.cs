@@ -32,6 +32,7 @@ public class CompanionAI : NPC, ISaveable
     // ─────────────────────────────────────────────────────────────────────────
 
     [Header("NPC Stats")]
+    [SerializeField] private float _maxHealth         = 100f;
     [SerializeField] private float _health         = 100f;
     [SerializeField] private float _damage         = 10f;
     [SerializeField] private float _attackCooldown = 1f;
@@ -39,7 +40,11 @@ public class CompanionAI : NPC, ISaveable
     [SerializeField] private float _attackRange    = 2f;
 
     /// <summary>Configured max health — captured once at Awake before any damage is taken.</summary>
-    public float MaxHealth { get; private set; }
+    public override float MaxHealth
+    {
+        get => _maxHealth; 
+        set => _maxHealth = value;
+    }
 
     public override float Health
     {
@@ -356,9 +361,9 @@ public class CompanionAI : NPC, ISaveable
                     return true;
             }
 
-            // Also check player if it implements IHurtable.
+            // Also check player if it implements IHealthable.
             if (GameManager.Instance.Player &&
-                GameManager.Instance.Player.TryGetComponent(out IHurtable playerHurtable) &&
+                GameManager.Instance.Player.TryGetComponent(out IHealthable playerHurtable) &&
                 playerHurtable.Health <= _ultimateHealThreshold)
                 return true;
 
@@ -367,7 +372,7 @@ public class CompanionAI : NPC, ISaveable
 
         // Offensive ultimate — check current target HP.
         if (_currentTarget &&
-            _currentTarget.TryGetComponent(out IHurtable targetHurtable))
+            _currentTarget.TryGetComponent(out IHealthable targetHurtable))
             return targetHurtable.Health <= _ultimateHealThreshold;
 
         return false;
@@ -429,7 +434,7 @@ public class CompanionAI : NPC, ISaveable
         Debug.Log($"[CompanionAI] {name}: basic attack → {t} for {Damage}.");
 
         if (_currentTarget &&
-            _currentTarget.TryGetComponent(out IHurtable hurtable))
+            _currentTarget.TryGetComponent(out IHealthable hurtable))
             hurtable.TakeDamage(Damage);
     }
 

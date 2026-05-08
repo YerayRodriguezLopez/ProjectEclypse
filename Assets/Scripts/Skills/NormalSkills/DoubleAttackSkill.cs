@@ -15,7 +15,7 @@ public class DoubleAttackSkill : NormalSkill
     /// </summary>
     public override IEnumerator ExecuteCoroutine(NPC caster, GameObject target = null)
     {
-        if (target == null || !target.TryGetComponent(out IHurtable hurtable))
+        if (target == null || !target.TryGetComponent(out IHealthable hurtable))
         {
             Debug.Log($"[DoubleAttackSkill] {caster.name}: no valid target.");
             yield break;

@@ -1,33 +1,30 @@
 using UnityEngine;
 
-public class Crystal : MonoBehaviour
+public abstract class Crystal : MonoBehaviour
 {
-    [SerializeField]
-    protected float damage;
-    protected bool thrown = false;
-    protected bool onGround = true;
+    public abstract float damage { get; set; }
+    protected bool thrown = true;
+    protected bool onGround = false;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (onGround)
-        {
-            if(collision.gameObject.CompareTag("CompanionAttack") || collision.gameObject.CompareTag("EnemyAttack"))
-            {
-                Hit(collision);
-            }
-        }
-        if (thrown)
-        {
-            Hit(collision);
-        }
-    }
+    [SerializeField] protected LayerMask layer;
 
-    virtual protected void Hit(Collision collision)
+    virtual protected void Hit(Collider other)
     {
-        if (collision.gameObject.TryGetComponent<IHealthable>(out var hurtable))
+        if (!thrown) return;
+
+     
+        IHealthable healthable = null;
+
+        if (other.transform.parent != null)
+            other.transform.parent.TryGetComponent(out healthable);
+
+        if (healthable == null)
+            other.TryGetComponent(out healthable);
+
+        if (healthable != null)
         {
-            hurtable.TakeDamage(damage);
+            healthable.TakeDamage(damage);
+            Debug.Log("damage");
         }
-        Destroy(gameObject);
     }
 }

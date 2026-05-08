@@ -51,6 +51,10 @@ public abstract class SimpleEnemy : NPC, IPullable, IStunnable
     }
 
 
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+    }
     public virtual void ClearStun()
     {
         StartCoroutine(ClearStunRutine());

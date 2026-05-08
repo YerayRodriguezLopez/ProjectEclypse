@@ -26,7 +26,7 @@ public class UltimateAreaAttackSkill : UltimateSkill
             // Each target has its own CanBeHurt / InvulnerabilityCD, so a single
             // area hit landing on each one at the same frame is fine — the CD is
             // per-target, not global.
-            if (col.TryGetComponent(out IHurtable hurtable))
+            if (col.TryGetComponent(out IHealthable hurtable))
                 hurtable.TakeDamage(damage);
         }
     }

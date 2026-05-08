@@ -1,10 +1,13 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class rangedEnemy : SimpleEnemy
 {
-
+    private string idleName = "FlyingEnemyIdle";
+    private string MoveForwardName = "FlyingEnemyMoveForward";
+    //private string attackChargeName = "";
+    private string AttackName = "FlyingEnemyAttack";
     public override float StunDuration { get; set; } = 0.5f;
     public override bool IsStunned { get; set; } = false;
     public override float VisionDistance { get; set; } = 17;
@@ -12,33 +15,30 @@ public class rangedEnemy : SimpleEnemy
     public override float Damage { get; set; } = 15;
     public override float AttackCooldown { get; set; } = 1.5f;
     public override float AttackSpeed { get; set; } = 1;
-    public override float AttackRange { get; set; } = 10f;
+    public override float AttackRange { get; set; } = 8f;
     public override float Speed { get; set; } = 3f;
     public override float MaxHealth { get; set; } = 100;
     public GameObject tt;
+    public Animator animator;
 
-
-
-    //[SerializeField] private GameObject Target;
-
-    //public  NavMeshAgent agent;
-    //private Transform TargetPosition;
-    //public  Coroutine chaseCoroutine;
     private Coroutine attackCoroutine;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
         ChooseState();
     }
-
+    public void Awake()
+    {
+    }
     private void Update()
     {
-        //Debug.Log(Target);
     }
 
     public override void ChooseState()
     {
+
         if (Health <= 0) Die();
         else if (IsStunned) return;
         else if (Target != null && !IsStunned)
@@ -48,65 +48,60 @@ public class rangedEnemy : SimpleEnemy
             //Debug.Log(VisionDistance);
             if (distance <= AttackRange)
             {
+
+                animator.SetBool("isAttacking", true);
+                animator.SetBool("IsMoving", false);
+
                 Attack();
+
             }
             else if (distance <= VisionDistance)
             {
-                //Debug.Log("START CHASE");
+                //chase
+              
+                animator.SetBool("isAttacking", false);
+                animator.SetBool("IsMoving", true);
                 Chase();
             }
             else
             {
+                animator.SetBool("isAttacking", false);
+                animator.SetBool("IsMoving", false);
+
+
                 Target = null;
-                //idle?
+               //idle
             }
 
+            //idle
         }
 
-        //idle?
+
+
     }
 
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    //Debug.Log(other.transform.gameObject.layer);
-    //    //Debug.Log(" layer " + playerLayer.value);
-    //    if ((other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6))
-    //    {
-    //        //if (Target != null)
-    //        //{
-    //        //    tt = Target;
-    //        //}
-    //        if (Target == null)
-    //        {
-    //            Target = other.gameObject;
-    //            ChooseState();
-    //        }
-    //        //else if (tt.GetComponent<IHurtable>().Health < Target.GetComponent<IHurtable>().Health)
-    //        //{
-    //        //    Target = tt;
-    //        //}
-    //    }
-    //}
+
     private void OnTriggerStay(Collider other)
     {
         if (other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6)
         {
-            // Intentamos obtener IHurtable del objeto detectado
+            // Intentamos obtener IHealthable del objeto detectado
             if (other.TryGetComponent<IHealthable>(out IHealthable newHurtable))
             {
                 if (Target == null)
                 {
-                    // No había target, asignamos directamente
+
                     Target = other.gameObject;
                     ChooseState();
                 }
                 else
                 {
-                    // Comparamos vida con el target actual
+                    
                     if (Target.TryGetComponent<IHealthable>(out IHealthable currentHurtable))
                     {
                         if (newHurtable.Health < currentHurtable.Health)
                         {
+
                             Target = other.gameObject;
                             ChooseState();
                         }
@@ -124,36 +119,39 @@ public class rangedEnemy : SimpleEnemy
         if (!canAttack) return;
 
         canAttack = false;
+       
         attackCoroutine = StartCoroutine(AttackRoutine());
         ChooseState();
     }
 
     private IEnumerator AttackRoutine()
     {
-        Debug.Log("AttackRoutine");
 
-        if (Target.TryGetComponent<IHealthable>(out IHealthable hurtableTarget))
-        {
-            Debug.Log("te pego");
-            hurtableTarget.TakeDamage(this.Damage);
-        }
+        //if (Target.TryGetComponent<IHealthable>(out IHealthable hurtableTarget))
+        //{
+        //    hurtableTarget.TakeDamage(this.Damage);
+        //}
 
         yield return new WaitForSeconds(AttackCooldown);
 
+        //shoot crystal
+        
         canAttack = true;
         ChooseState();
     }
 
 
 
-  
+
     public override void Die()
     {
-        Debug.Log("muero");
+
+        //Debug.Log("muero");
+        animator.SetTrigger("Dead");
         return;
     }
 
-  
+
 
     public override void Pull()
     {
@@ -162,14 +160,14 @@ public class rangedEnemy : SimpleEnemy
 
     public override void Stun()
     {
-       base.Stun();
+        base.Stun();
 
     }
 
 
     public override void ClearStun()
     {
-       base.ClearStun();
+        base.ClearStun();
     }
 
     public override IEnumerator ClearStunRutine()
@@ -179,8 +177,16 @@ public class rangedEnemy : SimpleEnemy
 
     public override void TakeDamage(float damage)
     {
-        this.Health -= damage;
-        ChooseState();
+        if(damage >= this.Health)
+        {
+            animator.SetTrigger("Dead");
+        }
+        base.TakeDamage(damage);
+        animator.SetBool("isAttacking", false);
+        animator.SetBool("IsMoving", false);
+        animator.SetTrigger("Hit");
+        //Debug.Log("ouch" +  damage);
+        
     }
 
     public override void Chase()
@@ -192,41 +198,47 @@ public class rangedEnemy : SimpleEnemy
 
     public override IEnumerator ChaseRoutine()
     {
-        //    agent.isStopped = false;
 
-        //    while (Target != null)
-        //    {
-        //        float distance = Vector3.Distance(Target.transform.position, transform.position);
+        agent.isStopped = false;
 
-        //        if (distance <= AttackRange)
-        //        {
-        //            agent.isStopped = true;
-        //            chaseCoroutine = null;
-        //            ChooseState();
-        //            yield break;
-        //        }
-        //        else if (distance > VisionDistance)
-        //        {
-        //            agent.isStopped = true;
-        //            Target = null;
-        //            chaseCoroutine = null;
-        //            ChooseState();
+        while (Target != null)
+        {
+            float distance = Vector3.Distance(Target.transform.position, transform.position);
 
-        //            yield break;
-        //        }
-        //        else
-        //        {
-        //            agent.SetDestination(Target.transform.position);
+            if (distance <= AttackRange)
+            {
+                agent.isStopped = true;
+                chaseCoroutine = null;
+                animator.SetBool("IsMoving", false);
+                ChooseState();
+                yield break;
+            }
+            else if (distance > VisionDistance)
+            {
+                animator.SetBool("IsMoving", false);
 
-        //            yield return new WaitForSeconds(0.2f);
-        //        }
-        //    }
+                agent.isStopped = true;
+                Target = null;
+                chaseCoroutine = null;
+                ChooseState();
+
+                yield break;
+            }
+            else
+            {
+                animator.SetBool("IsMoving", true);
+
+                agent.speed = Speed;
+                agent.SetDestination(Target.transform.position);
 
 
-        //    agent.isStopped = true;
-        //    this.Target = null;
-        //    chaseCoroutine = null;
-        yield return base.ChaseRoutine();
+                yield return new WaitForSeconds(0.2f);
+            }
+        }
+        //animator.SetBool("isAttacking", false);
+        //animator.Play(idleName);
+        //animator.SetBool("isMoving", true);
+        //yield return base.ChaseRoutine();
 
     }
 }
