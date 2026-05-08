@@ -169,7 +169,8 @@ public class MediumEnemy : SimpleEnemy
     {
         if (Target == null) return; 
         Debug.Log("atac basic");
-        if (Target.TryGetComponent<IHealthable>(out IHealthable hurtable))
+        float distance = Vector3.Distance(Target.transform.position, this.transform.position);
+        if (Target.TryGetComponent<IHealthable>(out IHealthable hurtable) && distance <= AttackRange)
         {
             Debug.Log("pego 1,2");
 
@@ -181,7 +182,8 @@ public class MediumEnemy : SimpleEnemy
     {
         if (Target == null) return; 
         Debug.Log("atac charged");
-        if (Target.TryGetComponent<IHealthable>(out IHealthable hurtable))
+        float distance = Vector3.Distance(Target.transform.position, this.transform.position);
+        if (Target.TryGetComponent<IHealthable>(out IHealthable hurtable) && distance <= AttackRange)
         {
             Debug.Log("pego cargado");
 
