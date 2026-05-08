@@ -2,27 +2,60 @@ using UnityEngine;
 
 public class ExplosiveCrystal : Crystal
 {
-    [SerializeField]
-    private float MaxExplosionDamage;
-    [SerializeField]
-    private float MinExplosionDamage;
-    [SerializeField]
-    private float ExplosionRadius;
-    //Use spherecast to detect all objects in the explosion radius and apply damage based on distance from explosion center
-    override protected void Hit(Collision collision)
+    public override float damage { get; set; } = 10;
+
+
+    private float MaxExplosionDamage = 110;
+
+    private float MinExplosionDamage = 20;
+
+    private float ExplosionRadius = 5;
+
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, ExplosionRadius);
-        foreach (Collider collider in colliders)
+        Debug.Log("hola");
+       
+        Hit(other);
+       
+    }
+    override protected void Hit(Collider collision)
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, ExplosionRadius, layer);
+        foreach (Collider other in colliders)
         {
-            if (collider.gameObject.CompareTag("Player") || collider.gameObject.CompareTag("Companion") || collider.gameObject.CompareTag("Enemy"))
+
+            //object is in layer
+            bool directLayerMatch = (layer.value & (1 << other.gameObject.layer)) != 0;
+
+            // object parent is in layer
+            bool parentLayerMatch = other.transform.parent != null &&
+                                    (layer.value & (1 << other.transform.parent.gameObject.layer)) != 0;
+
+            if (!directLayerMatch && !parentLayerMatch) return;
+
+            // IHealthable
+            IHealthable healthable = null;
+
+            if (other.transform.parent != null)
+                other.transform.parent.TryGetComponent(out healthable);
+
+            if (healthable == null)
+                other.TryGetComponent(out healthable);
+
+            if (healthable != null && healthable.CanBeHurt)
             {
-                if (collider.gameObject.TryGetComponent<IHealthable>(out var hurtable))
-                {
-                    float distance = Vector3.Distance(transform.position, collider.transform.position);
-                    float damageAmount = Mathf.Lerp(MaxExplosionDamage, MinExplosionDamage, distance / ExplosionRadius);
-                    hurtable.TakeDamage(damageAmount);
-                }
+                float distance = Vector3.Distance(transform.position, other.transform.position);
+                float damageAmount = Mathf.Lerp(MaxExplosionDamage, MinExplosionDamage, distance / ExplosionRadius);
+                Debug.Log(distance);
+                //float damageAmount = (ExplosionRadius/distance) * 100;
+                Debug.Log(damageAmount);
+                healthable.TakeDamage(damageAmount);
+                //Hit(other);
+
             }
+
+           
+
         }
         Destroy(gameObject);
     }

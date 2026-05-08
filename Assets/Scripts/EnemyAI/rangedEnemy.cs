@@ -134,7 +134,7 @@ public class rangedEnemy : SimpleEnemy
 
         yield return new WaitForSeconds(AttackCooldown);
 
-        
+        //shoot crystal
         
         canAttack = true;
         ChooseState();
@@ -185,7 +185,7 @@ public class rangedEnemy : SimpleEnemy
         animator.SetBool("isAttacking", false);
         animator.SetBool("IsMoving", false);
         animator.SetTrigger("Hit");
-        Debug.Log("ouch");
+        //Debug.Log("ouch" +  damage);
         
     }
 
