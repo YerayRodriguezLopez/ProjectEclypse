@@ -177,8 +177,8 @@ public class GameManager : MonoBehaviour, ISaveable
         _isInputEnabled        = false;
 
         ResetTimer();
-        // disabled for debug
-        //SetState(GameState.MainMenu);
+        if(SceneManager.GetActiveScene().buildIndex < 1)
+            SetState(GameState.MainMenu);
     }
 
     public void Start()
