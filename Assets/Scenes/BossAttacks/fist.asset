@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9537f0d25bd1d449a3281b121f9e54f, type: 3}
-  m_Name: laser
-  m_EditorClassIdentifier: Assembly-CSharp::LaserAttack
-  attackName: 
+  m_Script: {fileID: 11500000, guid: 18c1fe4a23e863a4c8b3afc0a763058a, type: 3}
+  m_Name: fist
+  m_EditorClassIdentifier: Assembly-CSharp::FistSlamAttack
+  attackName: fist down
   damage: 10
   weight: 50
-  laserDuration: 2.5
-  rotationSpeed: 45
-  damageTickRate: 0.2
-  laserLength: 20
-  laserWidth: 0.3
+  warningDuration: 1.5
+  fistFallSpeed: 20
+  impactRadius: 3
+  spawnHeight: 15
