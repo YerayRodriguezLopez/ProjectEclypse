@@ -16,7 +16,6 @@ MonoBehaviour:
   damage: 10
   weight: 50
   laserDuration: 2.5
-  rotationSpeed: 45
   damageTickRate: 0.2
-  laserLength: 20
+  laserLength: 40
   laserWidth: 0.3

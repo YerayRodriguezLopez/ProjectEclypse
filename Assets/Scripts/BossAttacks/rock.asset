@@ -17,5 +17,5 @@ MonoBehaviour:
   weight: 50
   projectileSpeed: 20
   arcHeight: 5
-  lifetime: 5
+  lifetime: 1.5
   impactRadius: 2
