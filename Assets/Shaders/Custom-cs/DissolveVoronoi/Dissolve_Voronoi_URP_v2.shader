@@ -19,7 +19,7 @@ Shader "Custom/Dissolve_Voronoi_URP_V2"
 
     // ─── Shared HLSL include (avoids duplicating helpers across passes) ───
     HLSLINCLUDE
-    #pragma target 3.0                          // Fix #4 — explicit SM target
+    #pragma target 3.0                          // explicit SM target for MQ3
     #pragma multi_compile_instancing
 
     #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
