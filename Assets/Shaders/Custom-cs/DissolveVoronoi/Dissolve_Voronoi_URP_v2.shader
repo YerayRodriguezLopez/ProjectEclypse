@@ -19,13 +19,13 @@ Shader "Custom/Dissolve_Voronoi_URP_V2"
 
     // ─── Shared HLSL include (avoids duplicating helpers across passes) ───
     HLSLINCLUDE
-    #pragma target 3.0                          // Fix #4 — explicit SM target
+    #pragma target 3.0                          // explicit SM target for MQ3
     #pragma multi_compile_instancing
 
     #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
     // ─── Constant buffer (SRP Batcher compatible) ────────────────────────
-    // Fix #2 — declared once here, shared by both passes
+    // declared once here, shared by both passes
     CBUFFER_START(UnityPerMaterial)
         float4 _MainTex_ST;
         half4 _Color;
@@ -47,12 +47,6 @@ Shader "Custom/Dissolve_Voronoi_URP_V2"
         return frac(sin(float2(dot(cell, float2(127.1, 311.7)),
                                    dot(cell, float2(269.5, 183.3)))) * 43758.5453);
     }
-
-    // ────────────────────────────────────────────────────────────────────
-    // Voronoi projection options — only ONE block should be active at a time.
-    // Active:    Option A (Object-space)
-    // Commented: Option B (Triplanar)
-    // ────────────────────────────────────────────────────────────────────
 
     // Computed in 3D object space — fully seam-free on any mesh.
     // The Pattern ignores UV layout and won't align with texture detail.
@@ -96,7 +90,7 @@ Shader "Custom/Dissolve_Voronoi_URP_V2"
             "UniversalMaterialType" = "Unlit"
         }
         LOD 100
-        Cull Back // Fix #9 — closed character meshes don't need double-sided
+        Cull Back // closed character meshes don't need double-sided
 
         // ── Forward Lit pass ─────────────────────────────────────────────
         Pass
@@ -108,7 +102,7 @@ Shader "Custom/Dissolve_Voronoi_URP_V2"
             }
 
             HLSLPROGRAM
-            // Fix #5 — shader_feature_local strips unused shadow variants from build
+            // shader_feature_local strips unused shadow variants from build
             #pragma shader_feature_local _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE
             #pragma shader_feature_local _ _SHADOWS_SOFT
 
@@ -133,7 +127,7 @@ Shader "Custom/Dissolve_Voronoi_URP_V2"
                 float4 positionHCS : SV_POSITION;
                 float2 uvMain : TEXCOORD0;
                 float3 positionOS : TEXCOORD1;
-                float3 normalOS : TEXCOORD2; // needed by triplanar Option B
+                float3 normalOS : TEXCOORD2;
                 UNITY_VERTEX_OUTPUT_STEREO
             };
 
@@ -155,7 +149,7 @@ Shader "Custom/Dissolve_Voronoi_URP_V2"
 
                 float voronoi = VoronoiDistance(IN.uvMain, IN.positionOS);
 
-                // Fix #1 — single driver: _DissolveAmount only (C# owns timing)
+                // single driver: _DissolveAmount only (C# owns timing)
                 half threshold = saturate(_DissolveAmount);
 
                 clip(voronoi - threshold);
@@ -180,7 +174,7 @@ Shader "Custom/Dissolve_Voronoi_URP_V2"
             ZWrite On
             ZTest LEqual
             ColorMask 0
-            Cull Back // Fix #9 — matches forward pass
+            Cull Back // matches forward pass
 
             HLSLPROGRAM
             #pragma vertex   ShadowVertexFunction
@@ -201,7 +195,7 @@ Shader "Custom/Dissolve_Voronoi_URP_V2"
                 float4 positionHCS : SV_POSITION;
                 float2 uvMain : TEXCOORD0;
                 float3 positionOS : TEXCOORD1;
-                float3 normalOS : TEXCOORD2; // needed by triplanar Option B
+                float3 normalOS : TEXCOORD2;
                 UNITY_VERTEX_OUTPUT_STEREO
             };
 
@@ -220,7 +214,7 @@ Shader "Custom/Dissolve_Voronoi_URP_V2"
             half4 ShadowFragmentFunction(ShadowVaryings IN) : SV_Target
             {
                 UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(IN);
-                // Fix #1 — single driver here too
+                // single driver here too
                 clip(VoronoiDistance(IN.uvMain, IN.positionOS) - saturate(_DissolveAmount));
                 return 0;
             }

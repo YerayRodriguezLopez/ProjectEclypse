@@ -108,6 +108,14 @@ public class GameManager : MonoBehaviour, ISaveable
     public event Action<Vector3> OnPlayerRespawned;
 
     /// <summary>
+    /// --- Companions ---
+    /// Fired immediately after OnPlayerRespawned, once all companions have been
+    /// teleported to their anchor offsets. Available for subscribers that need
+    /// to react to the reposition (e.g. VFX, audio, UI).
+    /// </summary>
+    public event Action OnCompanionsRespawned;
+
+    /// <summary>
     /// --- Checkpoints ---
     /// Fired when a new checkpoint is registered.
     /// Passes (checkpointId, respawnPosition).
@@ -177,13 +185,18 @@ public class GameManager : MonoBehaviour, ISaveable
         _isInputEnabled        = false;
 
         ResetTimer();
-        // disabled for debug
-        //SetState(GameState.MainMenu);
+        SetState(GameState.MainMenu);
     }
 
-    public void Start()
+    /// <summary>
+    /// Soft reset for level restarts. Resets state and timer but preserves
+    /// checkpoint data so the player respawns at their last checkpoint.
+    /// </summary>
+    private void ResetLevelState()
     {
-        SetState(GameState.Playing);
+        IsGamePaused    = false;
+        _isInputEnabled = false;
+        ResetTimer();
     }
 
     #endregion
@@ -442,6 +455,29 @@ public class GameManager : MonoBehaviour, ISaveable
         // completes the teleport while the player is still locked out of controls.
         OnPlayerRespawned?.Invoke(LastCheckpointPosition);
 
+        // Teleport each companion to its assigned anchor offset from the respawn
+        // position. Safe with 0 or 1 companions — the loop is a no-op if the
+        // registry is empty.
+        if (_companions.Count > 0)
+        {
+            for (int i = 0; i < _companions.Count; i++)
+            {
+                Transform anchor = GetFollowAnchor(i);
+
+                if (anchor && _companions[i])
+                {
+                    _companions[i].transform.position = LastCheckpointPosition + anchor.localPosition;
+                }
+                else
+                {
+                    Debug.LogWarning($"[GameManager] RespawnRoutine — could not teleport companion " +
+                                     $"at index {i}: anchor or companion reference is null.");
+                }
+            }
+
+            OnCompanionsRespawned?.Invoke();
+        }
+
         SetState(GameState.Playing);
     }
 
@@ -454,7 +490,7 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         StopAllCoroutines();
-        InitializeGame();
+        ResetLevelState();
         SceneManager.LoadScene(currentSceneIndex);
     }
 
@@ -606,6 +642,16 @@ public class GameManager : MonoBehaviour, ISaveable
     /// </summary>
     private void OnSceneLoaded_Companions(Scene scene, LoadSceneMode mode)
     {
+        switch (scene.buildIndex)
+        {
+            case 1:
+                SetState(GameState.Playing);
+                break;
+            case 2:
+                SetState(GameState.Playing);
+                break;
+        }
+
         Debug.Log($"[GameManager] Scene loaded: '{scene.name}'. " +
                   $"Active companions: {_companions.Count}.");
     }
