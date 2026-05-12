@@ -85,7 +85,7 @@ public class LaserAttack : BossAttack
         
         int layerMask = ~(1 << boss.gameObject.layer);
 
-        Debug.DrawRay(origin, direction * laserLength, Color.red, damageTickRate);
+        //Debug.DrawRay(origin, direction * laserLength, Color.red, damageTickRate);
 
         if (Physics.Raycast(origin, direction, out RaycastHit hit, laserLength, layerMask))
         {

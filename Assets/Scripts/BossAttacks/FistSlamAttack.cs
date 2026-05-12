@@ -18,25 +18,23 @@ public class FistSlamAttack : BossAttack
     {
         Vector3 groundPos = new Vector3(targetPosition.x, 0.1f, targetPosition.z);
 
-        // Warning indicator desde el Boss
         GameObject warning = Instantiate(boss.warningIndicatorPrefab, groundPos, Quaternion.identity);
         yield return new WaitForSeconds(warningDuration);
         Destroy(warning);
 
-        // Puño desde el Boss
         Vector3 spawnPos = groundPos + Vector3.up * spawnHeight;
         GameObject fist = Instantiate(boss.fistPrefab, spawnPos, Quaternion.identity);
 
-        while (fist != null && fist.transform.position.y > groundPos.y)
+        while (fist != null && fist.transform.position.y > groundPos.y + 2.5f)
         {
             fist.transform.position += Vector3.down * fistFallSpeed * Time.deltaTime;
             yield return null;
         }
-
+        
         Collider[] hits = Physics.OverlapSphere(groundPos, impactRadius);
         foreach (var hit in hits)
             hit.GetComponent<IHealthable>()?.TakeDamage(damage);
 
-        if (fist != null) Destroy(fist, 0.3f);
+        if (fist != null) Destroy(fist, 0.5f);
     }
 }
