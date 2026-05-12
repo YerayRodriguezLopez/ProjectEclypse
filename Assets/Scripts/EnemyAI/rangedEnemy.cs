@@ -15,7 +15,7 @@ public class rangedEnemy : SimpleEnemy
     public override float Damage { get; set; } = 15;
     public override float AttackCooldown { get; set; } = 3f;
     public override float AttackSpeed { get; set; } = 1;
-    public override float AttackRange { get; set; } = 8f;
+    public override float AttackRange { get; set; } = 10f;
     public override float Speed { get; set; } = 3f;
     public override float MaxHealth { get; set; } = 100;
 
@@ -156,6 +156,7 @@ public class rangedEnemy : SimpleEnemy
 
         Vector3 startPos = this.transform.position;// + Vector3.up * 2f;
         GameObject rock = Instantiate(rockPrefab, startPos, Random.rotation);
+        rock.SetActive(true);
 
         Vector3 targetPos = Target.transform.position;
         float elapsed = 0f;

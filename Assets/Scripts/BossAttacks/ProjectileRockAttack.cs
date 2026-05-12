@@ -16,7 +16,6 @@ public class ProjectileRockAttack : BossAttack
 
     private IEnumerator ShootRock(Boss boss, Transform target)
     {
-        // Spawnea la roca en la posición del boss (ligeramente elevada)
         Vector3 startPos = boss.transform.position + Vector3.up * 2f;
         GameObject rock = Instantiate(boss.rockPrefab, startPos, Random.rotation);
 
@@ -25,19 +24,16 @@ public class ProjectileRockAttack : BossAttack
 
         while (elapsed < lifetime)
         {
-            // Si la roca llega cerca del objetivo, impacta
             if (Vector3.Distance(rock.transform.position, targetPos) < 0.5f)
                 break;
 
             elapsed += Time.deltaTime;
             float t = elapsed / lifetime;
-
-            // Interpolación con arco parabólico
+            
             Vector3 linearPos = Vector3.Lerp(startPos, targetPos, t);
             float arc = Mathf.Sin(Mathf.PI * t) * arcHeight;
             rock.transform.position = linearPos + Vector3.up * arc;
 
-            // Rota la roca para que parezca que rueda en el aire
             rock.transform.Rotate(Vector3.right * 200f * Time.deltaTime);
 
             yield return null;

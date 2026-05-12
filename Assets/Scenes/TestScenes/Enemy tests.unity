@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &75034594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2351,7 +2351,7 @@ Transform:
   m_GameObject: {fileID: 1436132312}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.02, y: 1.14, z: 6.76}
+  m_LocalPosition: {x: -3.41, y: 1.14, z: 9.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3064,7 +3064,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 17
+  m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1538279230
 MonoBehaviour:
@@ -3081,8 +3081,8 @@ MonoBehaviour:
   Target: {fileID: 0}
   agent: {fileID: 0}
   projectileSpeed: 200
-  arcHeight: 1
-  lifetime: 0.5
+  arcHeight: 0.5
+  lifetime: 1
   rockPrefab: {fileID: 75034593}
   tt: {fileID: 0}
   animator: {fileID: 1538279231}
@@ -3195,7 +3195,7 @@ Transform:
   m_GameObject: {fileID: 1551006495}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 4.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

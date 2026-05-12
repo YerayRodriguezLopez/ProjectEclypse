@@ -4,11 +4,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LaserAttack", menuName = "Boss/Attacks/Laser")]
 public class LaserAttack : BossAttack
 {
-    public float laserDuration = 2.5f;       // Cuánto dura el laser
-    public float rotationSpeed = 45f;         // Grados por segundo que persigue al jugador
-    public float damageTickRate = 0.2f;       // Cada cuántos segundos hace daño
-    public float laserLength = 20f;
-    public float laserWidth = 0.3f;
+    public float laserDuration = 2.5f;
+    public float damageTickRate = 0.2f;
+    public float laserLength = 40f;
+    public float laserWidth = 0.1f;
+
+    private const float SWEEP_DEGREES = 30f;
+    private const float START_OFFSET = -15f; 
 
     public override void Execute(Boss boss, Transform target)
     {
@@ -17,54 +19,91 @@ public class LaserAttack : BossAttack
 
     private IEnumerator LaserRoutine(Boss boss, Transform target)
     {
-        // Crea el laser desde el Boss
         GameObject laser = Instantiate(boss.laserPrefab, boss.transform.position, Quaternion.identity);
-        laser.transform.SetParent(boss.transform); // Se mueve con el boss
-
-        // Escala el LineRenderer o el objeto para que tenga la longitud correcta
+        laser.transform.SetParent(boss.transform);
         laser.transform.localScale = new Vector3(laserWidth, laserWidth, laserLength);
+
+        Vector3 dirToTarget = (target.position - boss.transform.position).normalized;
+        Quaternion baseRotation = Quaternion.LookRotation(dirToTarget);
+
+        Quaternion startRotation = baseRotation * Quaternion.Euler(0f, START_OFFSET, 0f);
+        Quaternion endRotation = baseRotation * Quaternion.Euler(0f, START_OFFSET + SWEEP_DEGREES, 0f);
+
+        laser.transform.rotation = startRotation;
 
         float elapsed = 0f;
         float damageTimer = 0f;
 
-        // Apunta inicialmente al jugador de golpe
-        Vector3 dirToPlayer = (target.position - boss.transform.position).normalized;
-        laser.transform.rotation = Quaternion.LookRotation(dirToPlayer);
-
         while (elapsed < laserDuration)
         {
+            float t = elapsed / laserDuration;
+
+            laser.transform.rotation = Quaternion.Slerp(startRotation, endRotation, t);
+
             elapsed += Time.deltaTime;
             damageTimer += Time.deltaTime;
 
-            // Rota lentamente hacia el jugador
-            Vector3 targetDir = (target.position - boss.transform.position).normalized;
-            Quaternion targetRotation = Quaternion.LookRotation(targetDir);
-            laser.transform.rotation = Quaternion.RotateTowards(
-                laser.transform.rotation,
-                targetRotation,
-                rotationSpeed * Time.deltaTime * 0.5f
-            );
-
-            // Daño por tick si el laser apunta al jugador
             if (damageTimer >= damageTickRate)
             {
                 damageTimer = 0f;
-                CheckLaserHit(boss, laser, target);
+                CheckLaserHit(boss, laser);
             }
 
             yield return null;
         }
 
+        laser.transform.rotation = endRotation;
         Destroy(laser);
     }
 
-    private void CheckLaserHit(Boss boss, GameObject laser, Transform target)
+    //private void CheckLaserHit(Boss boss, GameObject laser)
+    //{
+    //    Debug.Log("raycast");
+    //    if (Physics.Raycast(boss.transform.position, laser.transform.forward,
+    //        out RaycastHit hit, laserLength))
+    //    {
+    //        //hit.collider.GetComponent<IHealthable>()?.TakeDamage(damage * damageTickRate);
+    //        //Debug.Log("hit");
+    //        IHealthable healthable = null;
+    //        if (hit.collider.transform.parent != null)
+    //            hit.collider.transform.parent.TryGetComponent(out healthable);
+
+    //        if (healthable == null)
+    //            hit.collider.TryGetComponent(out healthable);
+
+    //        if (healthable != null && healthable.CanBeHurt)
+    //            healthable.TakeDamage(20);
+
+    //    }
+
+    //}
+    private void CheckLaserHit(Boss boss, GameObject laser)
     {
-        // Raycast en la dirección del laser
-        if (Physics.Raycast(boss.transform.position, laser.transform.forward,
-            out RaycastHit hit, laserLength))
+        Vector3 origin = boss.transform.position;
+        Vector3 direction = laser.transform.forward;
+
+        
+        int layerMask = ~(1 << boss.gameObject.layer);
+
+        Debug.DrawRay(origin, direction * laserLength, Color.red, damageTickRate);
+
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, laserLength, layerMask))
         {
-            hit.collider.GetComponent<IHealthable>()?.TakeDamage(damage * damageTickRate);
+            Debug.Log($"Laser hit: {hit.collider.name} | Parent: {hit.collider.transform.parent?.name}");
+
+            IHealthable healthable = null;
+
+            if (hit.collider.transform.parent != null)
+                hit.collider.transform.parent.TryGetComponent(out healthable);
+
+            if (healthable == null)
+                hit.collider.TryGetComponent(out healthable);
+
+            if (healthable != null && healthable.CanBeHurt)
+            {
+                Debug.Log("Dealing damage!");
+                healthable.TakeDamage(20);
+            }
         }
     }
 }
