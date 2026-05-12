@@ -18,7 +18,6 @@ public class MediumEnemy : SimpleEnemy
     public override float MaxHealth { get; set; } = 100;
 
 
-    //[SerializeField] private List<AnimationClip> Attacks;
 
     public Animator animator;
 
