@@ -64,7 +64,7 @@ public class SaveData
         {
             -1 => 1,    // No checkpoint yet — load tutorial from the start.
             0  => 1,    // First checkpoint is still inside the tutorial.
-            _  => 2     // Second checkpoint or later → main scene.
+            _  => 2     // Second checkpoint or later → boss level scene.
         };
     }
 }

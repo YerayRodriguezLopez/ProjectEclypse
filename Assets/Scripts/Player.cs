@@ -32,7 +32,7 @@ public class Player : NPC
     }
 
 
-    public void Heal(float heal)
+    public override void Heal(float heal)
     {
         Health += heal;
     }
