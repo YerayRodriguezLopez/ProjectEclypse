@@ -18,6 +18,8 @@ public class rangedEnemy : SimpleEnemy
     public override float AttackRange { get; set; } = 10f;
     public override float Speed { get; set; } = 3f;
     public override float MaxHealth { get; set; } = 100;
+    private bool FuncitonalEnemy = false;
+
 
     public float projectileSpeed = 200f;
     public float arcHeight = 1f;
@@ -32,8 +34,9 @@ public class rangedEnemy : SimpleEnemy
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.isStopped = true;
         animator = GetComponent<Animator>();
-        ChooseState();
+        CanBeHurt = false;
     }
     public void Awake()
     {
@@ -42,6 +45,14 @@ public class rangedEnemy : SimpleEnemy
     {
     }
 
+    public void functional()    
+    {
+        CanBeHurt = true;
+        agent.isStopped = false;
+        FuncitonalEnemy = true;
+        ChooseState();
+
+}
     public override void ChooseState()
     {
 
@@ -92,7 +103,7 @@ public class rangedEnemy : SimpleEnemy
         if (other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6)
         {
             // Intentamos obtener IHealthable del objeto detectado
-            if (other.TryGetComponent<IHealthable>(out IHealthable newHurtable))
+            if (other.TryGetComponent<IHealthable>(out IHealthable newHurtable) && FuncitonalEnemy)
             {
                 if (Target == null)
                 {

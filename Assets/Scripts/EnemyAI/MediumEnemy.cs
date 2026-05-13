@@ -1,4 +1,5 @@
-using NUnit.Framework;
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class MediumEnemy : SimpleEnemy
     public override float AttackRange { get; set; } = 5f;
     public override float Speed { get; set; } = 2f;
     public override float MaxHealth { get; set; } = 100;
-
+    private bool FuncitonalEnemy = false;
 
 
     public Animator animator;
@@ -27,16 +28,30 @@ public class MediumEnemy : SimpleEnemy
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        ChooseState();
+        agent.isStopped = true;
+        CanBeHurt = false;
+
+    }
+    private void Awake()
+    {
+        
     }
 
     private void Update()
     {
         
     }
+    public void functional()
+    {
+        CanBeHurt = true;
+        agent.isStopped = false;
+        ChooseState();
+        FuncitonalEnemy = true;
 
+    }
     public override void ChooseState()
     {
+        Debug.Log("empiezo");
         if (Health <= 0) Die();
         else if (IsStunned) return;
         else if (Target != null && !IsStunned)
@@ -85,9 +100,9 @@ public class MediumEnemy : SimpleEnemy
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6)
+        if (other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6 )
         {
-            if (other.TryGetComponent<IHealthable>(out IHealthable newHurtable))
+            if (other.TryGetComponent<IHealthable>(out IHealthable newHurtable) && FuncitonalEnemy)
             {
                 if (Target == null)
                 {
