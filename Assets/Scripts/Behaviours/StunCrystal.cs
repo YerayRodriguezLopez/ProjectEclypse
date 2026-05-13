@@ -6,16 +6,16 @@ public class StunCrystal : Crystal
 
     protected void OnTriggerEnter(Collider other)
     {
-        // object is in layer
+       
         bool directLayerMatch = (layer.value & (1 << other.gameObject.layer)) != 0;
 
-        // object parent is in layer
+     
         bool parentLayerMatch = other.transform.parent != null &&
                                 (layer.value & (1 << other.transform.parent.gameObject.layer)) != 0;
 
         if (!directLayerMatch && !parentLayerMatch) return;
 
-        // IHealthable
+      
         IHealthable healthable = null;
 
         if (other.transform.parent != null)

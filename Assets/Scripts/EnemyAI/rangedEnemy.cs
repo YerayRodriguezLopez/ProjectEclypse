@@ -13,11 +13,19 @@ public class rangedEnemy : SimpleEnemy
     public override float VisionDistance { get; set; } = 17;
     public override float Health { get; set; } = 100;
     public override float Damage { get; set; } = 15;
-    public override float AttackCooldown { get; set; } = 1.5f;
+    public override float AttackCooldown { get; set; } = 3f;
     public override float AttackSpeed { get; set; } = 1;
-    public override float AttackRange { get; set; } = 8f;
+    public override float AttackRange { get; set; } = 10f;
     public override float Speed { get; set; } = 3f;
     public override float MaxHealth { get; set; } = 100;
+    private bool FuncitonalEnemy = false;
+
+
+    public float projectileSpeed = 200f;
+    public float arcHeight = 1f;
+    public float lifetime = 7f;
+
+    public GameObject rockPrefab;
     public GameObject tt;
     public Animator animator;
 
@@ -26,8 +34,9 @@ public class rangedEnemy : SimpleEnemy
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.isStopped = true;
         animator = GetComponent<Animator>();
-        ChooseState();
+        CanBeHurt = false;
     }
     public void Awake()
     {
@@ -36,6 +45,14 @@ public class rangedEnemy : SimpleEnemy
     {
     }
 
+    public void functional()    
+    {
+        CanBeHurt = true;
+        agent.isStopped = false;
+        FuncitonalEnemy = true;
+        ChooseState();
+
+}
     public override void ChooseState()
     {
 
@@ -86,7 +103,7 @@ public class rangedEnemy : SimpleEnemy
         if (other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6)
         {
             // Intentamos obtener IHealthable del objeto detectado
-            if (other.TryGetComponent<IHealthable>(out IHealthable newHurtable))
+            if (other.TryGetComponent<IHealthable>(out IHealthable newHurtable) && FuncitonalEnemy)
             {
                 if (Target == null)
                 {
@@ -134,15 +151,56 @@ public class rangedEnemy : SimpleEnemy
 
         yield return new WaitForSeconds(AttackCooldown);
 
-        //shoot crystal
-        
+        //StartCoroutine(ShootCrystal());
+
         canAttack = true;
         ChooseState();
     }
 
 
+    public void callAttack()
+    {
+        StartCoroutine(ShootCrystal());
+    }
+    public IEnumerator ShootCrystal()
+    {
 
+        Vector3 startPos = this.transform.position;// + Vector3.up * 2f;
+        GameObject rock = Instantiate(rockPrefab, startPos, Random.rotation);
+        rock.SetActive(true);
 
+        Vector3 targetPos = Target.transform.position;
+        float elapsed = 0f;
+
+        while (elapsed < lifetime)
+        {
+           
+            if (Vector3.Distance(rock.transform.position, targetPos) < 0.5f)
+                break;
+
+            elapsed += Time.deltaTime;
+            float t = elapsed / lifetime;
+
+           
+            Vector3 linearPos = Vector3.Lerp(startPos, targetPos, t);
+            float arc = Mathf.Sin(Mathf.PI * t) * arcHeight;
+            rock.transform.position = linearPos + Vector3.up * arc;
+
+         
+            //rock.transform.Rotate(Vector3.right * 200f * Time.deltaTime);
+
+            yield return null;
+        }
+
+        if (rock == null) yield break;
+
+        // Impacto
+        //Collider[] hits = Physics.OverlapSphere(rock.transform.position, impactRadius);
+        //foreach (var hit in hits)
+        //    hit.GetComponent<IHealthable>()?.TakeDamage(damage);
+
+        //Destroy(rock);
+    }
     public override void Die()
     {
 

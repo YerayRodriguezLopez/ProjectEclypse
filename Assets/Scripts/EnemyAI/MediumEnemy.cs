@@ -1,4 +1,5 @@
-using NUnit.Framework;
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,14 +12,13 @@ public class MediumEnemy : SimpleEnemy
     public override float VisionDistance { get; set; } = 15;
     public override float Health { get; set; } = 100;
     public override float Damage { get; set; } = 15;
-    public override float AttackCooldown { get; set; } = 1.5f;
+    public override float AttackCooldown { get; set; } = 3f;
     public override float AttackSpeed { get; set; } = 1;
     public override float AttackRange { get; set; } = 5f;
     public override float Speed { get; set; } = 2f;
     public override float MaxHealth { get; set; } = 100;
+    private bool FuncitonalEnemy = false;
 
-
-    //[SerializeField] private List<AnimationClip> Attacks;
 
     public Animator animator;
 
@@ -28,25 +28,44 @@ public class MediumEnemy : SimpleEnemy
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        ChooseState();
+        agent.isStopped = true;
+        CanBeHurt = false;
+
+    }
+    private void Awake()
+    {
+        
     }
 
     private void Update()
     {
         
     }
+    public void functional()
+    {
+        CanBeHurt = true;
+        agent.isStopped = false;
+        ChooseState();
+        FuncitonalEnemy = true;
 
+    }
     public override void ChooseState()
     {
+        Debug.Log("empiezo");
         if (Health <= 0) Die();
         else if (IsStunned) return;
         else if (Target != null && !IsStunned)
         {
+           
             float distance = Vector3.Distance(Target.transform.position, this.transform.position);
         
             if (distance <= AttackRange)
             {
+                animator.SetBool("IsAt2", false);
+                animator.SetBool("IsAt1", false);
+                animator.SetBool("IsAtCh", false);
                 animator.SetBool("IsMoving", false);
+                agent.isStopped = true;
                 Attack();
             }
             else if (distance <= VisionDistance)
@@ -65,30 +84,37 @@ public class MediumEnemy : SimpleEnemy
                 animator.SetBool("IsAt1", false);
                 animator.SetBool("IsAtCh", false);
                 Target = null;
-                //idle?
+                
             }
 
         }
+        if(Target == null)
+        {
+            animator.SetBool("IsMoving", false);
+            animator.SetBool("IsAt2", false);
+            animator.SetBool("IsAt1", false);
+            animator.SetBool("IsAtCh", false);
+        }
 
-        //idle?
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6)
+        if (other.transform.gameObject.layer == 3 || other.transform.gameObject.layer == 6 )
         {
-            // Intentamos obtener IHurtable del objeto detectado
-            if (other.TryGetComponent<IHealthable>(out IHealthable newHurtable))
+            if (other.TryGetComponent<IHealthable>(out IHealthable newHurtable) && FuncitonalEnemy)
             {
                 if (Target == null)
                 {
-                    // No había target, asignamos directamente
+                    animator.SetBool("IsMoving", false);
+                    animator.SetBool("IsAt2", false);
+                    animator.SetBool("IsAt1", false);
+                    animator.SetBool("IsAtCh", false);
                     Target = other.gameObject;
                     ChooseState();
                 }
                 else
                 {
-                    // Comparamos vida con el target actual
                     if (Target.TryGetComponent<IHealthable>(out IHealthable currentHurtable))
                     {
                         if (newHurtable.Health > currentHurtable.Health)
@@ -102,70 +128,82 @@ public class MediumEnemy : SimpleEnemy
         }
     }
 
-
     private bool canAttack = true;
+    //private bool isDealingDamage = false; 
 
     public override void Attack()
     {
         if (!canAttack) return;
 
         canAttack = false;
-        attackCoroutine = StartCoroutine(AttackRoutine());
-        ChooseState();
+        if (attackCoroutine == null)
+        {
+            attackCoroutine = StartCoroutine(AttackRoutine());
+        }
+       
     }
 
     private IEnumerator AttackRoutine()
     {
-        Debug.Log("AttackRoutine");
+        int rand = Random.Range(1, 100);
 
-        //if (Target.TryGetComponent<IHealthable>(out IHealthable hurtableTarget))
-        //{
-        //    //metodo propio de ataque de cada enemigo
+        animator.SetBool("IsAt2", false);
+        animator.SetBool("IsAt1", false);
+        animator.SetBool("IsAtCh", false);
 
-        //    int attackIndex = Random.Range(0, Attacks.Count);
-        //    //AttackAnimation(attackIndex)
-        //    Debug.Log("te pego");
-        //    hurtableTarget.TakeDamage(this.Damage);
-        //}
+        if (rand < 60)
+        {
+            animator.SetBool("IsAt1", true);
+            AttackCooldown = 1.5f;
+        }
+        else if (rand < 90)
+        {
+            animator.SetBool("IsAt2", true);
+            AttackCooldown = 1.5f;
+        }
+        else
+        {
+            animator.SetBool("IsAtCh", true);
+            AttackCooldown = 3f;
+        }
+
+
 
         yield return new WaitForSeconds(AttackCooldown);
+        animator.SetBool("IsAt2", false);
+        animator.SetBool("IsAt1", false);
+        animator.SetBool("IsAtCh", false);
 
-        int rand = Random.Range(1, 100);
-        switch (rand)
-        {
-            case int when rand > 0 && rand < 60:
-                //attack 1
-                animator.SetBool("IsAt2", false);
-                animator.SetBool("IsAtCh", false);
-                animator.SetBool("IsAt1", true);
-                break;
-            case int when rand >= 60 && rand < 90:
-                //attack 2
-                animator.SetBool("IsAtCh", false);
-                animator.SetBool("IsAt1", false);
-                animator.SetBool("IsAt2", true);
-
-                break;
-            case int when rand >= 90:
-                //attack charged
-                animator.SetBool("IsAt2", false);
-                animator.SetBool("IsAt1", false);
-                animator.SetBool("IsAtCh", true);
-                break;
-            default:
-                //attack1
-                animator.SetBool("IsAt2", false);
-                animator.SetBool("IsAtCh", false);
-                animator.SetBool("IsAt1", true);
-                break;
-        }
         canAttack = true;
-        ChooseState();
+        attackCoroutine = null;
+        StartCoroutine(waitToChooseState(1));
     }
 
+    public void DealDamageBasic()
+    {
+        if (Target == null) return; 
+        Debug.Log("atac basic");
+        float distance = Vector3.Distance(Target.transform.position, this.transform.position);
+        if (Target.TryGetComponent<IHealthable>(out IHealthable hurtable) && distance <= AttackRange)
+        {
+            Debug.Log("pego 1,2");
 
+            hurtable.TakeDamage(Damage);
+        }
+    }
 
+    public void DealDamageCharged()
+    {
+        if (Target == null) return; 
+        Debug.Log("atac charged");
+        float distance = Vector3.Distance(Target.transform.position, this.transform.position);
+        if (Target.TryGetComponent<IHealthable>(out IHealthable hurtable) && distance <= AttackRange)
+        {
+            Debug.Log("pego cargado");
 
+            hurtable.TakeDamage(Damage * 1.5f);
+        }
+    }
 
     public override void Die()
     {
@@ -196,19 +234,30 @@ public class MediumEnemy : SimpleEnemy
 
     public override void TakeDamage(float damage)
     {
-        if (damage >= this.Health)
+        if (attackCoroutine != null)
         {
-            animator.SetTrigger("Dead");
+            StopCoroutine(attackCoroutine);
+            attackCoroutine = null;
+            canAttack = true; 
         }
+
+        if (damage >= this.Health)
+            animator.SetTrigger("Dead");
+
         base.TakeDamage(damage);
         animator.SetBool("IsAt2", false);
         animator.SetBool("IsAt1", false);
         animator.SetBool("IsAtCh", false);
         animator.SetBool("IsMoving", false);
         animator.SetTrigger("Hit");
-        //Debug.Log("ouch" +  damage);
-    }
 
+        StartCoroutine(waitToChooseState(1));
+    }
+    public IEnumerator waitToChooseState(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        ChooseState();
+    }
     public override void Chase()
     {
         if (chaseCoroutine != null) return;
@@ -255,10 +304,7 @@ public class MediumEnemy : SimpleEnemy
                 yield return new WaitForSeconds(0.2f);
             }
         }
-        //animator.SetBool("isAttacking", false);
-        //animator.Play(idleName);
-        //animator.SetBool("isMoving", true);
-        //yield return base.ChaseRoutine();
+      
 
     }
 }

@@ -45,6 +45,8 @@ public abstract class SimpleEnemy : NPC, IPullable, IStunnable
     {
         //stun anim
         IsStunned = true;
+        agent.isStopped = true;
+
         ChooseState();
         ClearStun();
 

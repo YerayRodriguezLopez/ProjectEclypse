@@ -3,8 +3,8 @@ using UnityEngine;
 public abstract class Crystal : MonoBehaviour
 {
     public abstract float damage { get; set; }
-    protected bool thrown = true;
-    protected bool onGround = false;
+    protected bool thrown = false;
+    protected bool onGround = true;
 
     [SerializeField] protected LayerMask layer;
 
@@ -26,5 +26,6 @@ public abstract class Crystal : MonoBehaviour
             healthable.TakeDamage(damage);
             Debug.Log("damage");
         }
+        Destroy(gameObject);
     }
 }
