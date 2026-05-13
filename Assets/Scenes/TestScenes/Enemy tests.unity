@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StunCrystal
   layer:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 192
 --- !u!135 &75034595
 SphereCollider:
   m_ObjectHideFlags: 0
