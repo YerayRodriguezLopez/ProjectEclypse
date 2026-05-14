@@ -2,15 +2,50 @@ using UnityEngine;
 
 public class DoorOpenClose : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField]
+    Collider doorCollider;
+    [SerializeField]
+    Transform doorMesh;
+    [SerializeField]
+    int heightToMove = 2; // The height the door will move when opening
+
+    public void Open() //Open the door moving it up smoothly with an animation and disable the collider without usin Leantoward
     {
-        
+        doorMesh = transform.GetChild(0);
+        doorCollider = GetComponent<Collider>();
+        StartCoroutine(MoveDoorUp());
+    }
+    public void Close() //Close the door moving it down smoothly with an animation and enable the collider without usin Leantoward
+    {
+        StartCoroutine(MoveDoorDown());
     }
 
-    // Update is called once per frame
-    void Update()
+    private System.Collections.IEnumerator MoveDoorUp()
     {
-        
+        float elapsedTime = 0f;
+        Vector3 startingPos = doorMesh.localPosition;
+        Vector3 targetPos = startingPos + new Vector3(0, heightToMove, 0); // Move the door up by 2 units
+        while (elapsedTime < 1f) // Move the door over 1 second
+        {
+            doorMesh.localPosition = Vector3.Lerp(startingPos, targetPos, elapsedTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        doorMesh.localPosition = targetPos; // Ensure the door reaches the target position
+        doorCollider.enabled = false; // Disable the collider after opening
+    }
+    private System.Collections.IEnumerator MoveDoorDown()
+    {
+        float elapsedTime = 0f;
+        Vector3 startingPos = doorMesh.localPosition;
+        Vector3 targetPos = startingPos - new Vector3(0, heightToMove, 0); // Move the door down by 2 units
+        while (elapsedTime < 1f) // Move the door over 1 second
+        {
+            doorMesh.localPosition = Vector3.Lerp(startingPos, targetPos, elapsedTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        doorMesh.localPosition = targetPos; // Ensure the door reaches the target position
+        doorCollider.enabled = true; // Enable the collider after closing
     }
 }
