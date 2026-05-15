@@ -23,7 +23,7 @@ public class StunCrystal : Crystal
 
     private void AlSoltarObjeto(SelectExitEventArgs args)
     {
-        Debug.Log("El objeto ha sido soltado por: " + args.interactorObject.transform.name);
+        Debug.Log("El objeto ha sido soltado");// + args.interactorObject.transform.name);
     }
 
     protected void OnTriggerEnter(Collider other)

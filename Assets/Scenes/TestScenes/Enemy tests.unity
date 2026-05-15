@@ -293,7 +293,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 2
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -2523,6 +2523,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4040745395195408977, guid: ad827103fe99bb5468723c7f8d12d9c4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5892363421432494994, guid: ad827103fe99bb5468723c7f8d12d9c4, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -4210,5 +4214,4 @@ SceneRoots:
   - {fileID: 1027168613}
   - {fileID: 75034598}
   - {fileID: 849443157}
-  - {fileID: 346944916}
   - {fileID: 1389231764}
