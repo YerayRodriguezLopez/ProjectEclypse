@@ -1,0 +1,2 @@
+C:\DAMv2\Projecte\Final\ProjectEclypse\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\DAMv2\Projecte\Final\ProjectEclypse\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
