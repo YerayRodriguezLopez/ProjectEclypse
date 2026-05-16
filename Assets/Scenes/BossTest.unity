@@ -651,9 +651,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StunCrystal
   thrown: 1
+  onGround: 0
   layer:
     serializedVersion: 2
     m_Bits: 256
+  forceSpeed: 20
 --- !u!135 &244729489
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -875,9 +877,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StunCrystal
   thrown: 0
+  onGround: 1
   layer:
     serializedVersion: 2
     m_Bits: 64
+  forceSpeed: 20
 --- !u!114 &356719684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1398,9 +1402,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StunCrystal
   thrown: 1
+  onGround: 0
   layer:
     serializedVersion: 2
     m_Bits: 256
+  forceSpeed: 20
 --- !u!135 &511676068
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1556,9 +1562,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StunCrystal
   thrown: 1
+  onGround: 0
   layer:
     serializedVersion: 2
     m_Bits: 256
+  forceSpeed: 20
 --- !u!135 &789611408
 SphereCollider:
   m_ObjectHideFlags: 0
