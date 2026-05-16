@@ -1,9 +1,29 @@
 fileFormatVersion: 2
-guid: 8a10a06c9ed78ab47b302222e268dc57
+guid: 6b4c1314c5a17a941bb2d554a9a00c88
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BODY
+    second: {fileID: 2100000, guid: b3a8d08d1738e854ba90387baeb3eb23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CRYSTAL
+    second: {fileID: 2100000, guid: 3f174e89f6a00624bab1ba9b2f18458e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EYE
+    second: {fileID: 2100000, guid: 851818724d8f91f43a2188b57b4f8932, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: IRIS
+    second: {fileID: 2100000, guid: 7f0bff61655df104086e77f6cefc1084, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -21,7 +41,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 1
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -96,11 +116,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: c1244e3fbb731674190979cfd5519b36, type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 2
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
