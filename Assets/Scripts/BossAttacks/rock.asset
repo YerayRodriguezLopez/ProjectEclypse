@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileRockAttack
   attackName: rock
   damage: 10
-  weight: 50
+  weight: 0
   projectileSpeed: 20
   arcHeight: 5
   lifetime: 1.5

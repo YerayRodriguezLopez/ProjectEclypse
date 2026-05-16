@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Boss : NPC
 {
-    public override float Health { get; set; } = 100;
-    public override float MaxHealth { get; set; } = 100;
+    public override float Health { get; set; } = 30;
+    public override float MaxHealth { get; set; } = 30;
     public override float Damage { get; set; } = 15;
     public override float AttackCooldown { get; set; } = 6f;
     public override float AttackSpeed { get; set; } = 1;
@@ -25,10 +25,14 @@ public class Boss : NPC
     public BossAttack[] attacks;
 
     private bool isAlive = true;
+    private Animator animator;
+    public GameObject laserInstance;
 
     private void Start()
     {
+        this.ITime = 1f;
         MaxHealth = Health;
+        animator = GetComponent<Animator>();
         StartCoroutine(AttackRoutine());
     }
 
@@ -61,8 +65,27 @@ public class Boss : NPC
         isAlive = false;
         StopAllCoroutines();
         Debug.Log("Boss derrotado!");
+        animator.SetTrigger("Dead");
     }
 
+    public override void TakeDamage(float damage)
+    {
+        laserInstance?.SetActive(false);
+
+        if (damage < this.Health)
+        {
+
+            base.TakeDamage(damage);
+            //StopAllCoroutines();
+            animator.SetTrigger("Hit");
+            //StartCoroutine(AttackRoutine());
+        }
+        else
+        {
+            Die();
+        }
+
+    }
     private IEnumerator AttackRoutine()
     {
         yield return new WaitForSeconds(4f);

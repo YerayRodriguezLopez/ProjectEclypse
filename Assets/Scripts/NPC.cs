@@ -6,17 +6,13 @@ public abstract class NPC : MonoBehaviour, IHealthable
     public abstract float Health { get; set; }
     public abstract float MaxHealth { get; set; }
 
-    //[SerializeField] private float _health;
 
     public abstract float Damage { get; set; }
 
-    //[SerializeField] private float _damage;
     public abstract float AttackCooldown { get; set; }
 
-    //[SerializeField] private float _attackCooldown = 1;
     public abstract float AttackSpeed{ get; set; }
 
-    //[SerializeField] private float _attackSpeed = 1;
     public abstract float AttackRange{ get; set; }
 
     public virtual float ITime { get; set; } = 1f;
@@ -24,7 +20,6 @@ public abstract class NPC : MonoBehaviour, IHealthable
     public virtual bool CanBeHurt { get; set; } = true;
 
     public  Coroutine InvulnerableCorutine = null;
-    //[SerializeField] private float _attackRange = 2;
     public abstract void Die();
     private void Update()
     {
@@ -60,10 +55,12 @@ public abstract class NPC : MonoBehaviour, IHealthable
     public virtual IEnumerator InvulnerabilityCD()
     {
         Debug.Log("Empiezo");
-        
+
         yield return new WaitForSeconds(ITime);
+
         this.CanBeHurt = true;
         Debug.Log("hit me baby one more time");
         this.InvulnerableCorutine = null;
+
     }
 }

@@ -24,6 +24,7 @@ public abstract class Crystal : MonoBehaviour
         if (healthable != null)
         {
             healthable.TakeDamage(damage);
+            
             Debug.Log("damage");
         }
         Destroy(gameObject);
