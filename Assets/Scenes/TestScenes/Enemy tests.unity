@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &75034594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,9 +155,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StunCrystal
   thrown: 0
+  onGround: 1
   layer:
     serializedVersion: 2
     m_Bits: 256
+  forceSpeed: 20
 --- !u!135 &75034595
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1020,6 +1022,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flying Enemy FUNCIONA POR FAVOR
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b4c1314c5a17a941bb2d554a9a00c88, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1040,6 +1046,52 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 251215176}
   m_SourcePrefab: {fileID: 100100000, guid: 6b4c1314c5a17a941bb2d554a9a00c88, type: 3}
+--- !u!1 &657918325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 657918327}
+  - component: {fileID: 657918326}
+  m_Layer: 0
+  m_Name: XR Interaction Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &657918326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657918325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.XRInteractionManager
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+--- !u!4 &657918327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657918325}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 71.260254, y: -26.00329, z: -0.010121334}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &712544330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,6 +1127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplosiveCrystal
   thrown: 0
+  onGround: 1
   layer:
     serializedVersion: 2
     m_Bits: 256
@@ -3089,7 +3142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1436132313
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4409,3 +4462,4 @@ SceneRoots:
   - {fileID: 849443157}
   - {fileID: 1389231764}
   - {fileID: 656772691}
+  - {fileID: 657918327}

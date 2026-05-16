@@ -4,7 +4,7 @@ public abstract class Crystal : MonoBehaviour
 {
     public abstract float damage { get; set; }
     public bool thrown = false;
-    protected bool onGround = true;
+    public bool onGround = true;
 
     [SerializeField] protected LayerMask layer;
 
