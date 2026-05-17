@@ -31,6 +31,7 @@ Material:
     m_Floats:
     - _DissolveAmount: 0
     - _EdgeWidth: 0.08
-    m_Colors: []
+    m_Colors:
+    - _EdgeColor: {r: 1, g: 0.98039216, b: 0.76862746, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
