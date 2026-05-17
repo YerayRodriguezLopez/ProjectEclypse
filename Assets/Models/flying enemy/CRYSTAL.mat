@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CRYSTAL
-  m_Shader: {fileID: 4800000, guid: 766f3aa086640724a9cf89019d58c827, type: 3}
-  m_Parent: {fileID: 2100000, guid: e9eb8cbb1efba8d4dbdc35fd83d38ba5, type: 2}
+  m_Shader: {fileID: 4800000, guid: c42d95bc9ca75964594ff0b2d8f34bb0, type: 3}
+  m_Parent: {fileID: 2100000, guid: 0c7d991d648c7d94396fb73efcf3408a, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -26,7 +26,8 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _DissolveAmount: 0
     m_Colors:
     - _CrystalColor: {r: 0.90588236, g: 0.1802706, b: 0.21168242, a: 1}
     - _InnerGlowColor: {r: 1, g: 0.8392157, b: 0.92156863, a: 1}

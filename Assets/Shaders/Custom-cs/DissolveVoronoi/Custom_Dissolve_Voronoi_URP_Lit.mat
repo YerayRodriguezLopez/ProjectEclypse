@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Custom_Crystal_Dissolve_URP
-  m_Shader: {fileID: 4800000, guid: 09e318ade2aa04d489d4532987c6d5ef, type: 3}
+  m_Name: Custom_Dissolve_Voronoi_URP_Lit
+  m_Shader: {fileID: 4800000, guid: ca1723f9531a26e4fb0e6947f9b1cdb5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,26 +23,33 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _BumpScale: 1
     - _CellScale: 10
     - _DissolveAmount: 0
     - _EdgeIntensity: 4
     - _EdgeWidth: 0.08
-    - _FresnelBoost: 1.1
-    - _FresnelPow: 2.5
-    - _InnerGlow: 0.35
-    - _Opacity: 0.55
-    - _Smoothness: 0.88
+    - _Smoothness: 0.5
+    - _UseEmission: 0
+    - _UseNormalMap: 0
     m_Colors:
-    - _CrystalColor: {r: 0.54999995, g: 0.85, b: 1, a: 0.55}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveOffset: {r: 0, g: 0, b: 0, a: 0}
     - _EdgeColor: {r: 0, g: 1, b: 0.8, a: 1}
-    - _InnerGlowColor: {r: 0.7, g: 0.95, b: 1, a: 1}
-    - _SpecColor2: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecColor: {r: 0.29999998, g: 0.29999998, b: 0.29999998, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

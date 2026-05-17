@@ -1,4 +1,4 @@
-Shader "Custom/Crystal_Dissolve_URP_Lit"
+Shader "Custom/Crystal_Dissolve_URP"
 {
     Properties
     {
@@ -128,6 +128,10 @@ Shader "Custom/Crystal_Dissolve_URP_Lit"
             "RenderType"      = "Transparent"
             "Queue"           = "Transparent"
             "IgnoreProjector" = "True"
+            // UniversalMaterialType intentionally omitted — defaults to Lit.
+            // The original dissolve shader was Unlit; this one uses GetMainLight(),
+            // NdotL diffuse, Blinn-Phong specular and SampleSH so it must be Lit
+            // or GetMainLight() may return garbage data on some configurations.
         }
         LOD 100
 

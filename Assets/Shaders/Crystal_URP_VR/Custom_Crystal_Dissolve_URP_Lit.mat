@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Custom_Crystal_Dissolve_URP
-  m_Shader: {fileID: 4800000, guid: 09e318ade2aa04d489d4532987c6d5ef, type: 3}
+  m_Name: Custom_Crystal_Dissolve_URP_Lit
+  m_Shader: {fileID: 4800000, guid: c42d95bc9ca75964594ff0b2d8f34bb0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
