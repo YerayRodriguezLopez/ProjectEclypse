@@ -23,9 +23,9 @@ Shader "Custom/Crystal_URP"
         _InnerGlowColor ("Inner Glow Color",    Color)        = (0.7, 0.95, 1.0, 1.0)
 
         // ─── Render state (hidden) ────────────────────────────────────────────
-        [HideInInspector] _SrcBlend ("__src",  Float) = 5    // SrcAlpha
-        [HideInInspector] _DstBlend ("__dst",  Float) = 10   // OneMinusSrcAlpha
-        [HideInInspector] _ZWrite   ("__zw",   Float) = 0
+        // Hardcoded — avoids SRP Batcher CBUFFER mismatch that causes opacity
+        // to silently stop working when _SrcBlend/_DstBlend/_ZWrite are properties
+        // but not in the CBUFFER. Do not expose these as material properties.
     }
 
     // ─── Shared HLSL — avoids duplicating helpers across passes ──────────────
@@ -88,8 +88,8 @@ Shader "Custom/Crystal_URP"
             Name "CrystalForward"
             Tags { "LightMode" = "UniversalForward" }
 
-            Blend   [_SrcBlend] [_DstBlend]
-            ZWrite  [_ZWrite]
+            Blend   SrcAlpha OneMinusSrcAlpha     // hardcoded — see Properties note
+            ZWrite  Off
             Cull    Off         // Both faces — hollow crystal meshes work correctly
 
             HLSLPROGRAM
@@ -162,12 +162,15 @@ Shader "Custom/Crystal_URP"
                 half  texAlpha     = texSample.a;
 
                 // ── 2. Fresnel ────────────────────────────────────────────────
-                half fresnel   = FresnelTerm(IN.normalWS, IN.viewDirWS, _FresnelPow);
-                half edgeAlpha = fresnel * _FresnelBoost;
+                half fresnel = FresnelTerm(IN.normalWS, IN.viewDirWS, _FresnelPow);
 
                 // ── 3. Final alpha ────────────────────────────────────────────
-                // base × texture mask, brightened at grazing edges
-                half finalAlpha = saturate(_Opacity * texAlpha + edgeAlpha);
+                // _Opacity is the master control — texAlpha modulates locally,
+                // fresnel adds extra opacity at edges but never exceeds 1.
+                // Multiplying fresnel by _Opacity means the slider always works:
+                // at 0 the crystal is fully invisible, at 1 fully opaque.
+                half baseAlpha  = _Opacity * texAlpha;
+                half finalAlpha = saturate(baseAlpha + fresnel * _FresnelBoost * _Opacity);
 
                 // ── 4. Main light ─────────────────────────────────────────────
                 #if defined(_MAIN_LIGHT_SHADOWS) || defined(_MAIN_LIGHT_SHADOWS_CASCADE)
