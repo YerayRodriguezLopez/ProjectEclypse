@@ -7,8 +7,68 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Cable1
+    second: {fileID: 2100000, guid: 9f16485ff3d5743618821ccf8faf3b4c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cable2
+    second: {fileID: 2100000, guid: cf0c00a19a0c64f37b9a7ca572d9c3cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cemento
+    second: {fileID: 2100000, guid: b946732f88d1a4063b176561f87c69f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Crystal
     second: {fileID: 2100000, guid: 825664766813a4f07805afb83d18438a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LuzLampara
+    second: {fileID: 2100000, guid: 8f3f796b658da41fa9b6d991b9da4d99, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MesaMetal
+    second: {fileID: 2100000, guid: 35dd01b3cfe474f9e9e43554dc06f7a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 4a51ecca41e2e4074ac41ce7b17a6c29, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pared
+    second: {fileID: 2100000, guid: 4aa2a2961120742d2aac4b7d26b02362, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Piso1
+    second: {fileID: 2100000, guid: 4248a786b80964329b9229ef00715a99, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Piso2
+    second: {fileID: 2100000, guid: 3a0b18375279e4c13be31c2c3e8ad405, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PlasticoSilla
+    second: {fileID: 2100000, guid: 59c9fbfcd254d4204b0319667bc90394, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PuertaCentro
+    second: {fileID: 2100000, guid: 09ebc47be8ac9496ebea4441f157159e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PuertaExterior
+    second: {fileID: 2100000, guid: f2d9e469dada2429ea437df26db1a391, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -19,6 +79,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Suelo2
     second: {fileID: 2100000, guid: f7568fe7336324fcd818c08fd1efe7bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Suelo3
+    second: {fileID: 2100000, guid: d3a3d7d5f6d5b494e93d29c34bb76dc8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ventana
+    second: {fileID: 2100000, guid: c565290f3076a424fa999eefcdffccf3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
