@@ -2056,7 +2056,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cdfc0342bb73635499e6d734d03c0c30, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1825011853}
   m_SourcePrefab: {fileID: 100100000, guid: cdfc0342bb73635499e6d734d03c0c30, type: 3}
 --- !u!1 &635189294
 GameObject:
@@ -2460,6 +2463,26 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 207041987}
   m_SourcePrefab: {fileID: 100100000, guid: 061f606572db946578a256155667b89a, type: 3}
+--- !u!1 &976285225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2302429110345739411, guid: 1bec0f65852f6da49ace70f04d26ae39, type: 3}
+  m_PrefabInstance: {fileID: 2081941899}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &976285228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976285225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8bc0cb263345fb4c8998aa17735d4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DissolveVoronoiController
+  dissolveSpeed: 0.08
+  dissolveAmount: 0
+  playOnStart: 1
 --- !u!1001 &1049646258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3543,6 +3566,26 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bec0f65852f6da49ace70f04d26ae39, type: 3}
+--- !u!1 &1825011852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cdfc0342bb73635499e6d734d03c0c30, type: 3}
+  m_PrefabInstance: {fileID: 634482547}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1825011853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825011852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8bc0cb263345fb4c8998aa17735d4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DissolveVoronoiController
+  dissolveSpeed: 0.08
+  dissolveAmount: 0
+  playOnStart: 1
 --- !u!1 &1896393157
 GameObject:
   m_ObjectHideFlags: 0
@@ -4164,7 +4207,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2302429110345739411, guid: 1bec0f65852f6da49ace70f04d26ae39, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 976285228}
   m_SourcePrefab: {fileID: 100100000, guid: 1bec0f65852f6da49ace70f04d26ae39, type: 3}
 --- !u!1001 &2106074366
 PrefabInstance:
