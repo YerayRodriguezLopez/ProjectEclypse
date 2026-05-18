@@ -439,7 +439,7 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         if (CurrentState != GameState.PlayerDeath)
         {
-            OnPlayerDied?.Invoke();
+            OnPlayerDied?.Invoke(); // disable player controls from player
             SetState(GameState.PlayerDeath);
             StartCoroutine(RespawnRoutine());
         }
