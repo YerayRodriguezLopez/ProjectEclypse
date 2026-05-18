@@ -70,7 +70,8 @@ public class Boss : NPC
 
     public override void TakeDamage(float damage)
     {
-        laserInstance?.SetActive(false);
+        if(laserInstance != null)
+        laserInstance.SetActive(false);
 
         if (damage < this.Health)
         {
@@ -88,7 +89,7 @@ public class Boss : NPC
     }
     private IEnumerator AttackRoutine()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(AttackCooldown);
 
         while (isAlive)
         {
