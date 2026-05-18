@@ -20,6 +20,16 @@ AudioContainerElement:
   m_AudioClip: {fileID: 8300000, guid: d055c7787f8ac9f45b1e3163b515d9ce, type: 3}
   m_Volume: 0
   m_Enabled: 1
+--- !u!1233149941 &1343787620444842115
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Random 4_{1343787620444842115}
+  m_AudioClip: {fileID: 8300000, guid: bcaba1dd853567c448edc236245d5fa8, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
 --- !u!1233149941 &5650565929648124651
 AudioContainerElement:
   m_ObjectHideFlags: 1
@@ -49,6 +59,7 @@ AudioRandomContainer:
   - {fileID: 5650565929648124651}
   - {fileID: -1114523302199897969}
   - {fileID: -1318274593871193233}
+  - {fileID: 1343787620444842115}
   m_AvoidRepeatingLast: 0
   m_PlaybackMode: 2
   m_TriggerMode: 0
