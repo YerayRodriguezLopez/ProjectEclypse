@@ -8,12 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CRYSTAL
-  m_Shader: {fileID: 4800000, guid: ca1723f9531a26e4fb0e6947f9b1cdb5, type: 3}
+  m_Shader: {fileID: 4800000, guid: c42d95bc9ca75964594ff0b2d8f34bb0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _EMISSION
-  m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -102,12 +102,16 @@ Material:
     - _EdgeIntensity: 4
     - _EdgeWidth: 0.08
     - _EnvironmentReflections: 1
+    - _FresnelBoost: 1.1
+    - _FresnelPow: 2.5
     - _GlossMapScale: 1
     - _Glossiness: 0.895455
     - _GlossyReflections: 1
+    - _InnerGlow: 0.35
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Opacity: 0.55
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -126,10 +130,13 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.90636706, g: 0, b: 0.03843233, a: 1}
     - _Color: {r: 1, g: 0.98039216, b: 0.76862746, a: 1}
+    - _CrystalColor: {r: 1, g: 1, b: 1, a: 0.55}
     - _DissolveOffset: {r: 0, g: 0, b: 0, a: 0}
     - _EdgeColor: {r: 1, g: 0.98039216, b: 0.76862746, a: 1}
     - _EmissionColor: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 1}
+    - _InnerGlowColor: {r: 0.7, g: 0.95, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SpecColor2: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &6112659363372602963

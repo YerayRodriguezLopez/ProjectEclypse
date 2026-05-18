@@ -1794,6 +1794,42 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9044806412961212599, guid: ad1a23d00eebf8e4ebf3e1fd14a26972, type: 3}
   m_PrefabInstance: {fileID: 1475394065}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &852097394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9004098577225803368, guid: ad1a23d00eebf8e4ebf3e1fd14a26972, type: 3}
+  m_PrefabInstance: {fileID: 1475394065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &852097398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852097394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13694e84cb839b34bb0dbe066da8d978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DissolveParticleEmitter
+  dissolveParticles: {fileID: 0}
+  emissionRate: 50
+  initialBurst: 40
+  moteColor: {r: 0, g: 1, b: 0.8, a: 1}
+--- !u!114 &852097399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852097394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8bc0cb263345fb4c8998aa17735d4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DissolveVoronoiController
+  dissolveSpeed: 0.08
+  dissolveAmount: 0
+  playOnStart: 0
 --- !u!1 &885445285
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,6 +2186,24 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ad1a23d00eebf8e4ebf3e1fd14a26972, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1500472490}
+    - targetCorrespondingSourceObject: {fileID: 9004098577225803368, guid: ad1a23d00eebf8e4ebf3e1fd14a26972, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 852097399}
+    - targetCorrespondingSourceObject: {fileID: 9004098577225803368, guid: ad1a23d00eebf8e4ebf3e1fd14a26972, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 852097398}
+    - targetCorrespondingSourceObject: {fileID: 3551255863337285566, guid: ad1a23d00eebf8e4ebf3e1fd14a26972, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1952179226}
+    - targetCorrespondingSourceObject: {fileID: 3551255863337285566, guid: ad1a23d00eebf8e4ebf3e1fd14a26972, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1952179225}
+    - targetCorrespondingSourceObject: {fileID: 7481445104428672052, guid: ad1a23d00eebf8e4ebf3e1fd14a26972, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1952669485}
+    - targetCorrespondingSourceObject: {fileID: 7481445104428672052, guid: ad1a23d00eebf8e4ebf3e1fd14a26972, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1952669484}
   m_SourcePrefab: {fileID: 100100000, guid: ad1a23d00eebf8e4ebf3e1fd14a26972, type: 3}
 --- !u!1 &1500472486 stripped
 GameObject:
@@ -2388,6 +2442,78 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7934b197cf9155a41a868d7c2b634af0, type: 3}
+--- !u!1 &1952179222 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3551255863337285566, guid: ad1a23d00eebf8e4ebf3e1fd14a26972, type: 3}
+  m_PrefabInstance: {fileID: 1475394065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1952179225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952179222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13694e84cb839b34bb0dbe066da8d978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DissolveParticleEmitter
+  dissolveParticles: {fileID: 0}
+  emissionRate: 50
+  initialBurst: 40
+  moteColor: {r: 1, g: 0.98039216, b: 0.76862746, a: 1}
+--- !u!114 &1952179226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952179222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8bc0cb263345fb4c8998aa17735d4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DissolveVoronoiController
+  dissolveSpeed: 0.08
+  dissolveAmount: 0
+  playOnStart: 0
+--- !u!1 &1952669481 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7481445104428672052, guid: ad1a23d00eebf8e4ebf3e1fd14a26972, type: 3}
+  m_PrefabInstance: {fileID: 1475394065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1952669484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952669481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13694e84cb839b34bb0dbe066da8d978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DissolveParticleEmitter
+  dissolveParticles: {fileID: 0}
+  emissionRate: 50
+  initialBurst: 40
+  moteColor: {r: 1, g: 0.98039216, b: 0.76862746, a: 1}
+--- !u!114 &1952669485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952669481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8bc0cb263345fb4c8998aa17735d4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DissolveVoronoiController
+  dissolveSpeed: 0.08
+  dissolveAmount: 0
+  playOnStart: 0
 --- !u!1 &2008161651
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: fist
   m_EditorClassIdentifier: Assembly-CSharp::FistSlamAttack
   attackName: fist down
-  damage: 10
-  weight: 0
+  damage: 15
+  weight: 50
   warningDuration: 1.5
   fistFallSpeed: 20
   impactRadius: 3
