@@ -36,13 +36,13 @@ Material:
     - _FresnelBoost: 1.1
     - _FresnelPow: 2.5
     - _InnerGlow: 0.35
-    - _Opacity: 0.72
-    - _Smoothness: 0.5
+    - _Opacity: 0.55
+    - _Smoothness: 0.88
     m_Colors:
-    - _CrystalColor: {r: 0.95, g: 0.98, b: 1, a: 0.55}
+    - _CrystalColor: {r: 0.54999995, g: 0.85, b: 1, a: 0.55}
     - _DissolveOffset: {r: 0, g: 0, b: 0, a: 0}
-    - _EdgeColor: {r: 1, g: 0.98039216, b: 0.76862746, a: 1}
-    - _InnerGlowColor: {r: 0.8, g: 0.9, b: 1, a: 1}
+    - _EdgeColor: {r: 0, g: 1, b: 0.8, a: 1}
+    - _InnerGlowColor: {r: 0.7, g: 0.95, b: 1, a: 1}
     - _SpecColor2: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

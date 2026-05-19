@@ -40,6 +40,8 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats: []
-    m_Colors: []
+    m_Colors:
+    - _CrystalColor: {r: 0.90588236, g: 0.1802706, b: 0.21168242, a: 1}
+    - _InnerGlowColor: {r: 1, g: 0.8392157, b: 0.92156863, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

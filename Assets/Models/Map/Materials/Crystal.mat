@@ -8,27 +8,41 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Crystal
-  m_Shader: {fileID: 4800000, guid: 766f3aa086640724a9cf89019d58c827, type: 3}
-  m_Parent: {fileID: 2100000, guid: 42c69546c32ab0b4391cbaa7a89e90b2, type: 2}
-  m_ModifiedSerializedProperties: 0
+  m_Shader: {fileID: -6465566751694194690, guid: e19b5bb6cb8e91e43b1b5d81a069296f, type: 3}
+  m_Parent: {fileID: 2100000, guid: 5d06bc6e1553cc044a5f31269da115d7, type: 2}
+  m_ModifiedSerializedProperties: 16
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses:
   - MOTIONVECTORS
-  - DepthOnly
-  - SHADOWCASTER
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
-    m_Colors: []
+    m_Floats:
+    - _AlphaClip: 0
+    - _AlphaToMask: 0
+    - _CastShadows: 1
+    - _DstBlend: 0
+    - _DstBlendAlpha: 0
+    - _FresnelPow: 5.04
+    - _InnerGlow: 0.85
+    - _Opacity: 1
+    - _QueueControl: 0
+    - _RimPower: 0.66
+    - _Smoothness: 0.178
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 0.33333334}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &1121898933986132905

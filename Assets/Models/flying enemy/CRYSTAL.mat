@@ -12,7 +12,8 @@ Material:
   m_Parent: {fileID: 2100000, guid: 0c7d991d648c7d94396fb73efcf3408a, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _EMISSION
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -28,9 +29,8 @@ Material:
     m_Floats:
     - _DissolveAmount: 0
     m_Colors:
-    - _CrystalColor: {r: 0.95, g: 0.98, b: 1, a: 0.55}
-    - _EdgeColor: {r: 1, g: 0.98039216, b: 0.76862746, a: 1}
-    - _InnerGlowColor: {r: 0.8, g: 0.9, b: 1, a: 1}
+    - _CrystalColor: {r: 0.90588236, g: 0.1802706, b: 0.21168242, a: 1}
+    - _InnerGlowColor: {r: 1, g: 0.8392157, b: 0.92156863, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &6112659363372602963
