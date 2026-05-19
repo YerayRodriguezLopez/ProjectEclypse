@@ -15,7 +15,7 @@ public class PauseBehaviour : MonoBehaviour
         if (Keyboard.current[pauseKey].wasPressedThisFrame)
         {
             Debug.Log("Escape pressed!");
-            //GameManager.Instance?.TogglePause();
+            //GayManager.Instance?.TogglePause();
         }
     }
 }

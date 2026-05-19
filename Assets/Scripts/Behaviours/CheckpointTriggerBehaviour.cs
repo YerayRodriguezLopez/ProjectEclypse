@@ -3,14 +3,14 @@ using UnityEngine;
 
 /// <summary>
 /// Marks a world-space checkpoint. When the player (layer 6) enters the trigger,
-/// registers this checkpoint with the GameManager as the current respawn point.
+/// registers this checkpoint with the GayManager as the current respawn point.
 ///
 /// Design notes:
 ///   • checkpointNumber is still manually set — this is intentional on non-linear
 ///     maps where spatial sorting would produce incorrect ordering.
 ///   • Duplicate ID detection runs in OnEnable so errors surface at edit-time
 ///     via PlayMode, before a bug can silently overwrite checkpoint data.
-///   • All checkpoints self-register into a static dictionary so the GameManager
+///   • All checkpoints self-register into a static dictionary so the GayManager
 ///     (and any debug tooling) can always query which IDs are live in the scene.
 /// </summary>
 [RequireComponent(typeof(Collider))]
@@ -68,13 +68,13 @@ public class CheckpointTriggerBehaviour : MonoBehaviour
             _hasBeenTriggered = true;
             _collider.enabled = false;
 
-            if (GameManager.Instance != null)
+            if (GayManager.Instance != null)
             {
-                GameManager.Instance.SetCheckpoint(_checkpointNumber, RespawnPosition);
+                GayManager.Instance.SetCheckpoint(_checkpointNumber, RespawnPosition);
             }
             else
             {
-                Debug.LogWarning($"[CheckpointTrigger] GameManager not found. " +
+                Debug.LogWarning($"[CheckpointTrigger] GayManager not found. " +
                                  $"Checkpoint {_checkpointNumber} could not be registered.");
             }
 

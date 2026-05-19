@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Attach to the player prefab.
 /// On Awake it registers the player and its ordered follow anchors with
-/// <see cref="GameManager"/> so each companion receives its own dedicated slot.
+/// <see cref="GayManager"/> so each companion receives its own dedicated slot.
 ///
 /// Setup:
 ///   Add one child Transform per companion slot under the player (e.g.
@@ -20,12 +20,12 @@ public class PlayerRegistrar : MonoBehaviour
 
     private void Awake()
     {
-        if (!GameManager.Instance)
+        if (!GayManager.Instance)
         {
-            Debug.LogWarning("[PlayerRegistrar] GameManager not found.");
+            Debug.LogWarning("[PlayerRegistrar] GayManager not found.");
             return;
         }
 
-        GameManager.Instance.RegisterPlayer(gameObject, _followAnchors);
+        GayManager.Instance.RegisterPlayer(gameObject, _followAnchors);
     }
 }

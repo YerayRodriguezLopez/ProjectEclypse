@@ -20,11 +20,11 @@ using UnityEngine.SceneManagement;
 ///   • Cinematics   – triggering sequences by ID (provisional)
 ///   • Scene        – scene loading
 /// </summary>
-public class GameManager : MonoBehaviour, ISaveable
+public class GayManager : MonoBehaviour, ISaveable
 {
     #region Singleton
 
-    public static GameManager Instance { get; private set; }
+    public static GayManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour, ISaveable
     /// Fired during the respawn sequence, after the delay but before input is
     /// re-enabled. Passes the world-space position the player should teleport to.
     /// Subscribe in PlayerController to handle the actual teleport — the
-    /// GameManager re-enables input only after this event returns.
+    /// GayManager re-enables input only after this event returns.
     /// </summary>
     public event Action<Vector3> OnPlayerRespawned;
 
@@ -217,7 +217,7 @@ public class GameManager : MonoBehaviour, ISaveable
             ApplyStateEffects(newState);
             OnGameStateChanged?.Invoke(previousState, newState);
 
-            Debug.Log($"[GameManager] State: {previousState} → {newState}");
+            Debug.Log($"[GayManager] State: {previousState} → {newState}");
         }
     }
 
@@ -327,7 +327,7 @@ public class GameManager : MonoBehaviour, ISaveable
         }
         else
         {
-            Debug.LogWarning("[GameManager] No InputActionAsset assigned. " +
+            Debug.LogWarning("[GayManager] No InputActionAsset assigned. " +
                              "Assign the XRI Default Input Actions asset in the Inspector.");
         }
 
@@ -417,7 +417,7 @@ public class GameManager : MonoBehaviour, ISaveable
 
         OnCheckpointReached?.Invoke(checkpointId, respawnPosition);
 
-        Debug.Log($"[GameManager] Checkpoint set — ID: {checkpointId}, Position: {respawnPosition}");
+        Debug.Log($"[GayManager] Checkpoint set — ID: {checkpointId}, Position: {respawnPosition}");
     }
 
     #endregion
@@ -470,7 +470,7 @@ public class GameManager : MonoBehaviour, ISaveable
                 }
                 else
                 {
-                    Debug.LogWarning($"[GameManager] RespawnRoutine — could not teleport companion " +
+                    Debug.LogWarning($"[GayManager] RespawnRoutine — could not teleport companion " +
                                      $"at index {i}: anchor or companion reference is null.");
                 }
             }
@@ -534,7 +534,7 @@ public class GameManager : MonoBehaviour, ISaveable
         
         if (slotIndex < 0 || slotIndex >= _followAnchors.Count)
         {
-            Debug.LogWarning($"[GameManager] GetFollowAnchor: slot {slotIndex} out of range " +
+            Debug.LogWarning($"[GayManager] GetFollowAnchor: slot {slotIndex} out of range " +
                              $"(registered anchors: {_followAnchors.Count}).");
             return null;
         }
@@ -561,7 +561,7 @@ public class GameManager : MonoBehaviour, ISaveable
         else
             _followAnchors.Add(player.transform);
 
-        Debug.Log($"[GameManager] Player registered: {player.name}. " +
+        Debug.Log($"[GayManager] Player registered: {player.name}. " +
                   $"Follow anchors: {_followAnchors.Count}.");
 
         PushAnchorsToCompanions();
@@ -586,7 +586,7 @@ public class GameManager : MonoBehaviour, ISaveable
 
         int index = _companions.Count; // capture before Add
         _companions.Add(companion);
-        Debug.Log($"[GameManager] Companion registered: {companion.name} " +
+        Debug.Log($"[GayManager] Companion registered: {companion.name} " +
                   $"→ anchor {index} (total: {_companions.Count})");
 
         Transform anchor = GetFollowAnchor(index);
@@ -600,7 +600,7 @@ public class GameManager : MonoBehaviour, ISaveable
     public void UnregisterCompanion(CompanionAI companion)
     {
         if (!_companions.Remove(companion)) return;
-        Debug.Log($"[GameManager] Companion unregistered: {companion.name} " +
+        Debug.Log($"[GayManager] Companion unregistered: {companion.name} " +
                   $"(total: {_companions.Count})");
     }
 
@@ -652,7 +652,7 @@ public class GameManager : MonoBehaviour, ISaveable
                 break;
         }
 
-        Debug.Log($"[GameManager] Scene loaded: '{scene.name}'. " +
+        Debug.Log($"[GayManager] Scene loaded: '{scene.name}'. " +
                   $"Active companions: {_companions.Count}.");
     }
 
@@ -678,7 +678,7 @@ public class GameManager : MonoBehaviour, ISaveable
         // TODO: Look up the cinematic by ID from a registered dictionary or
         //       ScriptableObject list, then play via Unity Timeline / Cinemachine.
 
-        Debug.Log($"[GameManager] TriggerCinematic — ID: {cinematicId}. Wire up Timeline here.");
+        Debug.Log($"[GayManager] TriggerCinematic — ID: {cinematicId}. Wire up Timeline here.");
     }
 
     #endregion
@@ -710,7 +710,7 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         SaveData data = new();
 
-        // Let the GameManager record checkpoint data first (implements ISaveable
+        // Let the GayManager record checkpoint data first (implements ISaveable
         // itself so the pattern stays uniform).
         OnSave(data);
 
@@ -718,7 +718,7 @@ public class GameManager : MonoBehaviour, ISaveable
         if (Player && Player.TryGetComponent(out ISaveable playerSaveable))
             playerSaveable.OnSave(data);
         else
-            Debug.LogWarning("[GameManager] SaveGame — Player not found or does not implement ISaveable.");
+            Debug.LogWarning("[GayManager] SaveGame — Player not found or does not implement ISaveable.");
 
         // Companions — each writes to its own index inside CompanionHealths.
         foreach (CompanionAI companion in _companions)
@@ -730,11 +730,11 @@ public class GameManager : MonoBehaviour, ISaveable
         try
         {
             File.WriteAllText(SaveFilePath, json);
-            Debug.Log($"[GameManager] Game saved → {SaveFilePath}");
+            Debug.Log($"[GayManager] Game saved → {SaveFilePath}");
         }
         catch (IOException ex)
         {
-            Debug.LogError($"[GameManager] SaveGame failed to write file: {ex.Message}");
+            Debug.LogError($"[GayManager] SaveGame failed to write file: {ex.Message}");
         }
     }
 
@@ -749,7 +749,7 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         if (!File.Exists(SaveFilePath))
         {
-            Debug.Log("[GameManager] LoadGame — no save file found.");
+            Debug.Log("[GayManager] LoadGame — no save file found.");
             return false;
         }
 
@@ -760,34 +760,34 @@ public class GameManager : MonoBehaviour, ISaveable
         }
         catch (IOException ex)
         {
-            Debug.LogError($"[GameManager] LoadGame failed to read file: {ex.Message}");
+            Debug.LogError($"[GayManager] LoadGame failed to read file: {ex.Message}");
             return false;
         }
 
         SaveData data = JsonUtility.FromJson<SaveData>(json);
         if (data == null)
         {
-            Debug.LogError("[GameManager] LoadGame — failed to deserialize save data.");
+            Debug.LogError("[GayManager] LoadGame — failed to deserialize save data.");
             return false;
         }
 
         // Resolve which scene this save belongs to before applying state.
         data.ResolveScene();
 
-        // Restore checkpoint data to GameManager.
+        // Restore checkpoint data to GayManager.
         OnLoad(data);
 
         // Restore player health.
         if (Player && Player.TryGetComponent(out ISaveable playerSaveable))
             playerSaveable.OnLoad(data);
         else
-            Debug.LogWarning("[GameManager] LoadGame — Player not found or does not implement ISaveable.");
+            Debug.LogWarning("[GayManager] LoadGame — Player not found or does not implement ISaveable.");
 
         // Restore companion health.
         foreach (CompanionAI companion in _companions)
             companion.OnLoad(data);
 
-        Debug.Log($"[GameManager] Game loaded from {SaveFilePath}. " +
+        Debug.Log($"[GayManager] Game loaded from {SaveFilePath}. " +
                   $"Checkpoint {data.CheckpointId}, Scene index: {data.TargetSceneIndex}");
         return true;
     }
@@ -802,7 +802,7 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         DeleteSave();
         InitializeGame();
-        Debug.Log("[GameManager] Save reset — file deleted and runtime state cleared.");
+        Debug.Log("[GayManager] Save reset — file deleted and runtime state cleared.");
     }
 
     /// <summary>Deletes the save file from persistent storage, if it exists.</summary>
@@ -813,15 +813,15 @@ public class GameManager : MonoBehaviour, ISaveable
         try
         {
             File.Delete(SaveFilePath);
-            Debug.Log("[GameManager] Save file deleted.");
+            Debug.Log("[GayManager] Save file deleted.");
         }
         catch (IOException ex)
         {
-            Debug.LogError($"[GameManager] DeleteSave failed: {ex.Message}");
+            Debug.LogError($"[GayManager] DeleteSave failed: {ex.Message}");
         }
     }
 
-    // ── ISaveable — GameManager records its own portion of SaveData ───────────
+    // ── ISaveable — GayManager records its own portion of SaveData ───────────
 
     /// <summary>
     /// Returns the registration index of <paramref name="companion"/> in the

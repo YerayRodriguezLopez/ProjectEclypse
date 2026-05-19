@@ -7,16 +7,16 @@ public class UltimateHealSkill : UltimateSkill
 
     public override void Execute(NPC caster, GameObject target = null)
     {
-        if (GameManager.Instance == null)
+        if (GayManager.Instance == null)
         {
             // Fallback: heal caster only.
             caster.Heal(_healAmount);
-            Debug.Log($"[UltimateHealSkill] {caster.name}: healed self (no GameManager).");
+            Debug.Log($"[UltimateHealSkill] {caster.name}: healed self (no GayManager).");
             return;
         }
 
         // Heal all registered companions.
-        foreach (CompanionAI companion in GameManager.Instance.Companions)
+        foreach (CompanionAI companion in GayManager.Instance.Companions)
         {
             companion.Heal(_healAmount);
             Debug.Log($"[UltimateHealSkill] Healed {companion.name} for {_healAmount}. " +
@@ -24,8 +24,8 @@ public class UltimateHealSkill : UltimateSkill
         }
 
         // Heal the player if it implements IHealthable.
-        if (GameManager.Instance.Player != null &&
-            GameManager.Instance.Player.TryGetComponent(out IHealthable playerHurtable))
+        if (GayManager.Instance.Player != null &&
+            GayManager.Instance.Player.TryGetComponent(out IHealthable playerHurtable))
         {
             playerHurtable.Heal(_healAmount);
             Debug.Log($"[UltimateHealSkill] Healed player for {_healAmount}.");
