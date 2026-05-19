@@ -45,7 +45,7 @@ public class AudioSettingsManager : MonoBehaviour
                 ProcessVolumeLoad(sliderSFX.transform.name, sliderSFX);
                 break;
             case 4:
-                ProcessVolumeLoad(sliderVoice.transform.name, sliderSFX);
+                ProcessVolumeLoad(sliderVoice.transform.name, sliderVoice);
                 break;
 
             default:
