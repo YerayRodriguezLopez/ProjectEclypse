@@ -23,6 +23,7 @@ public class LaserAttack : BossAttack
     private IEnumerator LaserRoutine(Boss boss, Transform target)
     {
         GameObject laser = Instantiate(boss.laserPrefab, laserOrigin.position, Quaternion.identity);
+        laser.SetActive(true);
         boss.laserInstance = laser;
         laser.transform.SetParent(boss.transform); 
 

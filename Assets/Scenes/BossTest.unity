@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &30428156
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -227,7 +227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &43647564
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -770,7 +770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &356719679
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1056,7 +1056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &415770654
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2007,7 +2007,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1041666020
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2198,6 +2198,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3551255863337285566, guid: ad1a23d00eebf8e4ebf3e1fd14a26972, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1952179225}
+    - targetCorrespondingSourceObject: {fileID: 3551255863337285566, guid: ad1a23d00eebf8e4ebf3e1fd14a26972, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1952179228}
     - targetCorrespondingSourceObject: {fileID: 7481445104428672052, guid: ad1a23d00eebf8e4ebf3e1fd14a26972, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1952669485}
@@ -2245,9 +2248,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Boss
   playerTransform: {fileID: 1008047878}
   laserOrigin: {fileID: 885445286}
+  rotationSpeed: 5
   warningIndicatorPrefab: {fileID: 30428155}
-  fistPrefab: {fileID: 415770653}
-  rockPrefab: {fileID: 356719678}
+  fistPrefab: {fileID: 2011056080}
+  rockPrefab: {fileID: 7171294414526099022, guid: 7f27e74321ab74d43adb0dfe24a27376, type: 3}
   laserPrefab: {fileID: 1041666019}
   attacks:
   - {fileID: 11400000, guid: 603ff0da56f973f4288b1d00094eac73, type: 2}
@@ -2478,6 +2482,34 @@ MonoBehaviour:
   dissolveSpeed: 0.08
   dissolveAmount: 0
   playOnStart: 0
+--- !u!114 &1952179228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952179222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47c83a18e139e164aa5e282bfd0a6ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LifeCycleTriggerBehaviour
+  triggerMode: 0
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1500472486}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1952669481 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7481445104428672052, guid: ad1a23d00eebf8e4ebf3e1fd14a26972, type: 3}
@@ -2643,6 +2675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Boss
   playerTransform: {fileID: 1008047878}
   laserOrigin: {fileID: 0}
+  rotationSpeed: 5
   warningIndicatorPrefab: {fileID: 30428155}
   fistPrefab: {fileID: 415770653}
   rockPrefab: {fileID: 356719678}
@@ -2652,6 +2685,52 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 822b7319e019a6044856bb3e43398b35, type: 2}
   - {fileID: 11400000, guid: 880d71ddcdb5da446a950863069af01c, type: 2}
   laserInstance: {fileID: 0}
+--- !u!1 &2011056080 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7839668783788437957, guid: e77c33d6d69617e4081e9d407c09ba2e, type: 3}
+  m_PrefabInstance: {fileID: 8418564048747099099}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8418564048747099099
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2815611651958497267, guid: e77c33d6d69617e4081e9d407c09ba2e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -136.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2815611651958497267, guid: e77c33d6d69617e4081e9d407c09ba2e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -27.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2815611651958497267, guid: e77c33d6d69617e4081e9d407c09ba2e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -51.951687
+      objectReference: {fileID: 0}
+    - target: {fileID: 2815611651958497267, guid: e77c33d6d69617e4081e9d407c09ba2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 50.638
+      objectReference: {fileID: 0}
+    - target: {fileID: 2815611651958497267, guid: e77c33d6d69617e4081e9d407c09ba2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2815611651958497267, guid: e77c33d6d69617e4081e9d407c09ba2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839668783788437957, guid: e77c33d6d69617e4081e9d407c09ba2e, type: 3}
+      propertyPath: m_Name
+      value: BossAttackCrystal
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e77c33d6d69617e4081e9d407c09ba2e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2671,3 +2750,4 @@ SceneRoots:
   - {fileID: 244729492}
   - {fileID: 511676071}
   - {fileID: 1531813234}
+  - {fileID: 8418564048747099099}

@@ -15,12 +15,16 @@ public class Boss : NPC
     public Transform playerTransform;
     public Transform laserOrigin;
 
+    [Header("Configuración de Rotación")]
+    [Tooltip("Velocidad a la que gira el boss. Valores altos = giro más rápido.")]
+    public float rotationSpeed = 5f;
 
     [Header("Prefabs compartidos")]
     public GameObject warningIndicatorPrefab;
     public GameObject fistPrefab;
     public GameObject rockPrefab;
     public GameObject laserPrefab;
+
     [Header("Ataques")]
     public BossAttack[] attacks;
 
@@ -34,6 +38,36 @@ public class Boss : NPC
         MaxHealth = Health;
         animator = GetComponent<Animator>();
         StartCoroutine(AttackRoutine());
+    }
+
+    // El Update se encarga de mirar al jugador en cada frame
+    private void Update()
+    {
+        // Solo rota si está vivo y si se ha asignado el transform del jugador
+        if (!isAlive || playerTransform == null) return;
+
+        LookAtPlayerHorizontal();
+    }
+
+    private void LookAtPlayerHorizontal()
+    {
+        // Calculamos la dirección del vector desde el boss al jugador
+        Vector3 direction = playerTransform.position - transform.position;
+
+        // Forzamos que no haya diferencia en el eje Y para evitar que el boss se incline hacia arriba/abajo
+        direction.y = 0;
+
+        // Evitamos error si el jugador está exactamente en la misma posición del boss
+        if (direction != Vector3.zero)
+        {
+            // Creamos la rotación hacia el objetivo
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+            // Rotamos de forma fluida usando Lerp
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            if(laserInstance != null)
+            laserInstance.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
     }
 
     public override void Attack()
@@ -53,8 +87,10 @@ public class Boss : NPC
         int cumulative = 0;
         foreach (var attack in attacks)
         {
-            cumulative += attack.weight;
-            if (roll < cumulative) return attack;
+            {
+                cumulative += attack.weight;
+                if (roll < cumulative) return attack;
+            }
         }
 
         return attacks[0];
@@ -70,12 +106,11 @@ public class Boss : NPC
 
     public override void TakeDamage(float damage)
     {
-        if(laserInstance != null)
-        laserInstance.SetActive(false);
+        if (laserInstance != null)
+            laserInstance.SetActive(false);
 
         if (damage < this.Health)
         {
-
             base.TakeDamage(damage);
             //StopAllCoroutines();
             animator.SetTrigger("Hit");
@@ -85,8 +120,8 @@ public class Boss : NPC
         {
             Die();
         }
-
     }
+
     private IEnumerator AttackRoutine()
     {
         yield return new WaitForSeconds(AttackCooldown);
