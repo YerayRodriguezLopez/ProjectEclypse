@@ -8,6 +8,9 @@ public class FistSlamAttack : BossAttack
     public float fistFallSpeed = 20f;
     public float impactRadius = 3f;
     public float spawnHeight = 15f;
+    public AudioManager audioManager;
+
+    
 
     public override void Execute(Boss boss, Transform target)
     {
@@ -30,7 +33,10 @@ public class FistSlamAttack : BossAttack
             fist.transform.position += Vector3.down * fistFallSpeed * Time.deltaTime;
             yield return null;
         }
-        
+
+        boss.audioManager.Play(AudioClips.BossHit1);
+        boss.audioManager.Play(AudioClips.BossHit2);
+
         Collider[] hits = Physics.OverlapSphere(groundPos, impactRadius);
         foreach (var hit in hits)
             hit.GetComponent<IHealthable>()?.TakeDamage(damage);

@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CheckpointTriggerBehaviour" Collapsed="true">
+    <Position X="21" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAQAAAAAACgAAABAEgACgAAAIQAAAAAAACMQ=</HashCode>
+      <FileName>Assets\Scripts\Behaviours\CheckpointTriggerBehaviour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Crystal" Collapsed="true">
+    <Position X="5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAQAAAgAAAAAIAAAAAAAAAAAAAAAAABAEAAEA=</HashCode>
+      <FileName>Assets\Scripts\Behaviours\Crystal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoorOpenClose" Collapsed="true">
+    <Position X="17.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAGAAAAAAIAAAAAAAAAAAAAAACAAAEAAAQACAAEA=</HashCode>
+      <FileName>Assets\Scripts\Behaviours\DoorOpenClose.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplosiveCrystal" Collapsed="true">
+    <Position X="5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAgAAAAAIAAAAAAgAAAAACQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Behaviours\ExplosiveCrystal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealCrystal" Collapsed="true">
+    <Position X="7.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAACAACAAgAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Behaviours\HealCrystal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KeyedTriggerBehaviour" Collapsed="true">
+    <Position X="22.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAQAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Behaviours\KeyedTriggerBehaviour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeCycleTriggerBehaviour" Collapsed="true">
+    <Position X="17.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAACAAAAAAAAABAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Behaviours\LifeCycleTriggerBehaviour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PauseBehaviour" Collapsed="true">
+    <Position X="19.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Behaviours\PauseBehaviour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StunCrystal" Collapsed="true">
+    <Position X="2.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAIAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Behaviours\StunCrystal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TriggerBehaviour" Collapsed="true">
+    <Position X="19.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAIAAQAAABAAAQAE=</HashCode>
+      <FileName>Assets\Scripts\Behaviours\TriggerBehaviour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boss" Collapsed="true">
+    <Position X="11.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAACAACAEgAEBAAAAAEICAAAIEBAARAAEEAAA=</HashCode>
+      <FileName>Assets\Scripts\BossAttacks\Boss.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossAttack" Collapsed="true">
+    <Position X="11.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAgAQAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\BossAttacks\BossAttack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FistSlamAttack" Collapsed="true">
+    <Position X="11.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAQAAABAAAAAAAAIAAAAAAAAAAAAAGA=</HashCode>
+      <FileName>Assets\Scripts\BossAttacks\FistSlamAttack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LaserAttack" Collapsed="true">
+    <Position X="14" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAQAAQAAAAAEAAAAIAAAAAAgEBAAAAI=</HashCode>
+      <FileName>Assets\Scripts\BossAttacks\LaserAttack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectileRockAttack" Collapsed="true">
+    <Position X="9.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACAQAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\BossAttacks\ProjectileRockAttack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CompanionAI" Collapsed="true">
+    <Position X="9.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GMTBCCHJBAMgCAJgBCFQuAACAMIIIBOKBEQBAAAGJEA=</HashCode>
+      <FileName>Assets\Scripts\CompanionAI\CompanionAI.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PlayerRegistrar" Collapsed="true">
+    <Position X="21" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\CompanionAI\CompanionRegistrar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XRDebugInfo" Collapsed="true">
+    <Position X="22.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Debug\XRDebugInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediumEnemy" Collapsed="true">
+    <Position X="2.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>jIRCiACAACAACBAgEAgAACARBoAAAApABAABggAEgEA=</HashCode>
+      <FileName>Assets\Scripts\EnemyAI\MediumEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="meleeEnemy" Collapsed="true">
+    <Position X="5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iARCCACAACAACBAgAAAAACARBoAAAApABAABggAEgAA=</HashCode>
+      <FileName>Assets\Scripts\EnemyAI\meleeEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="rangedEnemy" Collapsed="true">
+    <Position X="7.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>jKRCiACAgCBACBAgAAhAACARBoCQAApEBCABggBEgEA=</HashCode>
+      <FileName>Assets\Scripts\EnemyAI\rangedEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleEnemy" Collapsed="true">
+    <Position X="5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iAFCAAAAAAAAAQAAAAAAACARBgAAAAgAAAAAggAAgAA=</HashCode>
+      <FileName>Assets\Scripts\EnemyAI\SimpleEnemy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AudioManager" Collapsed="true">
+    <Position X="17.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAgIAAAAAAAAAAAACwAAAAEAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Managers\AudioManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioSettingsManager" Collapsed="true">
+    <Position X="19.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAggEBCAAgAAAAAAAAEAACQAAQAAAACQgAQAAAAg=</HashCode>
+      <FileName>Assets\Scripts\Managers\AudioSettingsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAYBBGAEECCyUEAQJCCAAOoSCGBDIgAgyAKRY0AUREE=</HashCode>
+      <FileName>Assets\Scripts\Managers\GameManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NPC" Collapsed="true">
+    <Position X="8.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACACAAAgACACgAAAAAAAAAIAAAAIABAIBgAAAAQA=</HashCode>
+      <FileName>Assets\Scripts\NPC.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="14" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAACACAACgACACgAAAEAAACAIAAAAIABAABgAAAAQA=</HashCode>
+      <FileName>Assets\Scripts\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerSword" Collapsed="true">
+    <Position X="22.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAACAAAAAAAAAAAAAAAAAAAAABQAAABAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerSword.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SaveData" Collapsed="true">
+    <Position X="21" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQgCAAgAAAAAAAgAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Assets\Scripts\SaveLoad\SaveData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DissolveParticleEmitter" Collapsed="true">
+    <Position X="22.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAAAAAAAQgAABAAAAAAAIAABAAAAAAAAAAIEQACkA=</HashCode>
+      <FileName>Assets\Scripts\ShaderParticleBehaviours\DissolveParticleEmitter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DissolveVoronoiController" Collapsed="true">
+    <Position X="21" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAICAACAQAAgABBAAAAEAAAAABABAAAAAAAEQ=</HashCode>
+      <FileName>Assets\Scripts\ShaderParticleBehaviours\DissolveVoronoiController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoubleAttackSkill" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAQAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Skills\NormalSkills\DoubleAttackSkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealSkill" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABABAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Skills\NormalSkills\HealSkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HeavyAttackSkill" Collapsed="true">
+    <Position X="7.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Assets\Scripts\Skills\NormalSkills\HeavyAttackSkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Skill" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgCAQEAAAAAAAAAARAAAAgAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Skills\Skill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NormalSkill" Collapsed="true">
+    <Position X="5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Skills\SkillTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UltimateSkill" Collapsed="true">
+    <Position X="11.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Skills\SkillTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UltimateAreaAttackSkill" Collapsed="true">
+    <Position X="9.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAQAAAAAAAAAAAAAABAAAAAEAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Skills\UltimateSkills\UltimateAreaAttackSkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UltimateComboSkill" Collapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAQAAAAAAAAAAAQAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Skills\UltimateSkills\UltimateComboSkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UltimateHealSkill" Collapsed="true">
+    <Position X="14" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Skills\UltimateSkills\UltimateHealSkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IHealthable" Collapsed="true">
+    <Position X="17.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAgAAACgAAAAAAAAAAAAAAAAAAABgAAAAQA=</HashCode>
+      <FileName>Assets\Scripts\Interfaces\IHealthable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IParryable" Collapsed="true">
+    <Position X="19.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAFAAAAAAAAACAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interfaces\IParryable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IPullable" Collapsed="true">
+    <Position X="21" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Assets\Scripts\Interfaces\IPullable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IStunnable" Collapsed="true">
+    <Position X="17.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAQAAAAAAgAAAAAAgAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interfaces\IStunnable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ISaveable" Collapsed="true">
+    <Position X="22.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SaveLoad\ISaveable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="AudioClips" Collapsed="true">
+    <Position X="17.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAACACAAAIAAEAAAAAAEEAAAAgACAABA=</HashCode>
+      <FileName>Assets\Scripts\Managers\AudioManager.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
