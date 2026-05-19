@@ -17,5 +17,6 @@ MonoBehaviour:
   weight: 50
   laserDuration: 2.5
   damageTickRate: 0.2
-  laserLength: 40
-  laserWidth: 0.3
+  laserLength: 100
+  laserWidth: 1
+  laserOrigin: {fileID: 0}

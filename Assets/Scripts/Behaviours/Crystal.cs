@@ -29,7 +29,7 @@ public abstract class Crystal : MonoBehaviour
 
         if (healthable != null)
         {
-            healthable.TakeDamage(damage);
+ w           healthable.TakeDamage(damage);
             Debug.Log("damage");
         }
 
