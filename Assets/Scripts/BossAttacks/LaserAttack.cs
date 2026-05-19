@@ -14,6 +14,7 @@ public class LaserAttack : BossAttack
 
     public override void Execute(Boss boss, Transform target)
     {
+        boss.audioManager.Play(AudioClips.Laser);
         boss.StartCoroutine(LaserRoutine(boss, target));
     }
 

@@ -21,6 +21,7 @@ public class ExplosiveCrystal : Crystal
     override protected void Hit(Collider collision)
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, ExplosionRadius, layer);
+        audioManager.Play(AudioClips.Explosion);
         foreach (Collider other in colliders)
         {
 

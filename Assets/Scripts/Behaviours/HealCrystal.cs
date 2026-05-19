@@ -10,6 +10,7 @@ public class HealCrystal : Crystal
     [SerializeField]
     private float MaxHeal;
 
+    
     override protected void Hit(Collider collision)
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, HealRadius, layer);
@@ -42,7 +43,7 @@ public class HealCrystal : Crystal
                
               
                 healthable.Heal(healAmount);
-               
+                audioManager.Play(AudioClips.Heal);
 
             }
 
