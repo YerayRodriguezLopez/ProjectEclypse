@@ -24,11 +24,19 @@ public class Boss : NPC
 
     private bool isAlive = true;
 
+    public AudioManager audioManager;
+
     private void Start()
     {
         MaxHealth = Health;
         StartCoroutine(AttackRoutine());
     }
+
+    private void Awake()
+    {
+        audioManager = FindFirstObjectByType<AudioManager>();
+    }
+    
 
     public override void Attack()
     {

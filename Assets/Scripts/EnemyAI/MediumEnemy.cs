@@ -25,6 +25,8 @@ public class MediumEnemy : SimpleEnemy
 
     private Coroutine attackCoroutine;
 
+    private AudioManager audioManager;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -34,7 +36,7 @@ public class MediumEnemy : SimpleEnemy
     }
     private void Awake()
     {
-        
+        audioManager = FindFirstObjectByType<AudioManager>();
     }
 
     private void Update()
@@ -187,7 +189,7 @@ public class MediumEnemy : SimpleEnemy
         if (Target.TryGetComponent<IHealthable>(out IHealthable hurtable) && distance <= AttackRange)
         {
             Debug.Log("pego 1,2");
-
+            audioManager.Play(AudioClips.Slice);
             hurtable.TakeDamage(Damage);
         }
     }
@@ -200,7 +202,7 @@ public class MediumEnemy : SimpleEnemy
         if (Target.TryGetComponent<IHealthable>(out IHealthable hurtable) && distance <= AttackRange)
         {
             Debug.Log("pego cargado");
-
+            audioManager.Play(AudioClips.Slice);
             hurtable.TakeDamage(Damage * 1.5f);
         }
     }

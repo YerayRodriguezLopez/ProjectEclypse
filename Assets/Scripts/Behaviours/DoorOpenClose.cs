@@ -8,16 +8,25 @@ public class DoorOpenClose : MonoBehaviour
     Transform doorMesh;
     [SerializeField]
     int heightToMove = 2; // The height the door will move when opening
+    AudioManager audioManager;
+
+    public void Awake()
+    {
+        audioManager = FindFirstObjectByType<AudioManager>();
+    }
 
     public void Open() //Open the door moving it up smoothly with an animation and disable the collider without usin Leantoward
     {
         doorMesh = transform.GetChild(0);
         doorCollider = GetComponent<Collider>();
         StartCoroutine(MoveDoorUp());
+        audioManager.Play(AudioClips.Door);
     }
     public void Close() //Close the door moving it down smoothly with an animation and enable the collider without usin Leantoward
     {
+
         StartCoroutine(MoveDoorDown());
+        audioManager.Play(AudioClips.Door);
     }
 
     private System.Collections.IEnumerator MoveDoorUp()

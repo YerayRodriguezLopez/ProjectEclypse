@@ -42,6 +42,8 @@ public class ProjectileRockAttack : BossAttack
         if (rock == null) yield break;
 
         // Impacto
+        boss.audioManager.Play(AudioClips.BossHit1);
+        boss.audioManager.Play(AudioClips.BossHit2);
         Collider[] hits = Physics.OverlapSphere(rock.transform.position, impactRadius);
         foreach (var hit in hits)
             hit.GetComponent<IHealthable>()?.TakeDamage(damage);
