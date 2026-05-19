@@ -1,30 +1,8 @@
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class StunCrystal : Crystal
 {
     public override float damage { get; set; } = 10;
-    private XRGrabInteractable _grabInteractable;
-    void Awake()
-    {
-        _grabInteractable = GetComponent<XRGrabInteractable>();
-    }
-
-    void OnEnable()
-    {
-        _grabInteractable.selectExited.AddListener(AlSoltarObjeto);
-    }
-
-    void OnDisable()
-    {
-        _grabInteractable.selectExited.RemoveListener(AlSoltarObjeto);
-    }
-
-    private void AlSoltarObjeto(SelectExitEventArgs args)
-    {
-        Debug.Log("El objeto ha sido soltado");// + args.interactorObject.transform.name);
-    }
 
     protected void OnTriggerEnter(Collider other)
     {

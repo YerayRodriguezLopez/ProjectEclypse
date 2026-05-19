@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class Crystal : MonoBehaviour
 {
     public abstract float damage { get; set; }
-    public bool thrown = false;
+    protected bool thrown = false;
     protected bool onGround = true;
 
     [SerializeField] protected LayerMask layer;

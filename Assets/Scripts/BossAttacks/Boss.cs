@@ -13,8 +13,6 @@ public class Boss : NPC
 
     [Header("Referencias")]
     public Transform playerTransform;
-    public Transform laserOrigin;
-
 
     [Header("Prefabs compartidos")]
     public GameObject warningIndicatorPrefab;
@@ -65,7 +63,7 @@ public class Boss : NPC
 
     private IEnumerator AttackRoutine()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
 
         while (isAlive)
         {

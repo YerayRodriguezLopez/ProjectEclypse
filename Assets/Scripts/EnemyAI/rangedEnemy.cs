@@ -168,7 +168,6 @@ public class rangedEnemy : SimpleEnemy
         Vector3 startPos = this.transform.position;// + Vector3.up * 2f;
         GameObject rock = Instantiate(rockPrefab, startPos, Random.rotation);
         rock.SetActive(true);
-        //rock.GetComponent<Crystal>()?.thrown = true;
 
         Vector3 targetPos = Target.transform.position;
         float elapsed = 0f;

@@ -9,6 +9,7 @@ public class AudioSettingsManager : MonoBehaviour
     [SerializeField] private Slider sliderMaster;
     [SerializeField] private Slider sliderMusic;
     [SerializeField] private Slider sliderSFX;
+    [SerializeField] private Slider sliderVoice;
     
     /* Required scene layout:
      * UI Canvas
@@ -24,6 +25,7 @@ public class AudioSettingsManager : MonoBehaviour
         LoadVolumeLevel(1);
         LoadVolumeLevel(2);
         LoadVolumeLevel(3);
+        LoadVolumeLevel(4);
         // Debug.Log("Ending AudioSettingsManager LoadVolumeLevel");
     }
 
@@ -41,6 +43,9 @@ public class AudioSettingsManager : MonoBehaviour
 
             case 3:
                 ProcessVolumeLoad(sliderSFX.transform.name, sliderSFX);
+                break;
+            case 4:
+                ProcessVolumeLoad(sliderVoice.transform.name, sliderSFX);
                 break;
 
             default:
@@ -75,6 +80,11 @@ public class AudioSettingsManager : MonoBehaviour
                 // Debug.Log("Saving SFXVol");
                 SaveSlider(sliderVal, sliderSFX.transform.name);
                 break;
+            
+            case 4:
+                // Debug.Log("Saving VoiceVol");
+                SaveSlider(sliderVal, sliderVoice.transform.name);
+                break;
 
             default:
                 break;
@@ -104,5 +114,10 @@ public class AudioSettingsManager : MonoBehaviour
     public void SetSFXVolume(float vol)
     {
         SaveVolumeLevel(3, vol);
+    }
+
+    public void SetVoiceVolume(float vol)
+    {
+        SaveVolumeLevel(4, vol);
     }
 }

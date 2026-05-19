@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom_Crystal_URP-Red
+  m_Shader: {fileID: 4800000, guid: 766f3aa086640724a9cf89019d58c827, type: 3}
+  m_Parent: {fileID: 2100000, guid: 176e07db1fbe14f46a18c04b56489f2d, type: 2}
+  m_ModifiedSerializedProperties: 2
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _EMISSION
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _GlossMapScale: 1
+    - _Glossiness: 0.895455
+    - _GlossyReflections: 1
+    - _Opacity: 0.55
+    - _Parallax: 0.02
+    - _Smoothness: 0.895455
+    m_Colors:
+    - _BaseColor: {r: 0.90636706, g: 0, b: 0.03843233, a: 1}
+    - _Color: {r: 0.90636706, g: 0, b: 0.03843233, a: 1}
+    - _CrystalColor: {r: 0.90588236, g: 0, b: 0.039215688, a: 1}
+    - _EmissionColor: {r: 1, g: 0.8402306, b: 0.920611, a: 1}
+    - _InnerGlowColor: {r: 1, g: 0.8392157, b: 0.92156863, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
