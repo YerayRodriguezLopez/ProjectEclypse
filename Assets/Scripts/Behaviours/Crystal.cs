@@ -9,7 +9,7 @@ public abstract class Crystal : MonoBehaviour
 
     [SerializeField] protected LayerMask layer;
 
-    public void Awake()
+    public void Start()
     {
         audioManager = FindFirstObjectByType<AudioManager>();
     }

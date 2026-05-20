@@ -783,6 +783,7 @@ GameObject:
   - component: {fileID: 2228766619311609377}
   - component: {fileID: 3795802604675608881}
   - component: {fileID: 5650833505454931152}
+  - component: {fileID: 4757947028509364785}
   m_Layer: 0
   m_Name: Cristal1.007
   m_TagString: Untagged
@@ -865,6 +866,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &4757947028509364785
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105367570827735095}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.014, y: 0.013, z: 0.016}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.001, y: 0.001, z: 0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &107616386786010708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,6 +1769,7 @@ GameObject:
   - component: {fileID: 2772257322502836524}
   - component: {fileID: 5758174418352328366}
   - component: {fileID: 8573788451608969321}
+  - component: {fileID: 9158975347620120362}
   m_Layer: 0
   m_Name: Cristal1.005
   m_TagString: Untagged
@@ -1832,6 +1850,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &9158975347620120362
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202976969346227486}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.040000003, y: 0.040000003, z: 0.012}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.008, y: -0.013, z: 0.002}
+  m_TimeToStationary: 0.5
 --- !u!1 &207857425701189905
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,6 +2398,7 @@ GameObject:
   - component: {fileID: 8841435127382241240}
   - component: {fileID: 3718953228049765504}
   - component: {fileID: 3229330589062164706}
+  - component: {fileID: 4666429658610843991}
   m_Layer: 10
   m_Name: Silla.003
   m_TagString: Untagged
@@ -2444,6 +2479,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &4666429658610843991
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240668729570589011}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.003, y: 0.004, z: 0.0050000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &277160609087007961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,6 +2506,7 @@ GameObject:
   - component: {fileID: 3918913292978790017}
   - component: {fileID: 3166135400946013340}
   - component: {fileID: 7843175156422508467}
+  - component: {fileID: 929862744232305884}
   m_Layer: 10
   m_Name: MesaLowPoly.002
   m_TagString: Untagged
@@ -2534,6 +2586,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &929862744232305884
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277160609087007961}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.007, y: 0.008, z: 0.010000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.001, z: 0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &316196976296363542
 GameObject:
   m_ObjectHideFlags: 0
@@ -3822,6 +3890,7 @@ GameObject:
   - component: {fileID: 3716409889837867009}
   - component: {fileID: 9199499060136087103}
   - component: {fileID: 6877327017646577531}
+  - component: {fileID: 6730588915906725775}
   m_Layer: 0
   m_Name: CristalIndividual.002
   m_TagString: Untagged
@@ -3901,6 +3970,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &6730588915906725775
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511299193762836370}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.029000001, y: 0.030000001, z: 0.15300001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.003, y: 0.009000001, z: -0.021000002}
+  m_TimeToStationary: 0.5
 --- !u!1 &522041378416263572
 GameObject:
   m_ObjectHideFlags: 0
@@ -4356,6 +4441,7 @@ GameObject:
   - component: {fileID: 6728082648956832010}
   - component: {fileID: 225006165846641899}
   - component: {fileID: 4712973874131094331}
+  - component: {fileID: 1439041607847621425}
   m_Layer: 0
   m_Name: CristalIndividual (1)
   m_TagString: Untagged
@@ -4435,6 +4521,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &1439041607847621425
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583118226080263479}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.031000001, y: 0.011000001, z: 0.017}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.001, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &591204519761828928
 GameObject:
   m_ObjectHideFlags: 0
@@ -5997,6 +6099,7 @@ GameObject:
   - component: {fileID: 3101005152397015300}
   - component: {fileID: 1425082037312586170}
   - component: {fileID: 7887109930960666498}
+  - component: {fileID: 1189285688393134878}
   m_Layer: 0
   m_Name: Cristal1.004
   m_TagString: Untagged
@@ -6077,6 +6180,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &1189285688393134878
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797263814798571955}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.010000001, y: 0.008, z: 0.011000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.002, y: -0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &797990976337098024
 GameObject:
   m_ObjectHideFlags: 0
@@ -7403,7 +7522,7 @@ Transform:
   m_GameObject: {fileID: 988770305536929798}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1735406, y: 0.089975506, z: 0.26128998}
+  m_LocalPosition: {x: 1.1735406, y: 0.09, z: 0.743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7478,6 +7597,7 @@ GameObject:
   - component: {fileID: 1700596742038274973}
   - component: {fileID: 8693520426690430902}
   - component: {fileID: 5396009891839288450}
+  - component: {fileID: 1694189288791449475}
   m_Layer: 10
   m_Name: Cylinder.001
   m_TagString: Untagged
@@ -7497,7 +7617,8 @@ Transform:
   m_LocalPosition: {x: 2.0794203, y: 0.107687525, z: -0.02379341}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 9170099560724920091}
   m_Father: {fileID: 7634237699158016389}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1700596742038274973
@@ -7579,6 +7700,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7387706064836869012, guid: 061f606572db946578a256155667b89a, type: 3}
+--- !u!208 &1694189288791449475
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006531052822316875}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.238, y: 0.238, z: 0.010000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1014017967551801318
 GameObject:
   m_ObjectHideFlags: 0
@@ -7794,6 +7931,7 @@ GameObject:
   - component: {fileID: 5589509677652274854}
   - component: {fileID: 501230002015456153}
   - component: {fileID: 4530124243075007964}
+  - component: {fileID: 5984375889300308221}
   m_Layer: 0
   m_Name: Cristal1.011 (1)
   m_TagString: Untagged
@@ -7874,6 +8012,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &5984375889300308221
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040260442085573065}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.037, y: 0.043, z: 0.048}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.002, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &1080860629949479842
 GameObject:
   m_ObjectHideFlags: 0
@@ -8422,6 +8576,7 @@ GameObject:
   - component: {fileID: 1620721867591683023}
   - component: {fileID: 636174162062963039}
   - component: {fileID: 6386344928593964744}
+  - component: {fileID: 7141742016817740240}
   m_Layer: 0
   m_Name: Cristal1.011
   m_TagString: Untagged
@@ -8502,6 +8657,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &7141742016817740240
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131333722301082465}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.037, y: 0.043, z: 0.048}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.002, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &1132355855931271417
 GameObject:
   m_ObjectHideFlags: 0
@@ -8604,6 +8775,7 @@ GameObject:
   - component: {fileID: 1397310188094908223}
   - component: {fileID: 7694526289978776337}
   - component: {fileID: 518430775099465293}
+  - component: {fileID: 6964102493016257009}
   m_Layer: 0
   m_Name: Cristal1.017 (1)
   m_TagString: Untagged
@@ -8685,6 +8857,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &6964102493016257009
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140533007261498777}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.014, y: 0.011000001, z: 0.016}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.002, y: -0.001, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &1141843039590651919
 GameObject:
   m_ObjectHideFlags: 0
@@ -8696,6 +8884,7 @@ GameObject:
   - component: {fileID: 3892246042647000164}
   - component: {fileID: 1501715960391402944}
   - component: {fileID: 3634806510066825405}
+  - component: {fileID: 3655325424553808409}
   m_Layer: 0
   m_Name: Cristal1.011 (8)
   m_TagString: Untagged
@@ -8776,6 +8965,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &3655325424553808409
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141843039590651919}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.037, y: 0.043, z: 0.048}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.002, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &1176284918183639525
 GameObject:
   m_ObjectHideFlags: 0
@@ -8787,6 +8992,7 @@ GameObject:
   - component: {fileID: 7619706422868526150}
   - component: {fileID: 7713325762862322559}
   - component: {fileID: 608523867805022471}
+  - component: {fileID: 7988580324557618716}
   m_Layer: 0
   m_Name: Cristal2.007
   m_TagString: Untagged
@@ -8868,6 +9074,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &7988580324557618716
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176284918183639525}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.008, y: 0.004, z: 0.011000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1185415768903662368
 GameObject:
   m_ObjectHideFlags: 0
@@ -9060,6 +9282,7 @@ GameObject:
   - component: {fileID: 1812993314485103284}
   - component: {fileID: 1957649573102210542}
   - component: {fileID: 8526780136518266479}
+  - component: {fileID: 358545322713240202}
   m_Layer: 0
   m_Name: CristalIndividual (3)
   m_TagString: Untagged
@@ -9140,6 +9363,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &358545322713240202
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214343969778218045}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.031000001, y: 0.011000001, z: 0.017}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.001, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &1228351539918317540
 GameObject:
   m_ObjectHideFlags: 0
@@ -9762,6 +10001,7 @@ GameObject:
   - component: {fileID: 5180873272544860013}
   - component: {fileID: 7602803848654624904}
   - component: {fileID: 6800106937608519906}
+  - component: {fileID: 712940809407669820}
   m_Layer: 0
   m_Name: Cristal1.017 (2)
   m_TagString: Untagged
@@ -9843,6 +10083,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &712940809407669820
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299535536726662050}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.014, y: 0.011000001, z: 0.016}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.002, y: -0.001, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &1313640457407358292
 GameObject:
   m_ObjectHideFlags: 0
@@ -10211,6 +10467,7 @@ GameObject:
   - component: {fileID: 4928256552828770038}
   - component: {fileID: 5077230845880248938}
   - component: {fileID: 3613376048844936395}
+  - component: {fileID: 3358922200169362520}
   m_Layer: 0
   m_Name: Cristal1.019
   m_TagString: Untagged
@@ -10291,6 +10548,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &3358922200169362520
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356636949077780800}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.030000001, y: 0.012, z: 0.016}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.002, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1377032806672462623
 GameObject:
   m_ObjectHideFlags: 0
@@ -10800,6 +11073,7 @@ GameObject:
   - component: {fileID: 4030027790234134049}
   - component: {fileID: 7817870363335564641}
   - component: {fileID: 7591601331546787988}
+  - component: {fileID: 7662359520496158826}
   m_Layer: 0
   m_Name: Cristal1.006
   m_TagString: Untagged
@@ -10880,6 +11154,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &7662359520496158826
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402041578795359470}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.040000003, y: 0.040000003, z: 0.012}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.001, y: -0.002, z: -0.010000001}
+  m_TimeToStationary: 0.5
 --- !u!1 &1418804883586702915
 GameObject:
   m_ObjectHideFlags: 0
@@ -11004,6 +11294,7 @@ GameObject:
   - component: {fileID: 8881115433660655087}
   - component: {fileID: 4443710732199597138}
   - component: {fileID: 439470300384639129}
+  - component: {fileID: 455181426551736963}
   m_Layer: 10
   m_Name: Silla.002
   m_TagString: Untagged
@@ -11084,6 +11375,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &455181426551736963
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453586173349005872}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.002, y: 0.003, z: 0.0050000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -0.002}
+  m_TimeToStationary: 0.5
 --- !u!1 &1461968569547682679
 GameObject:
   m_ObjectHideFlags: 0
@@ -11427,6 +11734,7 @@ GameObject:
   - component: {fileID: 7493069049189786258}
   - component: {fileID: 4439496694360742651}
   - component: {fileID: 6507379358396405797}
+  - component: {fileID: 539703551674536567}
   m_Layer: 0
   m_Name: Cristal1.008
   m_TagString: Untagged
@@ -11506,6 +11814,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &539703551674536567
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486303012271735330}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.008, y: 0.007, z: 0.008}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1494641829540192581
 GameObject:
   m_ObjectHideFlags: 0
@@ -15657,6 +15981,7 @@ GameObject:
   - component: {fileID: 7415792000837115455}
   - component: {fileID: 8874995660386712719}
   - component: {fileID: 4601065180084764677}
+  - component: {fileID: 4324233529256918625}
   m_Layer: 10
   m_Name: Silla.008
   m_TagString: Untagged
@@ -15737,6 +16062,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &4324233529256918625
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036955676712358050}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.003, y: 0.002, z: 0.0050000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -0.002}
+  m_TimeToStationary: 0.5
 --- !u!1 &2037146378620138950
 GameObject:
   m_ObjectHideFlags: 0
@@ -17272,13 +17613,14 @@ GameObject:
   - component: {fileID: 3000664757914049121}
   - component: {fileID: 2968640129145734111}
   - component: {fileID: 441127415133336251}
+  - component: {fileID: 3981890670455590893}
   m_Layer: 0
   m_Name: Cristal2.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3000664757914049121
 Transform:
   m_ObjectHideFlags: 0
@@ -17351,6 +17693,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &3981890670455590893
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2236597366132014990}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.035, y: 0.036000002, z: 0.011000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.008, y: -0.007, z: -0.003}
+  m_TimeToStationary: 0.5
 --- !u!1 &2252294821156573340
 GameObject:
   m_ObjectHideFlags: 0
@@ -17362,6 +17720,7 @@ GameObject:
   - component: {fileID: 8253687585415281536}
   - component: {fileID: 1656068063151309522}
   - component: {fileID: 3586649288441240965}
+  - component: {fileID: 74845165583254135}
   m_Layer: 0
   m_Name: CristalIndividual.001 (6)
   m_TagString: Untagged
@@ -17442,6 +17801,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &74845165583254135
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2252294821156573340}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.035, y: 0.021000002, z: 0.041}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2270121234076049368
 GameObject:
   m_ObjectHideFlags: 0
@@ -18190,6 +18565,7 @@ GameObject:
   - component: {fileID: 2777119457476443856}
   - component: {fileID: 7613367742266818820}
   - component: {fileID: 4232986257218551019}
+  - component: {fileID: 7213094159974725176}
   m_Layer: 10
   m_Name: Silla.010
   m_TagString: Untagged
@@ -18270,6 +18646,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &7213094159974725176
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2377961894428949963}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.002, y: 0.003, z: 0.0050000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -0.002}
+  m_TimeToStationary: 0.5
 --- !u!1 &2387188803185778771
 GameObject:
   m_ObjectHideFlags: 0
@@ -19285,6 +19677,7 @@ GameObject:
   - component: {fileID: 286348077107714763}
   - component: {fileID: 5627712214507146768}
   - component: {fileID: 8818920314232147336}
+  - component: {fileID: 3324602643483994955}
   m_Layer: 0
   m_Name: Cristal2.009
   m_TagString: Untagged
@@ -19365,6 +19758,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &3324602643483994955
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2503664482061182564}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.022000002, y: 0.020000001, z: 0.021000002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.004, y: 0, z: 0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &2516958899316763557
 GameObject:
   m_ObjectHideFlags: 0
@@ -20069,6 +20478,7 @@ GameObject:
   - component: {fileID: 4538736318747188750}
   - component: {fileID: 1381759040289480293}
   - component: {fileID: 7035207794924290403}
+  - component: {fileID: 8096818018772329375}
   m_Layer: 0
   m_Name: Cristal2.014
   m_TagString: Untagged
@@ -20150,6 +20560,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &8096818018772329375
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2587624979186798529}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.012, y: 0.020000001, z: 0.023000002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.001, y: -0.001, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &2594157252744097644
 GameObject:
   m_ObjectHideFlags: 0
@@ -21483,6 +21909,7 @@ GameObject:
   - component: {fileID: 6726261611968374943}
   - component: {fileID: 2014293555400046854}
   - component: {fileID: 2046569434207768397}
+  - component: {fileID: 5018229453491110224}
   m_Layer: 10
   m_Name: Silla.007
   m_TagString: Untagged
@@ -21563,6 +21990,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &5018229453491110224
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717959771927920865}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.003, y: 0.002, z: 0.0050000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -0.002}
+  m_TimeToStationary: 0.5
 --- !u!1 &2718909212400965901
 GameObject:
   m_ObjectHideFlags: 0
@@ -22017,6 +22460,7 @@ GameObject:
   - component: {fileID: 8459366490451505064}
   - component: {fileID: 3378025330925943834}
   - component: {fileID: 5479128316353165610}
+  - component: {fileID: 8128762193801265552}
   m_Layer: 10
   m_Name: "PuertaPeque\xF1a.002"
   m_TagString: Untagged
@@ -22097,6 +22541,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8128762193801265552
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2782398607464265396}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.002278289, y: 0.014068347, z: 0.020250758}
+  m_Center: {x: -0.00000005966285, y: 0.000000014901161, z: -0.000000014901161}
 --- !u!1 &2784494935795216778
 GameObject:
   m_ObjectHideFlags: 0
@@ -22336,6 +22801,7 @@ GameObject:
   - component: {fileID: 4045524016398277766}
   - component: {fileID: 234075966412994058}
   - component: {fileID: 8110398968223863135}
+  - component: {fileID: 2823890451296847352}
   m_Layer: 0
   m_Name: Cristal2.005
   m_TagString: Untagged
@@ -22418,6 +22884,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &2823890451296847352
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2823864831758974152}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.015000001, y: 0.010000001, z: 0.012}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2831117433238500374
 GameObject:
   m_ObjectHideFlags: 0
@@ -24610,6 +25092,7 @@ GameObject:
   - component: {fileID: 794343886813352856}
   - component: {fileID: 7664510855665846489}
   - component: {fileID: 7689732633193970251}
+  - component: {fileID: 9159312487275013399}
   m_Layer: 0
   m_Name: CristalIndividual.001 (1)
   m_TagString: Untagged
@@ -24689,6 +25172,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &9159312487275013399
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3122756171792450868}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.035, y: 0.021000002, z: 0.041}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &3142018552498983447
 GameObject:
   m_ObjectHideFlags: 0
@@ -26230,6 +26729,7 @@ GameObject:
   - component: {fileID: 6858873402196883842}
   - component: {fileID: 8233391226816368842}
   - component: {fileID: 7516915787605084788}
+  - component: {fileID: 4193588081722462246}
   m_Layer: 0
   m_Name: Cristal1.001
   m_TagString: Untagged
@@ -26309,6 +26809,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &4193588081722462246
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3324984209046911233}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.011000001, y: 0.010000001, z: 0.028}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.001, y: 0.001, z: -0.002}
+  m_TimeToStationary: 0.5
 --- !u!1 &3347769814186756076
 GameObject:
   m_ObjectHideFlags: 0
@@ -27538,6 +28054,7 @@ GameObject:
   - component: {fileID: 977323849165448427}
   - component: {fileID: 1407149615473938516}
   - component: {fileID: 4327016182273080412}
+  - component: {fileID: 6283652295992555219}
   m_Layer: 10
   m_Name: MesaLowPoly
   m_TagString: Untagged
@@ -27617,6 +28134,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &6283652295992555219
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3503794150361017305}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.007, y: 0.010000001, z: 0.004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &3503827841782152511
 GameObject:
   m_ObjectHideFlags: 0
@@ -27833,6 +28366,7 @@ GameObject:
   - component: {fileID: 6071812069911534566}
   - component: {fileID: 5300441021717854176}
   - component: {fileID: 8299444361320327044}
+  - component: {fileID: 2366446121901441181}
   m_Layer: 0
   m_Name: Cristal1.009
   m_TagString: Untagged
@@ -27913,6 +28447,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &2366446121901441181
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3540745065517119511}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.031000001, y: 0.015000001, z: 0.036000002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.004, y: -0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &3572965555372306209
 GameObject:
   m_ObjectHideFlags: 0
@@ -28560,6 +29110,7 @@ GameObject:
   - component: {fileID: 7977357814669586207}
   - component: {fileID: 6024351850887265211}
   - component: {fileID: 5678685389662685527}
+  - component: {fileID: 2299864517502683338}
   m_Layer: 0
   m_Name: Cristal2.010
   m_TagString: Untagged
@@ -28640,6 +29191,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &2299864517502683338
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3650319989426027771}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.0050000004, y: 0.006, z: 0.004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &3650993112930220071
 GameObject:
   m_ObjectHideFlags: 0
@@ -28651,6 +29218,7 @@ GameObject:
   - component: {fileID: 6066909170033560390}
   - component: {fileID: 7588875302591012780}
   - component: {fileID: 1489512679144740107}
+  - component: {fileID: 3891236148147744533}
   m_Layer: 0
   m_Name: Cristal1.006 (1)
   m_TagString: Untagged
@@ -28730,6 +29298,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &3891236148147744533
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3650993112930220071}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.040000003, y: 0.040000003, z: 0.012}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.001, y: -0.002, z: -0.010000001}
+  m_TimeToStationary: 0.5
 --- !u!1 &3675814438417587357
 GameObject:
   m_ObjectHideFlags: 0
@@ -28741,6 +29325,7 @@ GameObject:
   - component: {fileID: 3344640437146527710}
   - component: {fileID: 7944428608048442331}
   - component: {fileID: 4385146333302084425}
+  - component: {fileID: 3837431995450667172}
   m_Layer: 0
   m_Name: Cristal1.016
   m_TagString: Untagged
@@ -28824,6 +29409,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &3837431995450667172
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675814438417587357}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.022000002, y: 0.022000002, z: 0.022000002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.002, z: 0.002}
+  m_TimeToStationary: 0.5
 --- !u!1 &3713662821542910406
 GameObject:
   m_ObjectHideFlags: 0
@@ -29154,6 +29755,7 @@ GameObject:
   - component: {fileID: 7343556006052877103}
   - component: {fileID: 6403832352668646561}
   - component: {fileID: 3232980819141532402}
+  - component: {fileID: 6902184522027501698}
   m_Layer: 10
   m_Name: Silla.006
   m_TagString: Untagged
@@ -29234,6 +29836,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &6902184522027501698
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3764599153141102666}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.002, y: 0.003, z: 0.0050000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -0.002}
+  m_TimeToStationary: 0.5
 --- !u!1 &3766043555339284178
 GameObject:
   m_ObjectHideFlags: 0
@@ -29562,6 +30180,7 @@ GameObject:
   - component: {fileID: 704029769479597399}
   - component: {fileID: 5198778934254026529}
   - component: {fileID: 6458505674384371143}
+  - component: {fileID: 8182231624668001580}
   m_Layer: 0
   m_Name: Cristal2.013
   m_TagString: Untagged
@@ -29641,6 +30260,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &8182231624668001580
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3793070883373863257}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.0050000004, y: 0.006, z: 0.004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &3809220110368502930
 GameObject:
   m_ObjectHideFlags: 0
@@ -29779,6 +30414,7 @@ GameObject:
   - component: {fileID: 7745319050227407443}
   - component: {fileID: 5073428746588667338}
   - component: {fileID: 1578962068249756942}
+  - component: {fileID: 8296070980329731316}
   m_Layer: 0
   m_Name: Cristal2.008
   m_TagString: Untagged
@@ -29858,6 +30494,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &8296070980329731316
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3821012217854756441}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.07300001, y: 0.048, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.001, y: 0.003, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &3822286808752708253
 GameObject:
   m_ObjectHideFlags: 0
@@ -31257,6 +31909,7 @@ GameObject:
   - component: {fileID: 5903706560551371397}
   - component: {fileID: 8312351092872336746}
   - component: {fileID: 1935509344646818890}
+  - component: {fileID: 5613960010357806162}
   m_Layer: 0
   m_Name: CristalIndividual.001 (7)
   m_TagString: Untagged
@@ -31336,6 +31989,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &5613960010357806162
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4000728751208817156}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.035, y: 0.021000002, z: 0.041}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4012865800535807543
 GameObject:
   m_ObjectHideFlags: 0
@@ -31860,6 +32529,7 @@ GameObject:
   - component: {fileID: 2983459715632354602}
   - component: {fileID: 5324731486344160401}
   - component: {fileID: 3283909902963742517}
+  - component: {fileID: 8146963808619008976}
   m_Layer: 0
   m_Name: Cristal2.015
   m_TagString: Untagged
@@ -31941,6 +32611,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &8146963808619008976
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4031629374933696718}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.015000001, y: 0.013, z: 0.026}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4052247845195302787
 GameObject:
   m_ObjectHideFlags: 0
@@ -31952,6 +32638,7 @@ GameObject:
   - component: {fileID: 4022831536035631594}
   - component: {fileID: 255738594820703816}
   - component: {fileID: 820061423063702211}
+  - component: {fileID: 2529981243892120032}
   m_Layer: 0
   m_Name: CristalIndividual (4)
   m_TagString: Untagged
@@ -32031,6 +32718,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &2529981243892120032
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4052247845195302787}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.031000001, y: 0.011000001, z: 0.017}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.001, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &4070421564781987646
 GameObject:
   m_ObjectHideFlags: 0
@@ -32626,6 +33329,7 @@ GameObject:
   - component: {fileID: 3324234345382543367}
   - component: {fileID: 6779791463871266459}
   - component: {fileID: 7040752158435790017}
+  - component: {fileID: 4755567982767369581}
   m_Layer: 10
   m_Name: MesaHighPoly.001
   m_TagString: Untagged
@@ -32705,6 +33409,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &4755567982767369581
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4144900680394059644}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.007, y: 0.010000001, z: 0.004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4148761018205313542
 GameObject:
   m_ObjectHideFlags: 0
@@ -33978,7 +34698,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.1735406, y: -0.518486, z: -0.028586883}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 3.29}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7634237699158016389}
@@ -34256,6 +34976,7 @@ GameObject:
   - component: {fileID: 1320984782160344549}
   - component: {fileID: 1422436696833415166}
   - component: {fileID: 1510657286781735850}
+  - component: {fileID: 124017112217205959}
   m_Layer: 10
   m_Name: Silla.001
   m_TagString: Untagged
@@ -34336,6 +35057,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &124017112217205959
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4370523935639794513}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.002, y: 0.003, z: 0.0050000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -0.002}
+  m_TimeToStationary: 0.5
 --- !u!1 &4371159746318629262
 GameObject:
   m_ObjectHideFlags: 0
@@ -35415,6 +36152,7 @@ GameObject:
   - component: {fileID: 8838898155750289016}
   - component: {fileID: 7237469110897502512}
   - component: {fileID: 3021924166155508076}
+  - component: {fileID: 3737621750500095907}
   m_Layer: 0
   m_Name: Cristal1.011 (7)
   m_TagString: Untagged
@@ -35495,6 +36233,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &3737621750500095907
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4553709366382284124}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.037, y: 0.043, z: 0.048}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.002, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &4558930038673336726
 GameObject:
   m_ObjectHideFlags: 0
@@ -36027,6 +36781,7 @@ GameObject:
   - component: {fileID: 6433921761679938793}
   - component: {fileID: 2695324179238363325}
   - component: {fileID: 1465806079080229219}
+  - component: {fileID: 391103054088542266}
   m_Layer: 0
   m_Name: Cristal1.013
   m_TagString: Untagged
@@ -36107,6 +36862,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &391103054088542266
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4666605807245987147}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.033, y: 0.032, z: 0.038000003}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.001, y: 0.001, z: 0.003}
+  m_TimeToStationary: 0.5
 --- !u!1 &4682705837993081651
 GameObject:
   m_ObjectHideFlags: 0
@@ -36999,6 +37770,7 @@ GameObject:
   - component: {fileID: 6026965413522352418}
   - component: {fileID: 6130734010110480577}
   - component: {fileID: 6266052485281683404}
+  - component: {fileID: 3114095510159554641}
   m_Layer: 0
   m_Name: Cristal1.011 (2)
   m_TagString: Untagged
@@ -37079,6 +37851,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &3114095510159554641
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4806110723253684912}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.037, y: 0.043, z: 0.048}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.002, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &4813325990908120941
 GameObject:
   m_ObjectHideFlags: 0
@@ -37383,6 +38171,7 @@ GameObject:
   - component: {fileID: 3110543052374950168}
   - component: {fileID: 8863095279722929116}
   - component: {fileID: 4861613551127376947}
+  - component: {fileID: 729651619941304285}
   m_Layer: 0
   m_Name: Cristal2.004
   m_TagString: Untagged
@@ -37462,6 +38251,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &729651619941304285
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4857403018696603782}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.035, y: 0.036000002, z: 0.011000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.013, y: 0.002, z: 0.007}
+  m_TimeToStationary: 0.5
 --- !u!1 &4868488020797947159
 GameObject:
   m_ObjectHideFlags: 0
@@ -38570,6 +39375,7 @@ GameObject:
   - component: {fileID: 7647546577164530176}
   - component: {fileID: 3056908756627177816}
   - component: {fileID: 257839659070374093}
+  - component: {fileID: 7467144612444608611}
   m_Layer: 0
   m_Name: Cristal1.017
   m_TagString: Untagged
@@ -38649,6 +39455,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &7467144612444608611
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5008022044619275882}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.014, y: 0.011000001, z: 0.016}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.002, y: -0.001, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &5028051441558849588
 GameObject:
   m_ObjectHideFlags: 0
@@ -38900,6 +39722,7 @@ GameObject:
   - component: {fileID: 8930637152912630646}
   - component: {fileID: 6548752823164298949}
   - component: {fileID: 8510098124471497793}
+  - component: {fileID: 826213800501698128}
   m_Layer: 0
   m_Name: Cristal2.002
   m_TagString: Untagged
@@ -38982,6 +39805,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &826213800501698128
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5040179927870242847}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.015000001, y: 0.009000001, z: 0.011000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &5045658471047662222
 GameObject:
   m_ObjectHideFlags: 0
@@ -39009,7 +39848,7 @@ Transform:
   m_GameObject: {fileID: 5045658471047662222}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.072772466, y: -0.50121117, z: 0.10528062}
+  m_LocalPosition: {x: -0.072772466, y: -0.5054, z: 0.10528}
   m_LocalScale: {x: 0.075, y: 0.075, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40349,6 +41188,7 @@ GameObject:
   - component: {fileID: 5684645116726014188}
   - component: {fileID: 8907298070018044512}
   - component: {fileID: 726236780651644607}
+  - component: {fileID: 3008511927272642156}
   m_Layer: 0
   m_Name: Cristal2.012
   m_TagString: Untagged
@@ -40430,6 +41270,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &3008511927272642156
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5208810375385972243}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.025, y: 0.017, z: 0.020000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.003, y: -0.001, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &5215034664109783511
 GameObject:
   m_ObjectHideFlags: 0
@@ -42236,7 +43092,7 @@ Light:
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  m_Intensity: 16000
+  m_Intensity: 1000
   m_Range: 10
   m_SpotAngle: 45
   m_InnerSpotAngle: 21.80208
@@ -42535,6 +43391,7 @@ GameObject:
   - component: {fileID: 5136938434485319025}
   - component: {fileID: 7681490274607358200}
   - component: {fileID: 5537564428666516117}
+  - component: {fileID: 192041724449740766}
   m_Layer: 0
   m_Name: Cristal2.001
   m_TagString: Untagged
@@ -42617,6 +43474,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &192041724449740766
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5424503151991065341}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.0050000004, y: 0.004, z: 0.004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &5427869616436108879
 GameObject:
   m_ObjectHideFlags: 0
@@ -44115,6 +44988,7 @@ GameObject:
   - component: {fileID: 4375686816605939180}
   - component: {fileID: 1981042175614472395}
   - component: {fileID: 3037618742999752138}
+  - component: {fileID: 8434792355485259269}
   m_Layer: 10
   m_Name: Silla.004
   m_TagString: Untagged
@@ -44195,6 +45069,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &8434792355485259269
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5698343393602231958}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.003, y: 0.002, z: 0.0050000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -0.002}
+  m_TimeToStationary: 0.5
 --- !u!1 &5710781121765501432
 GameObject:
   m_ObjectHideFlags: 0
@@ -44667,7 +45557,7 @@ Transform:
   m_GameObject: {fileID: 5731930572026203800}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.072772466, y: -0.48618388, z: 0.10528062}
+  m_LocalPosition: {x: -0.072772466, y: -0.48243332, z: 0.10528062}
   m_LocalScale: {x: 0.075, y: 0.075, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46578,6 +47468,7 @@ GameObject:
   - component: {fileID: 1105063583986439425}
   - component: {fileID: 1023928163420793849}
   - component: {fileID: 8685279529516142330}
+  - component: {fileID: 7396571087115343565}
   m_Layer: 0
   m_Name: CristalIndividual
   m_TagString: Untagged
@@ -46657,6 +47548,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &7396571087115343565
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6046799930534737556}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.031000001, y: 0.011000001, z: 0.017}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.001, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &6047102303846815293
 GameObject:
   m_ObjectHideFlags: 0
@@ -46668,7 +47575,6 @@ GameObject:
   - component: {fileID: 4651914818864071996}
   - component: {fileID: 8132457293852079946}
   - component: {fileID: 31599598468635581}
-  - component: {fileID: 5466473355218801307}
   m_Layer: 10
   m_Name: PuertaGrande.004
   m_TagString: Untagged
@@ -46748,28 +47654,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5466473355218801307
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6047102303846815293}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4791506139345731615, guid: 061f606572db946578a256155667b89a, type: 3}
 --- !u!1 &6049278944158371006
 GameObject:
   m_ObjectHideFlags: 0
@@ -48340,6 +49224,7 @@ GameObject:
   - component: {fileID: 289990244664570849}
   - component: {fileID: 7695930735290331402}
   - component: {fileID: 3083093252840302137}
+  - component: {fileID: 363145058915534841}
   m_Layer: 0
   m_Name: CristalIndividual.001
   m_TagString: Untagged
@@ -48420,6 +49305,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &363145058915534841
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6232314044218675811}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.035, y: 0.021000002, z: 0.041}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &6241689006127973636
 GameObject:
   m_ObjectHideFlags: 0
@@ -49838,7 +50739,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.1735406, y: 0.69843715, z: -0.028586844}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 3.29}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7634237699158016389}
@@ -50674,6 +51575,7 @@ GameObject:
   - component: {fileID: 6039961979900007164}
   - component: {fileID: 5071231424448751329}
   - component: {fileID: 7856585699956200894}
+  - component: {fileID: 2552007543019315638}
   m_Layer: 10
   m_Name: Silla.015
   m_TagString: Untagged
@@ -50754,6 +51656,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &2552007543019315638
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6579259054922526439}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.0050000004, y: 0.003, z: 0.0050000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &6606779039758846338
 GameObject:
   m_ObjectHideFlags: 0
@@ -50765,6 +51683,7 @@ GameObject:
   - component: {fileID: 3570467699724112493}
   - component: {fileID: 608024270780806351}
   - component: {fileID: 406591243136182007}
+  - component: {fileID: 404867396209641344}
   m_Layer: 0
   m_Name: CristalIndividual (2)
   m_TagString: Untagged
@@ -50845,6 +51764,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &404867396209641344
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606779039758846338}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.031000001, y: 0.011000001, z: 0.017}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.001, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &6617742481446177749
 GameObject:
   m_ObjectHideFlags: 0
@@ -50856,6 +51791,7 @@ GameObject:
   - component: {fileID: 2301512384742239198}
   - component: {fileID: 472407409086014766}
   - component: {fileID: 312060712947057951}
+  - component: {fileID: 4702706616807032288}
   m_Layer: 0
   m_Name: Cristal1.018
   m_TagString: Untagged
@@ -50936,6 +51872,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &4702706616807032288
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6617742481446177749}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.020000001, y: 0.014, z: 0.021000002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.003, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &6645979763854027100
 GameObject:
   m_ObjectHideFlags: 0
@@ -50947,6 +51899,7 @@ GameObject:
   - component: {fileID: 886647232756669737}
   - component: {fileID: 7182452683810429257}
   - component: {fileID: 2208932357698404526}
+  - component: {fileID: 3392992481369667558}
   m_Layer: 0
   m_Name: Cristal1.015
   m_TagString: Untagged
@@ -51027,6 +51980,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &3392992481369667558
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6645979763854027100}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.014, y: 0.022000002, z: 0.018000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.002, y: 0.002, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &6651930494013526065
 GameObject:
   m_ObjectHideFlags: 0
@@ -51334,6 +52303,7 @@ GameObject:
   - component: {fileID: 4297414077212623886}
   - component: {fileID: 7592679199901190682}
   - component: {fileID: 847281390514795885}
+  - component: {fileID: 2167093863298322206}
   m_Layer: 0
   m_Name: CristalIndividual.001 (5)
   m_TagString: Untagged
@@ -51413,6 +52383,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &2167093863298322206
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6701974949343458605}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.035, y: 0.021000002, z: 0.041}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &6704330676493540796
 GameObject:
   m_ObjectHideFlags: 0
@@ -53563,7 +54549,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.422675, y: 0.089975506, z: -0.028586883}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 3.29}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7634237699158016389}
@@ -53842,6 +54828,7 @@ GameObject:
   - component: {fileID: 8619985744806411436}
   - component: {fileID: 1544760754037821827}
   - component: {fileID: 5912136202896236284}
+  - component: {fileID: 7626135707005925375}
   m_Layer: 0
   m_Name: Cristal1.011 (3)
   m_TagString: Untagged
@@ -53922,6 +54909,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &7626135707005925375
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982474760748574128}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.037, y: 0.043, z: 0.048}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.002, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &6994046743339760506
 GameObject:
   m_ObjectHideFlags: 0
@@ -53933,6 +54936,7 @@ GameObject:
   - component: {fileID: 8368688377275179603}
   - component: {fileID: 8376373368925424484}
   - component: {fileID: 1220967696104826897}
+  - component: {fileID: 696352077762322273}
   m_Layer: 0
   m_Name: Cristal1.010
   m_TagString: Untagged
@@ -54013,6 +55017,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &696352077762322273
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6994046743339760506}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.028, y: 0.024, z: 0.028}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.003, y: -0.001, z: 0.0050000004}
+  m_TimeToStationary: 0.5
 --- !u!1 &7014108985378180138
 GameObject:
   m_ObjectHideFlags: 0
@@ -55776,6 +56796,7 @@ GameObject:
   - component: {fileID: 2008275467467470278}
   - component: {fileID: 7973201724120160623}
   - component: {fileID: 403756507431682711}
+  - component: {fileID: 8176283367125449622}
   m_Layer: 10
   m_Name: Silla.014
   m_TagString: Untagged
@@ -55856,6 +56877,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &8176283367125449622
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7140048309049119440}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.003, y: 0.003, z: 0.0050000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7155592115468811796
 GameObject:
   m_ObjectHideFlags: 0
@@ -56037,6 +57074,118 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7158665662901086385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9170099560724920091}
+  - component: {fileID: 3568248114734449824}
+  - component: {fileID: 3421589980385253038}
+  - component: {fileID: 7296628460711353761}
+  m_Layer: 12
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9170099560724920091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7158665662901086385}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.010000002, z: 0.010000002}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6189311855732307737}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3568248114734449824
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7158665662901086385}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3421589980385253038
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7158665662901086385}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &7296628460711353761
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7158665662901086385}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 19
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7165520058741994458
 GameObject:
   m_ObjectHideFlags: 0
@@ -56048,6 +57197,7 @@ GameObject:
   - component: {fileID: 8829874127300267894}
   - component: {fileID: 1903640450964957203}
   - component: {fileID: 5902481017824749762}
+  - component: {fileID: 1560594487528742527}
   m_Layer: 0
   m_Name: CristalIndividual.001 (8)
   m_TagString: Untagged
@@ -56128,6 +57278,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &1560594487528742527
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7165520058741994458}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.035, y: 0.021000002, z: 0.041}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7166320642328262943
 GameObject:
   m_ObjectHideFlags: 0
@@ -56889,6 +58055,7 @@ GameObject:
   - component: {fileID: 1502360658958755767}
   - component: {fileID: 1695165782346930621}
   - component: {fileID: 7746722675578805858}
+  - component: {fileID: 5491727797495169266}
   m_Layer: 0
   m_Name: Cristal1.011 (5)
   m_TagString: Untagged
@@ -56968,6 +58135,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &5491727797495169266
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312001336319767024}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.037, y: 0.043, z: 0.048}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.002, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &7316230594560255556
 GameObject:
   m_ObjectHideFlags: 0
@@ -57700,7 +58883,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.10639373, y: 0.08997093, z: -0.028586844}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 3.29}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7634237699158016389}
@@ -58768,6 +59951,7 @@ GameObject:
   - component: {fileID: 5413506542600360204}
   - component: {fileID: 8018044460690429767}
   - component: {fileID: 7948708581612583523}
+  - component: {fileID: 4329141185747436665}
   m_Layer: 0
   m_Name: Cristal1.011 (4)
   m_TagString: Untagged
@@ -58848,6 +60032,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &4329141185747436665
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7491335920446868838}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.037, y: 0.043, z: 0.048}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.002, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &7494916910163111986
 GameObject:
   m_ObjectHideFlags: 0
@@ -58986,6 +60186,7 @@ GameObject:
   - component: {fileID: 3959971723513223145}
   - component: {fileID: 2385393860995662783}
   - component: {fileID: 1533001776890640928}
+  - component: {fileID: 505286243398591877}
   m_Layer: 0
   m_Name: Cristal1.012
   m_TagString: Untagged
@@ -59066,6 +60267,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &505286243398591877
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7502610220242292470}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.010000001, y: 0.015000001, z: 0.011000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.001, y: 0.001, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &7527243582564808815
 GameObject:
   m_ObjectHideFlags: 0
@@ -59077,6 +60294,7 @@ GameObject:
   - component: {fileID: 4863656330596754513}
   - component: {fileID: 3441464540207874579}
   - component: {fileID: 4042532180896002279}
+  - component: {fileID: 6018017956322250764}
   m_Layer: 0
   m_Name: Cristal2.006
   m_TagString: Untagged
@@ -59156,6 +60374,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &6018017956322250764
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7527243582564808815}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.0050000004, y: 0.004, z: 0.008}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7528057761595319279
 GameObject:
   m_ObjectHideFlags: 0
@@ -59464,6 +60698,7 @@ GameObject:
   - component: {fileID: 5084062193701110293}
   - component: {fileID: 973841308021734573}
   - component: {fileID: 2862224745026934837}
+  - component: {fileID: 7573935380503526704}
   m_Layer: 10
   m_Name: MesaHighPoly
   m_TagString: Untagged
@@ -59543,6 +60778,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &7573935380503526704
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7566449327592206423}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.007, y: 0.010000001, z: 0.004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7587016871919965867
 GameObject:
   m_ObjectHideFlags: 0
@@ -60077,6 +61328,7 @@ GameObject:
   - component: {fileID: 2508028760238083521}
   - component: {fileID: 92824495149641490}
   - component: {fileID: 2571967742970506491}
+  - component: {fileID: 5728846220220195120}
   m_Layer: 0
   m_Name: Cristal1.014
   m_TagString: Untagged
@@ -60157,6 +61409,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &5728846220220195120
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7632646472088044035}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.046000004, y: 0.055000003, z: 0.11800001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.002, y: 0.008, z: 0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &7644296628668077477
 GameObject:
   m_ObjectHideFlags: 0
@@ -63052,6 +64320,7 @@ GameObject:
   - component: {fileID: 3763628343280512137}
   - component: {fileID: 2810633014310233154}
   - component: {fileID: 2874939666852512244}
+  - component: {fileID: 7284616140875534405}
   m_Layer: 10
   m_Name: Silla.005
   m_TagString: Untagged
@@ -63132,6 +64401,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &7284616140875534405
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8115074313144076487}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.002, y: 0.003, z: 0.0050000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -0.002}
+  m_TimeToStationary: 0.5
 --- !u!1 &8119278921938613520
 GameObject:
   m_ObjectHideFlags: 0
@@ -63884,6 +65169,7 @@ GameObject:
   - component: {fileID: 9142285918289540911}
   - component: {fileID: 7152644246243641173}
   - component: {fileID: 3432469903106163364}
+  - component: {fileID: 1919358839906463902}
   m_Layer: 0
   m_Name: CristalIndividual.001 (4)
   m_TagString: Untagged
@@ -63964,6 +65250,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &1919358839906463902
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8194316932235524471}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.035, y: 0.021000002, z: 0.041}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8206195734366579120
 GameObject:
   m_ObjectHideFlags: 0
@@ -64180,6 +65482,7 @@ GameObject:
   - component: {fileID: 3139531171974140682}
   - component: {fileID: 8028671597120523889}
   - component: {fileID: 126169441621573057}
+  - component: {fileID: 6857597701881479463}
   m_Layer: 10
   m_Name: Silla.011
   m_TagString: Untagged
@@ -64260,6 +65563,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &6857597701881479463
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8210772967409699545}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.002, y: 0.003, z: 0.0050000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -0.002}
+  m_TimeToStationary: 0.5
 --- !u!1 &8218046162695435624
 GameObject:
   m_ObjectHideFlags: 0
@@ -66048,6 +67367,7 @@ GameObject:
   - component: {fileID: 919981174576870633}
   - component: {fileID: 252851899053080558}
   - component: {fileID: 5209716387840622767}
+  - component: {fileID: 5078106350727251967}
   m_Layer: 0
   m_Name: Cristal1.011 (6)
   m_TagString: Untagged
@@ -66128,6 +67448,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &5078106350727251967
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8416734326007155177}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.037, y: 0.043, z: 0.048}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.002, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &8422127566776162072
 GameObject:
   m_ObjectHideFlags: 0
@@ -67129,6 +68465,7 @@ GameObject:
   - component: {fileID: 5660594336848807538}
   - component: {fileID: 1924774472969560902}
   - component: {fileID: 6007920658933921162}
+  - component: {fileID: 782133487446066505}
   m_Layer: 10
   m_Name: Silla.009
   m_TagString: Untagged
@@ -67209,6 +68546,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &782133487446066505
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8561550113663281638}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.003, y: 0.002, z: 0.0050000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -0.002}
+  m_TimeToStationary: 0.5
 --- !u!1 &8587666649620438534
 GameObject:
   m_ObjectHideFlags: 0
@@ -68180,6 +69533,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1735543375172282715}
+  - component: {fileID: 5341828653050549563}
   m_Layer: 10
   m_Name: LevelMap
   m_TagString: Untagged
@@ -68205,6 +69559,38 @@ Transform:
   - {fileID: 7634237699158016389}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5341828653050549563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8700879018410394805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 1
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 5a4069d8fc8656f4eb60ace8644a92ab, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &8717200076477421566
 GameObject:
   m_ObjectHideFlags: 0
@@ -68741,6 +70127,7 @@ GameObject:
   - component: {fileID: 4262491037906628412}
   - component: {fileID: 3564507365307409178}
   - component: {fileID: 3172355914343235158}
+  - component: {fileID: 943459667522848877}
   m_Layer: 10
   m_Name: Silla.013
   m_TagString: Untagged
@@ -68821,6 +70208,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &943459667522848877
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8778810329775782510}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.0050000004, y: 0.003, z: 0.002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.002, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8796653358556257410
 GameObject:
   m_ObjectHideFlags: 0
@@ -69278,6 +70681,7 @@ GameObject:
   - component: {fileID: 6327136481626812456}
   - component: {fileID: 1054549403857356363}
   - component: {fileID: 6116196062384942061}
+  - component: {fileID: 1027153381915035185}
   m_Layer: 0
   m_Name: CristalIndividual.001 (3)
   m_TagString: Untagged
@@ -69357,6 +70761,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &1027153381915035185
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8840153340693527388}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.035, y: 0.021000002, z: 0.041}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8863600382863924350
 GameObject:
   m_ObjectHideFlags: 0
@@ -69595,6 +71015,7 @@ GameObject:
   - component: {fileID: 8893160512352519917}
   - component: {fileID: 5736631634298311283}
   - component: {fileID: 8974295493738267046}
+  - component: {fileID: 928861879389670239}
   m_Layer: 0
   m_Name: Cristal1.003
   m_TagString: Untagged
@@ -69675,6 +71096,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &928861879389670239
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8903677349174758296}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.020000001, y: 0.021000002, z: 0.028}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.002, y: 0.004, z: -0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &8906326555819879290
 GameObject:
   m_ObjectHideFlags: 0
@@ -70107,6 +71544,7 @@ GameObject:
   - component: {fileID: 563387136702243781}
   - component: {fileID: 7765318625133961776}
   - component: {fileID: 2441918099045553952}
+  - component: {fileID: 6463124697008219045}
   m_Layer: 0
   m_Name: Cristal2.011
   m_TagString: Untagged
@@ -70186,6 +71624,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &6463124697008219045
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8928185655787558001}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.022000002, y: 0.012, z: 0.032}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8932110004313911779
 GameObject:
   m_ObjectHideFlags: 0
@@ -70197,6 +71651,7 @@ GameObject:
   - component: {fileID: 2643673342506437683}
   - component: {fileID: 2321253972002497852}
   - component: {fileID: 5120153599103064532}
+  - component: {fileID: 3075043051656660449}
   m_Layer: 10
   m_Name: MesaLowPoly.001
   m_TagString: Untagged
@@ -70276,6 +71731,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &3075043051656660449
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8932110004313911779}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.007, y: 0.010000001, z: 0.004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8948289916382562852
 GameObject:
   m_ObjectHideFlags: 0
@@ -71553,6 +73024,7 @@ GameObject:
   - component: {fileID: 4812495545368130654}
   - component: {fileID: 2571709717049702886}
   - component: {fileID: 4554138558522277023}
+  - component: {fileID: 7923900477989547824}
   m_Layer: 10
   m_Name: Silla.012
   m_TagString: Untagged
@@ -71633,6 +73105,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &7923900477989547824
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9085633497644330674}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.003, y: 0.002, z: 0.0050000004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -0.002}
+  m_TimeToStationary: 0.5
 --- !u!1 &9090108998813851181
 GameObject:
   m_ObjectHideFlags: 0
@@ -71986,6 +73474,7 @@ GameObject:
   - component: {fileID: 6763770085079256115}
   - component: {fileID: 2452896478307864045}
   - component: {fileID: 7844477414364366489}
+  - component: {fileID: 311452505624753509}
   m_Layer: 0
   m_Name: CristalIndividual.001 (2)
   m_TagString: Untagged
@@ -72067,6 +73556,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &311452505624753509
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9180119718588257760}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.035, y: 0.021000002, z: 0.041}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &9202655675956746090
 GameObject:
   m_ObjectHideFlags: 0
