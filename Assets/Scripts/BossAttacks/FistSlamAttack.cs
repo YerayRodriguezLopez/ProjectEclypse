@@ -19,11 +19,13 @@ public class FistSlamAttack : BossAttack
         Vector3 groundPos = new Vector3(targetPosition.x, 0.1f, targetPosition.z);
 
         GameObject warning = Instantiate(boss.warningIndicatorPrefab, groundPos, Quaternion.identity);
+        warning.SetActive(true);
         yield return new WaitForSeconds(warningDuration);
         Destroy(warning);
 
         Vector3 spawnPos = groundPos + Vector3.up * spawnHeight;
-        GameObject fist = Instantiate(boss.fistPrefab, spawnPos, Quaternion.identity);
+        GameObject fist = Instantiate(boss.fistPrefab, spawnPos, boss.fistPrefab.transform.rotation);
+        fist.SetActive(true);
 
         while (fist != null && fist.transform.position.y > groundPos.y + 2.5f)
         {
@@ -31,6 +33,10 @@ public class FistSlamAttack : BossAttack
             yield return null;
         }
         
+        boss.audioManager.Play(AudioClips.BossHit1);
+        boss.audioManager.Play(AudioClips.BossHit2);
+
+
         Collider[] hits = Physics.OverlapSphere(groundPos, impactRadius);
         foreach (var hit in hits)
             hit.GetComponent<IHealthable>()?.TakeDamage(damage);

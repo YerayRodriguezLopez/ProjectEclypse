@@ -14,12 +14,13 @@ public class ExplosiveCrystal : Crystal
     protected virtual void OnTriggerEnter(Collider other)
     {
         Debug.Log("hola");
-       
+        if (!thrown) return;
         Hit(other);
        
     }
     override protected void Hit(Collider collision)
     {
+        
         Collider[] colliders = Physics.OverlapSphere(transform.position, ExplosionRadius, layer);
         foreach (Collider other in colliders)
         {

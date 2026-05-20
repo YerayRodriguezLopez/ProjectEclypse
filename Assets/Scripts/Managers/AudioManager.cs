@@ -4,16 +4,16 @@ using UnityEngine;
 //
 public enum AudioClips
 {
-    Jump,
-    NormalShot,
-    TankShot,
-    FootSteps,
-    Sprint,
-    GameOver,
-    ThankYoy,
-    Laugh,
-    NoSound,
-    EnemyShot
+    Door,
+    Explosion,
+    GlassBreak,
+    Heal,
+    LitEneScr,
+    MidEneScr,
+    Slice,
+    BossHit1,
+    BossHit2,
+    Laser
 }
 //
 
@@ -33,7 +33,6 @@ public class AudioManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
             InitializeClipDictionary();
         }
         else

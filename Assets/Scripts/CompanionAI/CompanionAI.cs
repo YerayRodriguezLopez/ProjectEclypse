@@ -8,7 +8,7 @@ using UnityEngine.AI;
 /// normal and ultimate skills.
 ///
 /// ── Persistence ─────────────────────────────────────────────────────────────
-/// DontDestroyOnLoad keeps the prefab alive. After each scene load, GameManager
+/// DontDestroyOnLoad keeps the prefab alive. After each scene load, GayManager
 /// calls SetFollowTarget() with the fresh anchor — zero manual re-wiring.
 /// Skill ScriptableObject references are baked into the prefab and survive every
 /// scene transition automatically.
@@ -21,7 +21,7 @@ using UnityEngine.AI;
 ///     No trigger colliders needed on enemies.
 ///
 /// ── State wiring ────────────────────────────────────────────────────────────
-/// Subscribes to GameManager.OnGameStateChanged.
+/// Subscribes to GayManager.OnGameStateChanged.
 /// AI loop activates on Combat / BossCombat / Playing; pauses otherwise.
 /// </summary>
 [RequireComponent(typeof(NavMeshAgent))]
@@ -77,7 +77,7 @@ public class CompanionAI : NPC, ISaveable
     // ─────────────────────────────────────────────────────────────────────────
 
     [Header("Follow Settings")]
-    [Tooltip("Design-time reference, overwritten at runtime by GameManager.")]
+    [Tooltip("Design-time reference, overwritten at runtime by GayManager.")]
     [SerializeField] private Transform _followTarget;
 
     [SerializeField] private float _maxFollowRange    = 10f;
@@ -123,7 +123,7 @@ public class CompanionAI : NPC, ISaveable
     private float        _detectionTimer;
 
     /// <summary>
-    /// Controlled by the GameManager state subscription.
+    /// Controlled by the GayManager state subscription.
     /// When false the Update loop exits immediately — no NavMesh, no scans.
     /// </summary>
     private bool _aiEnabled;
@@ -140,26 +140,26 @@ public class CompanionAI : NPC, ISaveable
         _agent = GetComponent<NavMeshAgent>();
         _agent.stoppingDistance = _followStopDistance;
 
-        if (GameManager.Instance)
+        if (GayManager.Instance)
         {
-            GameManager.Instance.RegisterCompanion(this);
-            GameManager.Instance.OnGameStateChanged += OnGameStateChanged;
+            GayManager.Instance.RegisterCompanion(this);
+            GayManager.Instance.OnGameStateChanged += OnGameStateChanged;
 
             // Sync to the state that may already be active.
-            ApplyAIState(GameManager.Instance.CurrentState);
+            ApplyAIState(GayManager.Instance.CurrentState);
         }
         else
         {
-            Debug.LogWarning($"[CompanionAI] {name}: GameManager not found during Awake.");
+            Debug.LogWarning($"[CompanionAI] {name}: GayManager not found during Awake.");
         }
     }
 
     private void OnDestroy()
     {
-        if (GameManager.Instance)
+        if (GayManager.Instance)
         {
-            GameManager.Instance.UnregisterCompanion(this);
-            GameManager.Instance.OnGameStateChanged -= OnGameStateChanged;
+            GayManager.Instance.UnregisterCompanion(this);
+            GayManager.Instance.OnGameStateChanged -= OnGameStateChanged;
         }
     }
 
@@ -183,11 +183,11 @@ public class CompanionAI : NPC, ISaveable
     }
 
     // ─────────────────────────────────────────────────────────────────────────
-    // GameManager state subscription
+    // GayManager state subscription
     // ─────────────────────────────────────────────────────────────────────────
 
-    private void OnGameStateChanged(GameManager.GameState previous,
-                                    GameManager.GameState next)
+    private void OnGameStateChanged(GayManager.GameState previous,
+                                    GayManager.GameState next)
     {
         ApplyAIState(next);
     }
@@ -196,11 +196,11 @@ public class CompanionAI : NPC, ISaveable
     /// Activates the AI loop for states where companions should be active,
     /// and pauses it for everything else (menus, paused, death, win/lose).
     /// </summary>
-    private void ApplyAIState(GameManager.GameState state)
+    private void ApplyAIState(GayManager.GameState state)
     {
-        bool shouldBeActive = state is GameManager.GameState.Playing
-                                    or GameManager.GameState.Combat
-                                    or GameManager.GameState.BossCombat;
+        bool shouldBeActive = state is GayManager.GameState.Playing
+                                    or GayManager.GameState.Combat
+                                    or GayManager.GameState.BossCombat;
 
         SetAIEnabled(shouldBeActive);
     }
@@ -228,11 +228,11 @@ public class CompanionAI : NPC, ISaveable
     }
 
     // ─────────────────────────────────────────────────────────────────────────
-    // Public API — called by GameManager
+    // Public API — called by GayManager
     // ─────────────────────────────────────────────────────────────────────────
 
     /// <summary>
-    /// Reassigns the follow target. Called by GameManager after each scene load.
+    /// Reassigns the follow target. Called by GayManager after each scene load.
     /// </summary>
     public void SetFollowTarget(Transform target)
     {
@@ -353,17 +353,17 @@ public class CompanionAI : NPC, ISaveable
         if (_ultimate is UltimateHealSkill)
         {
             // Check every companion and the player for low HP.
-            if (!GameManager.Instance) return false;
+            if (!GayManager.Instance) return false;
 
-            foreach (CompanionAI companion in GameManager.Instance.Companions)
+            foreach (CompanionAI companion in GayManager.Instance.Companions)
             {
                 if (companion.Health / companion.MaxHealth <= _ultimateHealThreshold)
                     return true;
             }
 
             // Also check player if it implements IHealthable.
-            if (GameManager.Instance.Player &&
-                GameManager.Instance.Player.TryGetComponent(out IHealthable playerHurtable) &&
+            if (GayManager.Instance.Player &&
+                GayManager.Instance.Player.TryGetComponent(out IHealthable playerHurtable) &&
                 playerHurtable.Health <= _ultimateHealThreshold)
                 return true;
 
@@ -424,7 +424,7 @@ public class CompanionAI : NPC, ISaveable
     public override void Die()
     {
         Debug.Log($"[CompanionAI] {name}: died.");
-        GameManager.Instance?.UnregisterCompanion(this);
+        GayManager.Instance?.UnregisterCompanion(this);
         gameObject.SetActive(false);
     }
 
@@ -527,7 +527,7 @@ public class CompanionAI : NPC, ISaveable
     /// <see cref="SaveData.CompanionHealths"/>.
     ///
     /// Index is resolved from the companion's position in
-    /// <see cref="GameManager.Companions"/> — the same index that determines
+    /// <see cref="GayManager.Companions"/> — the same index that determines
     /// which follow anchor it receives, so ordering is always consistent.
     ///
     /// If the list is shorter than the companion's index, it is padded with
@@ -536,16 +536,16 @@ public class CompanionAI : NPC, ISaveable
     /// </summary>
     public void OnSave(SaveData data)
     {
-        if (!GameManager.Instance)
+        if (!GayManager.Instance)
         {
-            Debug.LogWarning($"[CompanionAI] {name}: OnSave — GameManager not found.");
+            Debug.LogWarning($"[CompanionAI] {name}: OnSave — GayManager not found.");
             return;
         }
 
-        int index = GameManager.Instance.GetCompanionIndex(this);
+        int index = GayManager.Instance.GetCompanionIndex(this);
         if (index < 0)
         {
-            Debug.LogWarning($"[CompanionAI] {name}: OnSave — companion not registered in GameManager.");
+            Debug.LogWarning($"[CompanionAI] {name}: OnSave — companion not registered in GayManager.");
             return;
         }
 
@@ -566,16 +566,16 @@ public class CompanionAI : NPC, ISaveable
     /// </summary>
     public void OnLoad(SaveData data)
     {
-        if (!GameManager.Instance)
+        if (!GayManager.Instance)
         {
-            Debug.LogWarning($"[CompanionAI] {name}: OnLoad — GameManager not found.");
+            Debug.LogWarning($"[CompanionAI] {name}: OnLoad — GayManager not found.");
             return;
         }
 
-        int index = GameManager.Instance.GetCompanionIndex(this);
+        int index = GayManager.Instance.GetCompanionIndex(this);
         if (index < 0)
         {
-            Debug.LogWarning($"[CompanionAI] {name}: OnLoad — companion not registered in GameManager.");
+            Debug.LogWarning($"[CompanionAI] {name}: OnLoad — companion not registered in GayManager.");
             return;
         }
 

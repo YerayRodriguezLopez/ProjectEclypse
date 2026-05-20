@@ -3,12 +3,9 @@ using UnityEngine;
 public class HealCrystal : Crystal
 {
     public override float damage { get; set; } = 10;
-    [SerializeField]
-    private float HealRadius;
-    [SerializeField]
-    private float MinHeal;
-    [SerializeField]
-    private float MaxHeal;
+    private float HealRadius=5;
+    private float MinHeal = 20;
+    private float MaxHeal=110;
 
     override protected void Hit(Collider collision)
     {
@@ -42,7 +39,7 @@ public class HealCrystal : Crystal
                
               
                 healthable.Heal(healAmount);
-               
+                audioManager.Play(AudioClips.Heal);
 
             }
 

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -31,6 +31,8 @@ public class rangedEnemy : SimpleEnemy
 
     private Coroutine attackCoroutine;
 
+    private AudioManager audioManager;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -40,6 +42,7 @@ public class rangedEnemy : SimpleEnemy
     }
     public void Awake()
     {
+        audioManager = FindFirstObjectByType<AudioManager>();
     }
     private void Update()
     {
@@ -186,7 +189,7 @@ public class rangedEnemy : SimpleEnemy
             float arc = Mathf.Sin(Mathf.PI * t) * arcHeight;
             rock.transform.position = linearPos + Vector3.up * arc;
 
-         
+            
             //rock.transform.Rotate(Vector3.right * 200f * Time.deltaTime);
 
             yield return null;
@@ -203,7 +206,7 @@ public class rangedEnemy : SimpleEnemy
     }
     public override void Die()
     {
-
+        audioManager.Play(AudioClips.LitEneScr);
         //Debug.Log("muero");
         animator.SetTrigger("Dead");
         return;

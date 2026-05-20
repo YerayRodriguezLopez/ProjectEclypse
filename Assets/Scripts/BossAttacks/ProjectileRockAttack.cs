@@ -17,7 +17,7 @@ public class ProjectileRockAttack : BossAttack
     private IEnumerator ShootRock(Boss boss, Transform target)
     {
         Vector3 startPos = boss.transform.position + Vector3.up * 2f;
-        GameObject rock = Instantiate(boss.rockPrefab, startPos, Random.rotation);
+        GameObject rock = Instantiate(boss.rockPrefab, startPos, boss.rockPrefab.transform.rotation);
 
         Vector3 targetPos = target.position;
         float elapsed = 0f;
@@ -42,6 +42,8 @@ public class ProjectileRockAttack : BossAttack
         if (rock == null) yield break;
 
         // Impacto
+        boss.audioManager.Play(AudioClips.BossHit1);
+        boss.audioManager.Play(AudioClips.BossHit2);
         Collider[] hits = Physics.OverlapSphere(rock.transform.position, impactRadius);
         foreach (var hit in hits)
             hit.GetComponent<IHealthable>()?.TakeDamage(damage);

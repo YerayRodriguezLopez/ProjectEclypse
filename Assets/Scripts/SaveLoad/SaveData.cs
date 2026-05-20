@@ -4,8 +4,8 @@ using UnityEngine;
 
 /// <summary>
 /// Plain serializable container for a single save slot.
-/// Populated by <see cref="GameManager.SaveGame"/> and consumed by
-/// <see cref="GameManager.LoadGame"/>.
+/// Populated by <see cref="GayManager.SaveGame"/> and consumed by
+/// <see cref="GayManager.LoadGame"/>.
 ///
 /// Scene build index mapping:
 ///   0  →  Main Menu        (never saved to — new game only)
@@ -24,7 +24,7 @@ public class SaveData
 
     /// <summary>
     /// Health for each companion, ordered by their registration index in
-    /// <see cref="GameManager.Companions"/>.
+    /// <see cref="GayManager.Companions"/>.
     /// Index 0 → first registered companion, index 1 → second, etc.
     /// </summary>
     public List<float> CompanionHealths = new();
@@ -33,7 +33,7 @@ public class SaveData
 
     /// <summary>
     /// ID of the last reached checkpoint as assigned by
-    /// <see cref="GameManager.SetCheckpoint"/>.
+    /// <see cref="GayManager.SetCheckpoint"/>.
     /// -1 means no checkpoint has been reached in this run.
     /// </summary>
     public int CheckpointId = -1;

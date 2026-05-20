@@ -8,7 +8,7 @@ public class HealSkill : NormalSkill
     public override void Execute(NPC caster, GameObject target = null)
     {
         // Find the most injured party member (companions + caster).
-        // Falls back to healing the caster if GameManager is unavailable.
+        // Falls back to healing the caster if GayManager is unavailable.
         NPC recipient = FindMostInjured(caster);
         recipient.Heal(_healAmount);
         Debug.Log($"[HealSkill] {caster.name} heals {recipient.name} for {_healAmount}. " +
@@ -17,14 +17,14 @@ public class HealSkill : NormalSkill
 
     private NPC FindMostInjured(NPC caster)
     {
-        if (GameManager.Instance == null) return caster;
+        if (GayManager.Instance == null) return caster;
 
         NPC  mostInjured = caster;
         float lowestRatio = caster is CompanionAI c
             ? c.Health / c.MaxHealth
             : 1f;
 
-        foreach (CompanionAI companion in GameManager.Instance.Companions)
+        foreach (CompanionAI companion in GayManager.Instance.Companions)
         {
             float ratio = companion.Health / companion.MaxHealth;
             if (ratio < lowestRatio)
