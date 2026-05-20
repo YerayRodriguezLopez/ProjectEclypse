@@ -24,6 +24,7 @@ public class LaserAttack : BossAttack
     {
         GameObject laser = Instantiate(boss.laserPrefab, laserOrigin.position, Quaternion.identity);
         laser.SetActive(true);
+        boss.audioManager.Play(AudioClips.Laser);
         boss.laserInstance = laser;
         laser.transform.SetParent(boss.transform); 
 
