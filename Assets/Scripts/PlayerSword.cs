@@ -6,7 +6,6 @@ public class PlayerSword : MonoBehaviour
 
     private Player player;
     [SerializeField] private LayerMask layer;
-    [SerializeField] private AudioManager audioManager;
 
 
     private void Start()
@@ -58,7 +57,7 @@ public class PlayerSword : MonoBehaviour
         {
             Debug.Log("espada pega");
             healthable.TakeDamage(player.Damage);
-            audioManager.Play(AudioClips.Slice);
+
         }
     }
 }

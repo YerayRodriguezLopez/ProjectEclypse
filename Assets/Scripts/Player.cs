@@ -5,8 +5,6 @@ public class Player : NPC
 {
     //public float Health { get; private set; } = 100;
     //public float MaxHealth { get; private set; } = 100;
-    public override bool CanBeHurt { get; set; } = true;
-    public override  float ITime { get; set; } = 0.5f;
     public override float Health { get; set; } = 100;
     public override float MaxHealth { get; set; } = 100;
     public override float Damage { get; set; } = 25;
@@ -65,7 +63,7 @@ public class Player : NPC
         // Disable movement so the player can't act during the death sequence.
         if (CC) CC.enabled = false;
 
-        // Hand off to GayManager — it owns the state machine, the delay,
+        // Hand off to GayManager ï¿½ it owns the state machine, the delay,
         // and will fire OnPlayerRespawned when the sequence completes.
         GayManager.Instance.PlayerDied();
         CC.enabled = true;
@@ -99,7 +97,7 @@ public class Player : NPC
     }
     private void HandleDeath()
     {
-        Debug.Log("[PlayerHealth] Death handled — play death anim / VFX here.");
+        Debug.Log("[PlayerHealth] Death handled ï¿½ play death anim / VFX here.");
         
     }
     private void HandleRespawn(Vector3 respawnPosition)
