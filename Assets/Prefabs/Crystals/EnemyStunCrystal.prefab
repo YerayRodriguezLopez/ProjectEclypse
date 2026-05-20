@@ -133,7 +133,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 64
-  forceSpeed: 200
+  forceSpeed: 20
 --- !u!54 &836926688369548149
 Rigidbody:
   m_ObjectHideFlags: 0

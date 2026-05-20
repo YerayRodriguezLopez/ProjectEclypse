@@ -10,7 +10,7 @@ public class PlayerSword : MonoBehaviour
 
     private void Start()
     {
-        player = transform.parent.GetComponent<Player>();
+        player = GetComponentInParent<Player>();
     }
 
     private void OnTriggerEnter(Collider other)
