@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4345771375083150112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3548522878015804198}
+  - component: {fileID: 8337168530680248982}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3548522878015804198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4345771375083150112}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8337168530680248982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4345771375083150112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b3a581f2fd770408b7e3bf5a7f7459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  _clips:
+  - {fileID: 8300000, guid: c04c546419bee4a489b910d7583032f8, type: 3}
+  - {fileID: 8300000, guid: f061f9cf32403eb4bb3fb3f0d4f3bcf8, type: 3}
+  - {fileID: 8300000, guid: 9e8599fde6c8920459c04808ed2a9ebb, type: 3}
+  - {fileID: 8300000, guid: c8867a9f3a0b87b4895f101da422b24e, type: 3}
+  - {fileID: 8300000, guid: fc83b2487228b984b8a4c015f8192eb3, type: 3}
+  - {fileID: 8300000, guid: 3a13ef5958a387c49b1a45d884205548, type: 3}
+  - {fileID: 8300000, guid: 01c3aee7ea4fe7d48aa6ec196fdd962f, type: 3}
+  - {fileID: 8300000, guid: 4eac6e3abf3b6f54cbe47027b70e3a7e, type: 3}
+  - {fileID: 8300000, guid: 02694ba53d62ed54f8bf7bf9e21b8a4b, type: 3}
+  - {fileID: 8300000, guid: 7ff9a9fcab7b9394781b96efb7954c0b, type: 3}
+  sfxAudioSourcePrefab: {fileID: 0}

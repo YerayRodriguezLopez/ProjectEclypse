@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9174776406149148400}
   - component: {fileID: 7938270436095077014}
   - component: {fileID: 5119523269273671030}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ExplosiveCrystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,4 +309,4 @@ MonoBehaviour:
   onGround: 1
   layer:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 448

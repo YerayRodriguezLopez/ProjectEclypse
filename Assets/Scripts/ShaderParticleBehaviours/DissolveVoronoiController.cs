@@ -30,8 +30,12 @@ public class DissolveVoronoiController : MonoBehaviour
         _cachedEdgeWidths = new float[_materials.Length];
         for (int i = 0; i < _materials.Length; i++)
         {
-            _cachedEdgeWidths[i] = _materials[i].GetFloat(EdgeWidthID);
-            _materials[i].SetFloat(EdgeWidthID, 0f);
+            
+            if (_materials[i].HasFloat(EdgeWidthID))
+            {
+                _cachedEdgeWidths[i] = _materials[i].GetFloat(EdgeWidthID);
+                _materials[i].SetFloat(EdgeWidthID, 0f);
+            }
         }
     }
 
@@ -62,7 +66,11 @@ public class DissolveVoronoiController : MonoBehaviour
     {
         // Restore each material's cached edge width so the glow appears during dissolve
         for (int i = 0; i < _materials.Length; i++)
+        {
+            
+            if(_materials[i].HasFloat(EdgeWidthID))
             _materials[i].SetFloat(EdgeWidthID, _cachedEdgeWidths[i]);
+        }
 
         _isDissolving = true;
     }

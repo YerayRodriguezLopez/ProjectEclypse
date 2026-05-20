@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7658556435577812136}
   - component: {fileID: 4180353364062310703}
   - component: {fileID: 6568706312327074991}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: StunCrystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,8 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5db3bb868ae7c645901a54dad7ea6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StunCrystal
-  thrown: 0
-  onGround: 1
   layer:
     serializedVersion: 2
     m_Bits: 256

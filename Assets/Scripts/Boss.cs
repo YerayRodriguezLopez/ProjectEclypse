@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Boss : NPC
 {
-    public override float Health { get; set; } = 30;
-    public override float MaxHealth { get; set; } = 30;
+    public override float Health { get; set; } = 50;
+    public override float MaxHealth { get; set; } = 50;
     public override float Damage { get; set; } = 15;
     public override float AttackCooldown { get; set; } = 6f;
     public override float AttackSpeed { get; set; } = 1;
@@ -32,13 +32,22 @@ public class Boss : NPC
     private Animator animator;
     public GameObject laserInstance;
 
+    public AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = FindFirstObjectByType<AudioManager>();
+    }
+
     private void Start()
     {
         this.ITime = 1f;
         MaxHealth = Health;
         animator = GetComponent<Animator>();
         StartCoroutine(AttackRoutine());
+
     }
+
+  
 
     // El Update se encarga de mirar al jugador en cada frame
     private void Update()

@@ -3,8 +3,8 @@ using UnityEngine;
 public abstract class Crystal : MonoBehaviour
 {
     public abstract float damage { get; set; }
-    protected bool thrown = false;
-    protected bool onGround = true;
+    public bool thrown = false;
+    public bool onGround = true;
     protected AudioManager audioManager;
 
     [SerializeField] protected LayerMask layer;
@@ -29,7 +29,7 @@ public abstract class Crystal : MonoBehaviour
 
         if (healthable != null)
         {
- w           healthable.TakeDamage(damage);
+            healthable.TakeDamage(damage);
             Debug.Log("damage");
         }
 

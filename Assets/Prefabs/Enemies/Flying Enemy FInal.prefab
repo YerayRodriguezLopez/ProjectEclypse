@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6b4c1314c5a17a941bb2d554a9a00c88, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.2795243
+      value: -4.98
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6b4c1314c5a17a941bb2d554a9a00c88, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6b4c1314c5a17a941bb2d554a9a00c88, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.8233612
+      value: 2.22
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6b4c1314c5a17a941bb2d554a9a00c88, type: 3}
       propertyPath: m_LocalRotation.w
@@ -213,7 +213,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 5
+  m_BaseOffset: 2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!54 &3779125024735880746

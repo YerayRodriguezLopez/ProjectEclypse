@@ -115,6 +115,7 @@ public class GayManager : MonoBehaviour, ISaveable
     /// </summary>
     public event Action OnCompanionsRespawned;
 
+    public event Action ElevatorTeleport;
     /// <summary>
     /// --- Checkpoints ---
     /// Fired when a new checkpoint is registered.
@@ -423,6 +424,11 @@ public class GayManager : MonoBehaviour, ISaveable
     #endregion
 
     #region PlayerFlow
+    public void OnElevatorTeleport()
+    {
+        Debug.Log("invoke");
+        ElevatorTeleport?.Invoke();
+    }
 
     /// <summary>
     /// Called by the player when it dies.

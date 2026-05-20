@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1800098924722390096}
   - component: {fileID: 2940187990080702316}
   - component: {fileID: 8104259911771619752}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HealCrystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,4 +309,4 @@ MonoBehaviour:
   onGround: 1
   layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 448

@@ -15,12 +15,15 @@ public class Player : NPC
     public override float AttackRange { get; set; }
 
     public GameObject sword;
+    CharacterController CC;
 
         
 
     void Start()
     {
-     
+        CC = GetComponent<CharacterController>();
+        Debug.Log("start");
+        GayManager.Instance.ElevatorTeleport += TeleportTo;
     }
     
 
@@ -62,5 +65,15 @@ public class Player : NPC
     public void OnLoad(SaveData data)
     {
         Health = data.PlayerHealth;
+    }
+
+    public void TeleportTo()
+    {
+        CC.enabled = false;
+        Debug.Log("try to teleport");
+        this.transform.position = new Vector3(63.5f, 48.0660019f, 82.3000031f);
+        CC.enabled = true;
+
+
     }
 }
